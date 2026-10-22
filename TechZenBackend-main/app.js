@@ -41,15 +41,18 @@ app.use(cors({
         // Build the allowed list fresh — always sees the latest env vars
         const allowedOrigins = new Set([
             "http://localhost:5173",
+            "http://127.0.0.1:5173",
             ...(process.env.FRONTEND_ORIGINS || "")
                 .split(",")
                 .map((o) => o.trim().replace(/\/$/, ""))
                 .filter(Boolean),
         ])
 
+        const isVercelDomain = origin.endsWith(".vercel.app")
+
         console.log("[CORS] origin:", origin, "| allowed:", [...allowedOrigins])
 
-        if (allowedOrigins.has(origin)) {
+        if (allowedOrigins.has(origin) || isVercelDomain) {
             return callback(null, origin)   // ⭐ return the exact origin string
         }
 

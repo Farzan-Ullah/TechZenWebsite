@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: techzen-backend
+    runtime: node
+    plan: free
+    rootDir: TechZenBackend-main
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: COOKIE_SAME_SITE
+        value: none
+      - key: MONGO_DB
+        sync: false
+      - key: JWT_ACCESS_TOKEN_SECRET
+        sync: false
+      - key: JWT_REFRESH_TOKEN_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: FRONTEND_ORIGINS
+        sync: false
