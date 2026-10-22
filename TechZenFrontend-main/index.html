@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-dark.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-dark.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#050811" />
+    <script>
+      (function() {
+        // 1. Immediately apply saved theme before any CSS or body renders (eliminates dark flash on refresh)
+        try {
+          var saved = localStorage.getItem("techzen-theme");
+          var theme = (saved === "light" || saved === "dark")
+            ? saved
+            : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          
+          document.documentElement.setAttribute("data-theme", theme);
+          if (theme === "light") {
+            document.documentElement.classList.add("light");
+            document.documentElement.classList.remove("dark");
+          } else {
+            document.documentElement.classList.add("dark");
+            document.documentElement.classList.remove("light");
+          }
+
+          var metaTheme = document.querySelector('meta[name="theme-color"]');
+          if (metaTheme) {
+            metaTheme.setAttribute("content", theme === "dark" ? "#050811" : "#f8fafc");
+          }
+          var fav32 = document.querySelector('link[rel="icon"][sizes="32x32"]');
+          if (fav32) fav32.href = theme === "dark" ? "/favicon-32x32-dark.png" : "/favicon-32x32-light.png";
+          var fav16 = document.querySelector('link[rel="icon"][sizes="16x16"]');
+          if (fav16) fav16.href = theme === "dark" ? "/favicon-16x16-dark.png" : "/favicon-16x16-light.png";
+        } catch (e) {}
+
+        // 2. On page refresh, immediately reset URL to Home (/) and reset scroll to top
+        try {
+          var nav = window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType("navigation");
+          var isReload = (nav && nav[0] && nav[0].type === "reload") ||
+                         (window.performance && window.performance.navigation && window.performance.navigation.type === 1);
+          var path = window.location.pathname;
+          var isAdmin = path.indexOf("/admin") === 0 || path === "/login" || path === "/signup";
+
+          if (isReload && !isAdmin) {
+            if (path !== "/" || window.location.search || window.location.hash) {
+              window.history.replaceState(null, "", "/");
+            }
+            if ("scrollRestoration" in history) {
+              history.scrollRestoration = "manual";
+            }
+            window.scrollTo(0, 0);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="description" content="TechZen Consulting helps ambitious organizations turn complex challenges into practical strategies, measurable growth, and lasting results." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.example.com/" />
+    <meta property="og:title" content="TechZen Consulting | Strategy, Growth & Transformation" />
+    <meta property="og:description" content="Premium business consulting focused on strategy, transformation, and sustainable growth." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.example.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>TechZen | IT & HR Services — Learn. Build. Grow.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

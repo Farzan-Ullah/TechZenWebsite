@@ -1,0 +1,212 @@
+/* =========================================================
+   TECHZEN FAQ SECTION — MODERN ACCORDION
+========================================================= */
+
+.section {
+  position: relative;
+  padding: 130px 0;
+  background:
+    radial-gradient(
+      circle at 15% 40%,
+      rgba(14, 165, 233, 0.09),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 60%,
+      rgba(99, 102, 241, 0.09),
+      transparent 40%
+    ),
+    var(--bg-deep);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.container {
+  width: min(1360px, calc(100% - 48px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   FAQ GRID
+========================================================= */
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+/* =========================================================
+   SECTION HEADING (LEFT COLUMN)
+========================================================= */
+
+.sectionHeading {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 120px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid var(--border-glow);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+  width: fit-content;
+}
+
+.sectionHeading h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 18px;
+}
+
+.sectionHeading h2 em {
+  font-style: normal;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sectionHeading > p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 28px;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: var(--accent-cyan);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.textLink:hover {
+  gap: 12px;
+}
+
+/* =========================================================
+   FAQ LIST (RIGHT COLUMN)
+========================================================= */
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faqItem {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.faqItem:hover {
+  border-color: var(--border-glow);
+  background: var(--bg-card-hover);
+}
+
+.faqItem.open {
+  border-color: var(--border-glow);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-md), var(--shadow-glow-cyan);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.faqItem.open .faqQuestion,
+.faqQuestion:hover {
+  color: var(--accent-cyan);
+}
+
+.plusIcon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.faqItem.open .plusIcon {
+  transform: rotate(45deg);
+  color: var(--accent-cyan);
+}
+
+.faqAnswer {
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faqAnswer p {
+  padding: 0 28px 24px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .sectionHeading {
+    position: static;
+  }
+
+  .faqQuestion {
+    padding: 20px 22px;
+    font-size: 16px;
+  }
+
+  .faqAnswer p {
+    padding: 0 22px 20px;
+  }
+}

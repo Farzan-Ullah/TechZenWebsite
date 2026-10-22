@@ -1,0 +1,11 @@
+{
+  "name": "techzen-website",
+  "version": "1.0.0",
+  "description": "TechZen Website full-stack repository (Frontend + Backend)",
+  "scripts": {
+    "install:all": "npm install --prefix TechZenBackend-main && npm install --prefix TechZenFrontend-main",
+    "seed": "npm run seed --prefix TechZenBackend-main",
+    "backend": "npm run dev --prefix TechZenBackend-main",
+    "frontend": "npm run dev --prefix TechZenFrontend-main"
+  }
+}

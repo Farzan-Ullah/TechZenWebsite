@@ -1,0 +1,38 @@
+{
+  "name": "techzenbackend",
+  "version": "1.0.0",
+  "description": "Backend API for the TECHZEN company website, built with Node.js, Express.js, and MongoDB. Handles contact forms, services, authentication, and other server-side functionality.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node scripts/seed.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArshlanSheikh/TechZenBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ArshlanSheikh/TechZenBackend/issues"
+  },
+  "homepage": "https://github.com/ArshlanSheikh/TechZenBackend#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.11.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.1",
+    "multer": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

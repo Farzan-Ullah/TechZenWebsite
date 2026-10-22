@@ -1,0 +1,1252 @@
+import { useEffect, useState } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { company } from "../../data/siteData";
+import styles from "./Navbar.module.css";
+
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  // Prevent body scrolling when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const links = [
+    ["Home", "#home"],
+    ["About", "#about"],
+    ["Services", "#services"],
+    ["Why Us", "#why-us"],
+    ["Process", "#process"],
+    ["Testimonials", "#testimonials"],
+    ["FAQ", "#faq"],
+  ];
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+      {/* BACKDROP */}
+      <div
+        className={`${styles.backdrop} ${
+          open ? styles.backdropVisible : ""
+        }`}
+        onClick={closeMenu}
+        aria-hidden="true"
+      />
+
+      <header
+        className={`${styles.header} ${
+          scrolled ? styles.scrolled : ""
+        }`}
+      >
+        <div className={styles.container}>
+          <div className={styles.navWrap}>
+
+            {/* LOGO */}
+            <a
+              className={styles.brand}
+              href="#home"
+              onClick={closeMenu}
+              aria-label={`${company.name} ${company.descriptor} home`}
+            >
+              <span className={styles.brandMark}>T</span>
+
+              <span className={styles.brandText}>
+                {company.name}
+                <span className={styles.brandMuted}>
+                  {company.descriptor}
+                </span>
+              </span>
+            </a>
+
+
+            {/* DESKTOP NAV */}
+            <nav
+              className={styles.desktopNav}
+              aria-label="Primary navigation"
+            >
+              {links.map(([label, href]) => (
+                <a key={href} href={href}>
+                  {label}
+                </a>
+              ))}
+
+              <a
+                className={styles.navCta}
+                href="#contact"
+              >
+                Book a Consultation
+                <ArrowRight size={16} />
+              </a>
+            </nav>
+
+
+            {/* MOBILE MENU BUTTON */}
+            <button
+              className={`${styles.menuButton} ${
+                open ? styles.menuButtonOpen : ""
+              }`}
+              onClick={() => setOpen(!open)}
+              aria-expanded={open}
+              aria-controls="mobileNav"
+              aria-label={
+                open
+                  ? "Close navigation"
+                  : "Open navigation"
+              }
+            >
+              {open ? (
+                <X size={22} />
+              ) : (
+                <Menu size={22} />
+              )}
+            </button>
+
+          </div>
+        </div>
+      </header>
+
+
+      {/* MOBILE SIDEBAR */}
+      <aside
+        id="mobileNav"
+        className={`${styles.mobileSidebar} ${
+          open ? styles.sidebarOpen : ""
+        }`}
+        aria-hidden={!open}
+      >
+        <div className={styles.sidebarInner}>
+
+          <div className={styles.sidebarHeader}>
+            <span>Navigation</span>
+
+            <span className={styles.sidebarLine} />
+          </div>
+
+
+          <nav className={styles.mobileNav}>
+            {links.map(([label, href], index) => (
+              <a
+                key={href}
+                href={href}
+                onClick={closeMenu}
+                style={{
+                  transitionDelay: open
+                    ? `${index * 70 + 100}ms`
+                    : "0ms",
+                }}
+              >
+                {/* <span className={styles.mobileLinkNumber}>
+                  0{index + 1}
+                </span> */}
+
+                <span>{label}</span>
+
+                <ArrowRight
+                  size={17}
+                  className={styles.mobileArrow}
+                />
+              </a>
+            ))}
+
+            <a
+              className={styles.mobileCta}
+              href="#contact"
+              onClick={closeMenu}
+              style={{
+                transitionDelay: open
+                  ? `${links.length * 70 + 100}ms`
+                  : "0ms",
+              }}
+            >
+              Book a Consultation
+              <ArrowRight size={17} />
+            </a>
+          </nav>
+
+
+          <div className={styles.sidebarFooter}>
+            <span>© {new Date().getFullYear()}</span>
+            <span>{company.name}</span>
+          </div>
+
+        </div>
+      </aside>
+    </>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  height: 76px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border-bottom: 1px solid
+    rgba(15, 23, 42, 0.06);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    height 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* ========================================
+   HEADER WHEN SCROLLED
+======================================== */
+
+.header.scrolled {
+  height: 68px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+.container {
+  width: min(
+    1200px,
+    calc(100% - 40px)
+  );
+
+  height: 100%;
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   NAV WRAPPER
+======================================== */
+
+.navWrap {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+
+/* ========================================
+   BRAND
+======================================== */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 11px;
+
+  color: #101828;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+
+  transition:
+    opacity 0.25s ease;
+}
+
+
+.brand:hover {
+  opacity: 0.88;
+}
+
+
+/* ========================================
+   BRAND MARK
+======================================== */
+
+.brandMark {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #111827,
+      #334155
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 15px
+      rgba(15, 23, 42, 0.15);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.brand:hover .brandMark {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px
+      rgba(15, 23, 42, 0.18);
+}
+
+
+/* ========================================
+   BRAND TEXT
+======================================== */
+
+.brandText {
+  display: flex;
+  align-items: baseline;
+
+  gap: 5px;
+
+  color: #101828;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  letter-spacing: -0.3px;
+}
+
+
+.brandMuted {
+  color: #94a3b8;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* ========================================
+   DESKTOP NAV
+======================================== */
+
+.desktopNav {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 29px;
+}
+
+
+/* ========================================
+   DESKTOP NAV LINKS
+======================================== */
+
+.desktopNav > a:not(.navCta) {
+  position: relative;
+
+  height: 100%;
+
+  display: inline-flex;
+  align-items: center;
+
+  color: #475569;
+
+  text-decoration: none;
+  
+  font-size: 15px;
+  font-family:cursive;
+  font-weight: 600;
+
+
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease;
+
+}
+
+
+/* ========================================
+   MOVING UNDERLINE
+======================================== */
+
+.desktopNav > a:not(.navCta)::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 18px;
+
+  width: 100%;
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: #60a5fa;
+  background-color: rgb(4, 233, 250);
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.35s
+    cubic-bezier(
+      0.65,
+      0,
+      0.35,
+      1
+    );
+}
+
+
+/* ========================================
+   NAV HOVER
+======================================== */
+
+.desktopNav > a:not(.navCta):hover {
+  color: #365983;
+}
+
+
+.desktopNav > a:not(.navCta):hover::after {
+  transform: scaleX(1);
+}
+
+
+/* ========================================
+   NAV CTA
+======================================== */
+
+.navCta {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-left: 50px;
+  padding: 0 25px;
+
+  border-radius: 30px;
+
+  color: #ffffff;
+
+  background: #111827;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.navCta:hover {
+  color: #ffffff;
+  color:black ;
+
+  background: #2563eb;
+  background-color: rgb(4, 233, 250);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+      rgba(37, 99, 235, 0.2);
+}
+
+
+/* ========================================
+   MOBILE MENU BUTTON
+======================================== */
+
+.menuButton {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    rgba(15, 23, 42, 0.08);
+
+  border-radius: 9px;
+
+  color: #111827;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.menuButton:hover {
+  color: #60a5fa;
+
+  background: #f8fafc;
+
+  border-color:
+    rgba(96, 165, 250, 0.25);
+}
+
+
+.menuButton:active {
+  transform: scale(0.94);
+}
+
+
+/* ========================================
+   MOBILE BUTTON OPEN
+======================================== */
+
+.menuButtonOpen {
+  color: #ffffff;
+
+  background: #111827;
+
+  border-color: #111827;
+}
+
+
+.menuButtonOpen:hover {
+  color: #ffffff;
+
+  background: #1e293b;
+
+  border-color: #1e293b;
+}
+
+
+/* ========================================
+   BACKDROP
+======================================== */
+
+.backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1090;
+
+  background:
+    rgba(15, 23, 42, 0.38);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+
+.backdropVisible {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* ========================================
+   MOBILE SIDEBAR
+======================================== */
+
+.mobileSidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  z-index: 1100;
+
+  width: min(
+    390px,
+    88vw
+  );
+
+  background: #ffffff;
+
+  box-shadow:
+    15px 0 60px
+      rgba(15, 23, 42, 0.16);
+
+  transform:
+    translateX(-105%);
+
+  transition:
+    transform 0.45s
+    cubic-bezier(
+      0.77,
+      0,
+      0.175,
+      1
+    );
+
+  visibility: hidden;
+}
+
+
+.sidebarOpen {
+  transform:
+    translateX(0);
+
+  visibility: visible;
+}
+
+
+/* ========================================
+   SIDEBAR INNER
+======================================== */
+
+.sidebarInner {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px;
+}
+
+
+/* ========================================
+   SIDEBAR HEADER
+======================================== */
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.sidebarLine {
+  height: 1px;
+
+  flex: 1;
+
+  background: #e2e8f0;
+}
+
+
+/* ========================================
+   MOBILE NAV
+======================================== */
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 22px;
+}
+
+
+/* ========================================
+   MOBILE NAV LINKS
+======================================== */
+
+.mobileNav > a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  min-height: 58px;
+
+  border-bottom: 1px solid
+    #f1f5f9;
+
+  color: #1e293b;
+
+  text-decoration: none;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  opacity: 0;
+
+  transform:
+    translateX(-25px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    color 0.25s ease;
+}
+
+
+/* ========================================
+   SHOW MOBILE LINKS
+======================================== */
+
+.sidebarOpen .mobileNav > a {
+  opacity: 1;
+
+  transform:
+    translateX(0);
+}
+
+
+/* ========================================
+   MOBILE LINK HOVER
+======================================== */
+
+.mobileNav > a:hover {
+  color: #60a5fa;
+}
+
+
+/* ========================================
+   MOBILE NUMBER
+======================================== */
+
+.mobileLinkNumber {
+  width: 25px;
+
+  color: #cbd5e1;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  transition:
+    color 0.25s ease;
+}
+
+
+.mobileNav > a:hover
+.mobileLinkNumber {
+  color: #93c5fd;
+}
+
+
+/* ========================================
+   MOBILE ARROW
+======================================== */
+
+.mobileArrow {
+  margin-left: auto;
+
+  color: #cbd5e1;
+
+  opacity: 0;
+
+  transform:
+    translateX(-8px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+
+.mobileNav > a:hover
+.mobileArrow {
+  opacity: 1;
+
+  transform:
+    translateX(0);
+
+  color: #60a5fa;
+}
+
+
+/* ========================================
+   MOBILE CTA
+======================================== */
+
+.mobileNav .mobileCta {
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 22px;
+
+  padding: 0 20px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  color: #ffffff;
+
+  background: #111827;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  opacity: 0;
+
+  transform:
+    translateX(-25px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* ========================================
+   SHOW MOBILE CTA
+======================================== */
+
+.sidebarOpen .mobileNav .mobileCta {
+  opacity: 1;
+
+  transform:
+    translateX(0);
+}
+
+
+/* ========================================
+   MOBILE CTA HOVER
+======================================== */
+
+.mobileNav .mobileCta:hover {
+  color: #ffffff;
+
+  background: #2563eb;
+
+  box-shadow:
+    0 8px 25px
+      rgba(37, 99, 235, 0.18);
+}
+
+
+/* ========================================
+   SIDEBAR FOOTER
+======================================== */
+
+.sidebarFooter {
+  margin-top: auto;
+
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #94a3b8;
+
+  border-top: 1px solid
+    #f1f5f9;
+
+  font-size: 10px;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+
+  .desktopNav {
+    gap: 20px;
+  }
+
+  .desktopNav > a:not(.navCta) {
+    font-size: 13px;
+  }
+
+  .navCta {
+    padding: 0 14px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* ========================================
+   SMALL DESKTOP / TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .desktopNav {
+    gap: 15px;
+  }
+
+  .desktopNav > a:not(.navCta) {
+    font-size: 12px;
+  }
+
+  .navCta {
+    padding: 0 12px;
+
+    font-size: 11px;
+  }
+
+  .brandText {
+    font-size: 15px;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 800px) {
+
+  .header {
+    height: 70px;
+  }
+
+
+  .header.scrolled {
+    height: 64px;
+  }
+
+
+  .container {
+    width:
+      calc(100% - 30px);
+  }
+
+
+  /* Hide desktop navigation */
+
+  .desktopNav {
+    display: none;
+  }
+
+
+  /* Show mobile button */
+
+  .menuButton {
+    display: flex;
+  }
+
+
+  .brandText {
+    font-size: 15px;
+  }
+
+
+  .brandMuted {
+    font-size: 10px;
+  }
+
+
+  .brandMark {
+    width: 36px;
+    height: 36px;
+
+    font-size: 19px;
+  }
+
+
+  /* Sidebar */
+
+  .mobileSidebar {
+    width:
+      min(390px, 88vw);
+  }
+
+
+  .sidebarInner {
+    padding: 28px 25px 22px;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 520px) {
+
+  .container {
+    width:
+      calc(100% - 24px);
+  }
+
+
+  .brand {
+    gap: 9px;
+  }
+
+
+  .brandText {
+    font-size: 14px;
+  }
+
+
+  .brandMuted {
+    font-size: 9px;
+  }
+
+
+  .brandMark {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 8px;
+  }
+
+
+  .menuButton {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .mobileSidebar {
+    width: 88vw;
+  }
+
+
+  .sidebarInner {
+    padding:
+      25px 22px 20px;
+  }
+
+
+  .mobileNav > a {
+    min-height: 55px;
+
+    font-size: 16px;
+  }
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+
+  .brandText {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 0;
+  }
+
+
+  .brandMuted {
+    line-height: 1;
+  }
+
+
+  .sidebarInner {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+
+  .mobileNav > a {
+    font-size: 15px;
+  }
+}
+
+
+/* ========================================
+   ACCESSIBILITY - FOCUS
+======================================== */
+
+.desktopNav a:focus-visible,
+.brand:focus-visible,
+.menuButton:focus-visible,
+.mobileNav a:focus-visible {
+  outline: 2px solid #60a5fa;
+
+  outline-offset: 4px;
+
+  border-radius: 4px;
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .header,
+  .brand,
+  .brandMark,
+  .desktopNav > a,
+  .desktopNav > a::after,
+  .navCta,
+  .menuButton,
+  .backdrop,
+  .mobileSidebar,
+  .mobileNav > a,
+  .mobileArrow,
+  .mobileCta {
+    transition: none;
+  }
+}
+
+
+

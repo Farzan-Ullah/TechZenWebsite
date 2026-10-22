@@ -1,0 +1,296 @@
+/* =========================================================
+   TECHZEN PRODUCTS / PROJECTS SECTION — HIGH-TECH SHOWCASE
+========================================================= */
+
+.section {
+  position: relative;
+  padding: 130px 0;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(14, 165, 233, 0.09),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(99, 102, 241, 0.09),
+      transparent 40%
+    ),
+    var(--bg-canvas);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.container {
+  width: min(1360px, calc(100% - 48px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.sectionHeader {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 70px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid var(--border-glow);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.sectionHeader h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.sectionHeader h2 em {
+  font-style: normal;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* =========================================================
+   PROJECTS LIST
+========================================================= */
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 36px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-md);
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
+}
+
+.project.reverse {
+  grid-template-columns: 1fr 1.15fr;
+}
+
+.project.reverse .projectVisual {
+  order: 2;
+}
+
+.project.reverse .projectContent {
+  order: 1;
+}
+
+/* Project Visual */
+.projectVisual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.visualTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.visualTop span:last-child {
+  color: var(--accent-cyan);
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.projectImage {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project:hover .projectImage img {
+  transform: scale(1.04);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.15) 0%, rgba(6, 10, 20, 0.95) 75%);
+  padding: 20px;
+  text-align: center;
+}
+
+.imagePlaceholder span {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Project Content */
+.projectContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectMeta {
+  display: none;
+}
+
+.projectContent h3 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  line-height: 1.25;
+}
+
+.projectContent p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0 0 24px;
+}
+
+/* Technologies Chips */
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.technologies span {
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid var(--border-glow);
+  color: var(--accent-cyan);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Project Link */
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.projectLink:hover {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.projectLink svg {
+  transition: transform 0.2s ease;
+}
+
+.projectLink:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 980px) {
+  .sectionHeader {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project,
+  .project.reverse {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 28px;
+  }
+
+  .project.reverse .projectVisual {
+    order: 1;
+  }
+
+  .project.reverse .projectContent {
+    order: 2;
+  }
+
+  .projectImage {
+    height: 250px;
+  }
+}

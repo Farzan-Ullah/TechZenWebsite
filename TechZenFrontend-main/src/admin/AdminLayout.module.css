@@ -1,0 +1,32 @@
+.shell {
+  --admin-sidebar-width: 244px;
+  min-height: 100vh;
+  padding-top: 75px;
+  background: #f3f6f1;
+}
+
+.shell.collapsed {
+  --admin-sidebar-width: 70px;
+}
+
+.main {
+  min-height: calc(100vh - 75px);
+  margin-left: var(--admin-sidebar-width);
+  padding: 34px clamp(18px, 3vw, 44px) 54px;
+  transition: margin-left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 760px) {
+  .shell {
+    padding-top: 66px;
+    --admin-sidebar-width: 0px;
+  }
+  .shell.collapsed {
+    --admin-sidebar-width: 0px;
+  }
+  .main {
+    min-height: calc(100vh - 66px);
+    margin-left: 0 !important;
+    padding: 24px 16px 40px;
+  }
+}

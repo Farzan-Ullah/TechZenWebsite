@@ -1,0 +1,730 @@
+/* =========================================================
+   CAREERS SECTION — MODERN ENTERPRISE TECH STYLING
+   IT, Non-IT & Internships Tracks with Enquiry Flow
+   ========================================================= */
+
+.careersSection {
+  position: relative;
+  padding: 6.5rem 1.5rem;
+  background: var(--bg-canvas);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.standalonePadding {
+  padding-top: 8.5rem;
+  padding-bottom: 8rem;
+  min-height: 100vh;
+}
+
+/* Ambient Background Glow */
+.ambientGlow {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+  filter: blur(85px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:root[data-theme="light"] .ambientGlow {
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 4rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: var(--accent-cyan);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.badgeIcon {
+  color: var(--accent-cyan);
+  animation: pulseIcon 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { opacity: 0.7; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.2rem;
+}
+
+.gradientText {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.08rem;
+  line-height: 1.68;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* =========================================================
+   3 EXPANDED TRACKS GRID (IT, NON-IT, INTERNSHIPS)
+   ========================================================= */
+.tracksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 5.5rem;
+}
+
+.trackCard {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.35rem;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.trackCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-brand);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.trackCard:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(14, 165, 233, 0.12);
+}
+
+.trackCard:hover::before {
+  opacity: 1;
+}
+
+/* THEME SPECIFICS */
+:root[data-theme="light"] .trackCard {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .trackCard:hover {
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.09);
+  border-color: rgba(14, 165, 233, 0.35);
+}
+
+/* Pillar Card Color Accents */
+.trackCardIT::before {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+}
+
+.trackCardIT .trackIconWrap {
+  background: rgba(6, 182, 212, 0.12);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.trackCardIT .trackBadge {
+  background: rgba(6, 182, 212, 0.1);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+
+:root[data-theme="light"] .trackCardIT .trackIconWrap {
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+:root[data-theme="light"] .trackCardIT .trackBadge {
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.2);
+}
+
+/* Non-IT Accent */
+.trackCardNonIT::before {
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+}
+
+.trackCardNonIT .trackIconWrap {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.trackCardNonIT .trackBadge {
+  background: rgba(99, 102, 241, 0.1);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+:root[data-theme="light"] .trackCardNonIT .trackIconWrap {
+  background: rgba(79, 70, 229, 0.09);
+  color: #4f46e5;
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+:root[data-theme="light"] .trackCardNonIT .trackBadge {
+  background: rgba(79, 70, 229, 0.08);
+  color: #4f46e5;
+  border-color: rgba(79, 70, 229, 0.2);
+}
+
+/* Internships Accent */
+.trackCardIntern::before {
+  background: linear-gradient(90deg, #10b981, #06b6d4);
+}
+
+.trackCardIntern .trackIconWrap {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.trackCardIntern .trackBadge {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .trackCardIntern .trackIconWrap {
+  background: rgba(5, 150, 105, 0.1);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+:root[data-theme="light"] .trackCardIntern .trackBadge {
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+/* Top Section in Card */
+.trackTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.trackIconWrap {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.trackCard:hover .trackIconWrap {
+  transform: scale(1.08);
+}
+
+.trackBadge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.trackTitle {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.trackTagline {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+:root[data-theme="light"] .trackTagline {
+  color: var(--accent-blue);
+}
+
+.trackDesc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Specializations */
+.specSection {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.specHeading {
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+}
+
+.specList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.specItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.specItem strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.specIcon {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.trackCardNonIT .specIcon {
+  color: #818cf8;
+}
+
+.trackCardIntern .specIcon {
+  color: #10b981;
+}
+
+:root[data-theme="light"] .trackCardNonIT .specIcon {
+  color: #4f46e5;
+}
+
+:root[data-theme="light"] .trackCardIntern .specIcon {
+  color: #059669;
+}
+
+/* Candidate Profile Box */
+.whoBox {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.85rem;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+:root[data-theme="light"] .whoBox {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.whoLabel {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan);
+  margin-bottom: 0.35rem;
+}
+
+:root[data-theme="light"] .whoLabel {
+  color: var(--accent-blue);
+}
+
+.whoText {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Tech / Domain Skills */
+.skillsSection {
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.skillsLabel {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.65rem;
+}
+
+.skillsTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.skillTag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.45rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+:root[data-theme="light"] .skillTag {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #334155;
+}
+
+/* Enquiry CTA Button on Card */
+.trackAction {
+  margin-top: auto;
+}
+
+.enquireBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.95rem 1.4rem;
+  border-radius: 0.8rem;
+  background: var(--gradient-brand);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.94rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.28);
+  transition: all 0.25s ease;
+}
+
+.enquireBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(14, 165, 233, 0.45);
+  filter: brightness(1.08);
+}
+
+.enquireBtn:active {
+  transform: translateY(0);
+}
+
+/* Individual track button themes */
+.trackCardNonIT .enquireBtn {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.28);
+}
+
+.trackCardNonIT .enquireBtn:hover {
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.45);
+}
+
+.trackCardIntern .enquireBtn {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.28);
+}
+
+.trackCardIntern .enquireBtn:hover {
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.45);
+}
+
+/* =========================================================
+   PERKS & CULTURE
+   ========================================================= */
+.perksSection {
+  margin-bottom: 5rem;
+}
+
+.perksHeader {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.perksEyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.perksTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+}
+
+.perksSubtitle {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.perksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.perkCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.15rem;
+  padding: 1.85rem 1.6rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.perkCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-md);
+}
+
+:root[data-theme="light"] .perkCard {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .perkCard:hover {
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.perkIconWrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 165, 233, 0.12);
+  color: var(--accent-cyan);
+  margin-bottom: 1.15rem;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+:root[data-theme="light"] .perkIconWrap {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--accent-blue);
+  border-color: rgba(2, 132, 199, 0.2);
+}
+
+.perkCardTitle {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.perkCardDesc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* =========================================================
+   BOTTOM ENQUIRY CALLOUT BANNER
+   ========================================================= */
+.enquiryBanner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 2.75rem 3.25rem;
+  border-radius: 1.4rem;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.14) 0%, rgba(99, 102, 241, 0.14) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.32);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+:root[data-theme="light"] .enquiryBanner {
+  background: linear-gradient(135deg, rgba(240, 249, 255, 0.96) 0%, rgba(238, 242, 255, 0.96) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+}
+
+.enquiryContent {
+  max-width: 720px;
+}
+
+.enquiryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+:root[data-theme="light"] .enquiryBadge {
+  color: var(--accent-blue);
+}
+
+.enquiryTitle {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.65rem;
+}
+
+.enquiryDesc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.bannerCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 2rem;
+  border-radius: 0.85rem;
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.96rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.bannerCtaBtn:hover {
+  transform: translateY(-2px);
+  background: #f8fafc;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme="light"] .bannerCtaBtn {
+  background: var(--gradient-brand);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.28);
+}
+
+:root[data-theme="light"] .bannerCtaBtn:hover {
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.45);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1080px) {
+  .tracksGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .perksGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .enquiryBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.25rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .careersSection {
+    padding: 4.5rem 1rem;
+  }
+
+  .standalonePadding {
+    padding-top: 7rem;
+  }
+
+  .trackCard {
+    padding: 2rem 1.4rem;
+  }
+
+  .perksGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bannerCtaBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

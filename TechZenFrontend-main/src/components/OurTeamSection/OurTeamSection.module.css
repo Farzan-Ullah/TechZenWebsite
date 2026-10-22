@@ -1,0 +1,332 @@
+/* =========================================================
+   TECHZEN OUR TEAM SECTION — MODERN CAROUSEL SHOWCASE
+========================================================= */
+
+.teamSection {
+  position: relative;
+  padding: 120px 0 140px;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(14, 165, 233, 0.08),
+      transparent 50%
+    ),
+    var(--bg-deep);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.container {
+  width: min(1400px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.heading {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 60px;
+  color: var(--text-primary);
+}
+
+.heading::before {
+  content: "LEADERSHIP & EXPERTS";
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 12px;
+}
+
+/* =========================================================
+   INFINITE MARQUEE SLIDER
+========================================================= */
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+  animation: scroll 40s linear infinite;
+  padding: 20px 0;
+}
+
+.slider:hover .track {
+  animation-play-state: paused;
+}
+
+.manualScrolling .track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
+   MEMBER CARD
+========================================================= */
+
+.card {
+  width: 330px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px 24px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
+}
+
+/* Avatar / Image */
+.avatarWrapper {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
+    linear-gradient(135deg, #0ea5e9, #6366f1) border-box;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.avatarFallback {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  background:
+    linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
+    linear-gradient(135deg, #0ea5e9, #6366f1) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.25);
+}
+
+/* Name */
+.memberName {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+/* Designation Badge */
+.designationBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+/* Bio Text (~150 chars) */
+.bioText {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 20px;
+  text-align: center;
+  min-height: 72px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+/* Footer Action Row (Phone + LinkedIn) */
+.footerRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Phone link */
+.phoneLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  flex: 1;
+  min-width: 0;
+}
+
+.phoneLink:hover {
+  background: rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.35);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.phoneIcon {
+  flex-shrink: 0;
+  color: var(--accent-cyan);
+}
+
+.phoneText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-variant-numeric: tabular-nums;
+}
+
+/* LinkedIn Button */
+.linkedinBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(10, 102, 194, 0.1);
+  border: 1px solid rgba(10, 102, 194, 0.28);
+  color: #0a66c2;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.linkedinIcon {
+  width: 14px;
+  height: 14px;
+  color: #0a66c2;
+  fill: currentColor;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover state across both Light and Dark Themes */
+.linkedinBtn:hover,
+:root[data-theme="light"] .linkedinBtn:hover,
+:root[data-theme="dark"] .linkedinBtn:hover,
+:global([data-theme="light"]) .linkedinBtn:hover,
+:global([data-theme="dark"]) .linkedinBtn:hover {
+  background: #0a66c2 !important;
+  border-color: #0a66c2 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.45) !important;
+}
+
+.linkedinBtn:hover .linkedinIcon,
+:root[data-theme="light"] .linkedinBtn:hover .linkedinIcon,
+:root[data-theme="dark"] .linkedinBtn:hover .linkedinIcon,
+:global([data-theme="light"]) .linkedinBtn:hover .linkedinIcon,
+:global([data-theme="dark"]) .linkedinBtn:hover .linkedinIcon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  transform: scale(1.12);
+}
+
+/* Light Theme Adjustments */
+:root[data-theme="light"] .phoneLink,
+:global([data-theme="light"]) .phoneLink {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+:root[data-theme="light"] .phoneLink:hover,
+:global([data-theme="light"]) .phoneLink:hover {
+  background: rgba(14, 165, 233, 0.08);
+}
+
+:root[data-theme="light"] .linkedinBtn,
+:global([data-theme="light"]) .linkedinBtn {
+  background: rgba(10, 102, 194, 0.08);
+  border: 1px solid rgba(10, 102, 194, 0.24);
+  color: #0a66c2;
+}
+
+:root[data-theme="light"] .designationBadge,
+:global([data-theme="light"]) .designationBadge {
+  background: rgba(6, 182, 212, 0.08);
+  border-color: rgba(6, 182, 212, 0.3);
+  color: #0891b2;
+}

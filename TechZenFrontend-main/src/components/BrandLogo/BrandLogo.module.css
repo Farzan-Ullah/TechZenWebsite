@@ -1,0 +1,5 @@
+.logoImg {
+  display: block;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
