@@ -77,6 +77,9 @@ export default function usePublicContent(resource, explicitFallback) {
       })
       .catch((requestError) => {
         if (!active) return;
+        console.warn(
+          `[usePublicContent:${resource}] API fetch failed: ${requestError.message}. Using fallback data.`
+        );
         setError(
           requestError.response?.data?.message || "Content could not be loaded."
         );

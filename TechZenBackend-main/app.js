@@ -35,29 +35,9 @@ dotenv.config()
 
 app.use(cors({
     origin(origin, callback) {
-        // Allow non-browser clients (curl, Postman) — no CORS header needed
-        if (!origin) return callback(null, true)
-
-        // Build the allowed list fresh — always sees the latest env vars
-        const allowedOrigins = new Set([
-            "http://localhost:5173",
-            "http://127.0.0.1:5173",
-            ...(process.env.FRONTEND_ORIGINS || "")
-                .split(",")
-                .map((o) => o.trim().replace(/\/$/, ""))
-                .filter(Boolean),
-        ])
-
-        const isVercelDomain = origin.endsWith(".vercel.app")
-
-        console.log("[CORS] origin:", origin, "| allowed:", [...allowedOrigins])
-
-        if (allowedOrigins.has(origin) || isVercelDomain) {
-            return callback(null, origin)   // ⭐ return the exact origin string
-        }
-
-        console.log("[CORS] ❌ Blocked:", origin)
-        return callback(new Error(`Origin ${origin} not allowed by CORS`))
+        // Allow all origins (browser, curl, Postman, Vercel, Render, localhost)
+        if (!origin) return callback(null, true);
+        return callback(null, origin);
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],

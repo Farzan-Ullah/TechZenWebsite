@@ -75,6 +75,9 @@ export default function useGroupedTrainings() {
       })
       .catch((err) => {
         if (!active) return;
+        console.warn(
+          `[useGroupedTrainings] API fetch failed: ${err.message}. Using fallback data.`
+        );
         setError(err.response?.data?.message || "Failed to load grouped trainings.");
         setCategories(initialFallback);
         setIsFallback(true);
