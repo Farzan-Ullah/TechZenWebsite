@@ -289,7 +289,13 @@ export default function Footer() {
               )}
 
               {companyInfo.location && (
-                <div className={styles.contactItemStatic}>
+                <a
+                  href={companyInfo.googleMap || "https://share.google/TyPNs9An4joIQyBm4"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactItem}
+                  title="View TechZen on Google Maps"
+                >
                   <div className={styles.contactIconWrapper}>
                     <MapPin size={16} className={styles.contactIcon} />
                   </div>
@@ -299,7 +305,7 @@ export default function Footer() {
                       {companyInfo.location}
                     </span>
                   </div>
-                </div>
+                </a>
               )}
 
               {companyInfo.hours && (

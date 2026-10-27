@@ -4,8 +4,9 @@ export const company = {
   email: "techzen@gmail.com",
   phone: "9302039953",
   location: "Chhatarpur, MP, India",
+  googleMap: "https://share.google/TyPNs9An4joIQyBm4",
   hours: "Monday - Saturday, 10:00 AM - 6:00 PM",
-  linkedin: "https://www.linkedin.com/company/techzen",
+  linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   facebook: "https://www.facebook.com/techzen",
   whatsapp: "https://wa.me/919302039953",
   instagram: "https://www.instagram.com/techzen",
@@ -1066,7 +1067,7 @@ export const teamMembers = [
       "https://res.cloudinary.com/djvhmzqwj/image/upload/v1792580776/techZen/nm4cyzyqtjjvay8xe1ik.jpg",
     bio: "Executive Director championing strategic growth, client partnerships, and innovative technology consulting solutions across enterprise markets.",
     phone: "+91 93020 39953",
-    linkedin: "https://www.linkedin.com/company/techzen",
+    linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
   {
     _id: "team-02",
@@ -1076,7 +1077,7 @@ export const teamMembers = [
       "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680344/techZen/bvhn2bsbhs0hde0htegz.jpg",
     bio: "Visionary technology leader with 10+ years driving global enterprise digital transformation, cloud architecture, and high-impact client success.",
     phone: "+91 93020 39953",
-    linkedin: "https://www.linkedin.com/company/techzen",
+    linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
   {
     _id: "team-03",
@@ -1086,7 +1087,7 @@ export const teamMembers = [
       "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680422/techZen/avczwuqvz7lpigl33tkx.jpg",
     bio: "A seasoned full-stack engineer passionate about architecting scalable cloud applications, robust APIs, and interactive modern web ecosystems.",
     phone: "+91 93020 39953",
-    linkedin: "https://www.linkedin.com/company/techzen",
+    linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
   {
     _id: "team-04",
@@ -1096,7 +1097,7 @@ export const teamMembers = [
       "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790678669/techZen/rrhlqd4zsb50ttujm8el.jpg",
     bio: "Dynamic human resources leader dedicated to talent acquisition, people operations, and fostering an inspiring, high-performance team culture.",
     phone: "+91 93020 39953",
-    linkedin: "https://www.linkedin.com/company/techzen",
+    linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
   {
     _id: "team-05",
@@ -1106,7 +1107,7 @@ export const teamMembers = [
       "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680354/techZen/ob8qtu3tl2xmodi7a0us.jpg",
     bio: "Creative frontend specialist delivering high-performance, pixel-perfect user interfaces, fluid animations, and intuitive responsive web apps.",
     phone: "+91 93020 39953",
-    linkedin: "https://www.linkedin.com/company/techzen",
+    linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
   {
     _id: "team-06",
@@ -1116,7 +1117,7 @@ export const teamMembers = [
       "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680364/techZen/for0deuijsfrbjxfjrk0.jpg",
     bio: "Dedicated backend architect focused on high-throughput microservices, secure database modeling, and resilient distributed server systems.",
     phone: "+91 93020 39953",
-    linkedin: "https://www.linkedin.com/company/techzen",
+    linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
   {
     _id: "team-07",
@@ -1126,7 +1127,7 @@ export const teamMembers = [
       "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680422/techZen/avczwuqvz7lpigl33tkx.jpg",
     bio: "Software engineer specialized in building scalable full-stack applications, modern UI components, and high-performance cloud infrastructure.",
     phone: "+91 93020 39953",
-    linkedin: "https://www.linkedin.com/company/techzen",
+    linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
 ];
 

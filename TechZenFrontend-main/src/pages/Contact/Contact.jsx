@@ -166,10 +166,15 @@ export default function Contact() {
                 <span>{companyInfo.phone}</span>
               </a>
 
-              <span>
+              <a
+                href={companyInfo.googleMap || "https://share.google/TyPNs9An4joIQyBm4"}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View TechZen on Google Maps"
+              >
                 <MapPin size={18} />
                 <span>{companyInfo.location}</span>
-              </span>
+              </a>
             </div>
 
             <small>

@@ -51,7 +51,7 @@ const OurTeam = () => {
               const memberLinkedin =
                 member.linkedin && member.linkedin.trim() !== ""
                   ? member.linkedin
-                  : "https://www.linkedin.com/company/techzen";
+                  : "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/";
 
               const bioText =
                 member.bio ||
