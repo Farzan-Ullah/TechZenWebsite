@@ -599,7 +599,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
   padding: 13px 16px;
   border-radius: 12px;
   color: var(--text-primary);
@@ -613,11 +612,52 @@
   cursor: pointer;
 }
 
+.mobileNavLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.mobileNavIcon {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.mobileNavArrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.mobileChevron {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
 .mobileNav a:hover,
 .mobileDropdownTrigger:hover {
   background: var(--border-subtle);
   color: var(--accent-cyan);
   border-color: var(--border-glow);
+}
+
+.mobileNav a:hover .mobileNavIcon,
+.mobileDropdownTrigger:hover .mobileNavIcon {
+  transform: scale(1.08);
+}
+
+.mobileNav a:hover .mobileNavArrow {
+  opacity: 1;
+  color: var(--accent-cyan);
+  transform: translateX(3px);
+}
+
+.mobileDropdownTrigger:hover .mobileChevron {
+  color: var(--accent-cyan);
 }
 
 .mobileDropdownTriggerRow {
@@ -686,6 +726,40 @@
 
 .mobileDropdownOpen {
   display: flex;
+}
+
+.mobileDropdownSubLink {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 11px 14px !important;
+  border-radius: 10px !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  margin-bottom: 4px !important;
+}
+
+.mobileDropdownSubLink:hover {
+  background: var(--border-subtle) !important;
+  color: var(--accent-cyan) !important;
+  border-color: var(--border-glow) !important;
+  transform: translateX(3px);
+}
+
+.mobileSubItemArrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mobileDropdownSubLink:hover .mobileSubItemArrow {
+  color: var(--accent-cyan);
+  transform: translateX(2px);
 }
 
 .mobileTrainingItem {
@@ -827,6 +901,10 @@
 }
 
 @media (max-width: 500px) {
+  .container {
+    width: calc(100% - 28px);
+  }
+
   .navWrap {
     height: 72px;
   }
@@ -834,7 +912,83 @@
   .logo {
     height: 48px;
     width: auto;
-    max-width: 190px;
+    max-width: 185px;
     object-fit: contain;
   }
+
+  .mobileSidebar {
+    width: 100vw;
+    max-width: 100%;
+    border-left: none;
+  }
+
+  .sidebarInner {
+    padding: 82px 18px 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .navWrap {
+    height: 66px;
+  }
+
+  .logo {
+    height: 40px;
+    max-width: 150px;
+  }
+
+  .menuButton {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* =========================================================
+   LIGHT THEME ADJUSTMENTS FOR MOBILE NAVIGATION
+========================================================= */
+
+:root[data-theme="light"] .mobileNav a,
+:root[data-theme="light"] .mobileDropdownTrigger,
+:root[data-theme="light"] .mobileDropdownTriggerRow {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .mobileNav a:hover,
+:root[data-theme="light"] .mobileDropdownTrigger:hover,
+:root[data-theme="light"] .mobileDropdownTriggerRow:hover {
+  background: #f1f5f9;
+  border-color: rgba(2, 132, 199, 0.4);
+  color: #0284c7;
+}
+
+:root[data-theme="light"] .mobileDropdownSubLink {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+:root[data-theme="light"] .mobileDropdownSubLink:hover {
+  background: #ffffff !important;
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+}
+
+:root[data-theme="light"] .mobileTrainingItem {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .mobileTrainingItem:hover {
+  background: #f8fafc;
+}
+
+:root[data-theme="light"] .mobileThemeBox {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
 }

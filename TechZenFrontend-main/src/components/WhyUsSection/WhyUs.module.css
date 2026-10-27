@@ -211,6 +211,22 @@
 ========================================================= */
 
 @media (max-width: 900px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .sectionHeading {
+    margin-bottom: 48px;
+  }
+
+  .sectionHeading h2 {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
   .pillarsGrid {
     gap: 24px;
     max-width: 680px;
@@ -226,26 +242,47 @@
 }
 
 @media (max-width: 600px) {
+  .section {
+    padding: 56px 0 64px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .sectionHeading {
+    margin-bottom: 36px;
+  }
+
+  .description {
+    font-size: 14.5px;
+  }
+
   .pillarsGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px 20px;
-    max-width: 280px;
+    max-width: 270px;
     justify-items: center;
   }
 
   .pillarItem {
-    width: 105px;
+    width: 100px;
   }
 
   .watermark {
-    width: min(440px, 95vw);
+    width: min(360px, 92vw);
     opacity: 0.035;
   }
 }
 
 @media (max-width: 360px) {
+  .pillarsGrid {
+    gap: 14px 14px;
+    max-width: 240px;
+  }
+
   .pillarItem {
-    width: 95px;
+    width: 90px;
   }
 }

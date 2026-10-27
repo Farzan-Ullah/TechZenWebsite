@@ -330,3 +330,80 @@
   border-color: rgba(6, 182, 212, 0.3);
   color: #0891b2;
 }
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+========================================================= */
+
+@media (max-width: 768px) {
+  .teamSection {
+    padding: 70px 0 80px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .heading {
+    font-size: clamp(26px, 6vw, 36px);
+    margin-bottom: 40px;
+  }
+
+  .card {
+    width: min(290px, 85vw);
+    padding: 24px 18px 20px;
+  }
+
+  .avatarWrapper,
+  .image,
+  .avatarFallback {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatarFallback {
+    font-size: 22px;
+  }
+
+  .bioText {
+    min-height: auto;
+    font-size: 12.5px;
+    margin-bottom: 16px;
+    -webkit-line-clamp: 3;
+  }
+
+  .track {
+    gap: 18px;
+    padding: 14px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamSection {
+    padding: 56px 0 64px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .card {
+    width: min(265px, calc(100vw - 44px));
+    padding: 20px 14px 16px;
+    border-radius: 16px;
+  }
+
+  .memberName {
+    font-size: 16.5px;
+  }
+
+  .designationBadge {
+    font-size: 10.5px;
+    padding: 3px 10px;
+  }
+
+  .phoneLink {
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+}

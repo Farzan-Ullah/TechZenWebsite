@@ -4,6 +4,7 @@ import {
   X,
   ArrowRight,
   ChevronDown,
+  ChevronRight,
   BriefcaseBusiness,
   Briefcase,
   MessagesSquare,
@@ -195,25 +196,33 @@ export default function Navbar() {
             {/* HOME */}
             <Link
               to="/#home"
+              className={styles.mobileNavLink}
               onClick={(e) => {
                 closeMenu();
                 handleHashClick("/#home", e);
               }}
             >
-              <House size={18} />
-              <span>Home</span>
+              <div className={styles.mobileNavLeft}>
+                <House size={18} className={styles.mobileNavIcon} />
+                <span>Home</span>
+              </div>
+              <ChevronRight size={16} className={styles.mobileNavArrow} />
             </Link>
 
             {/* ABOUT */}
             <Link
               to="/#about"
+              className={styles.mobileNavLink}
               onClick={(e) => {
                 closeMenu();
                 handleHashClick("/#about", e);
               }}
             >
-              <UsersRound size={18} />
-              <span>About</span>
+              <div className={styles.mobileNavLeft}>
+                <UsersRound size={18} className={styles.mobileNavIcon} />
+                <span>About</span>
+              </div>
+              <ChevronRight size={16} className={styles.mobileNavArrow} />
             </Link>
 
             {/* SERVICES DROPDOWN */}
@@ -249,25 +258,33 @@ export default function Navbar() {
             {/* CAREERS */}
             <Link
               to="/#careers"
+              className={styles.mobileNavLink}
               onClick={(e) => {
                 closeMenu();
                 handleHashClick("/#careers", e);
               }}
             >
-              <Briefcase size={18} />
-              <span>Careers</span>
+              <div className={styles.mobileNavLeft}>
+                <Briefcase size={18} className={styles.mobileNavIcon} />
+                <span>Careers</span>
+              </div>
+              <ChevronRight size={16} className={styles.mobileNavArrow} />
             </Link>
 
             {/* FAQ */}
             <Link
               to="/#faq"
+              className={styles.mobileNavLink}
               onClick={(e) => {
                 closeMenu();
                 handleHashClick("/#faq", e);
               }}
             >
-              <MessagesSquare size={18} />
-              <span>FAQ</span>
+              <div className={styles.mobileNavLeft}>
+                <MessagesSquare size={18} className={styles.mobileNavIcon} />
+                <span>FAQ</span>
+              </div>
+              <ChevronRight size={16} className={styles.mobileNavArrow} />
             </Link>
 
             {/* CTA */}
@@ -282,12 +299,6 @@ export default function Navbar() {
               Book a Consultation
               <ArrowRight size={17} />
             </Link>
-
-            {/* MOBILE THEME TOGGLE */}
-            <div className={styles.mobileThemeBox}>
-              <span className={styles.mobileThemeText}>Appearance</span>
-              <ThemeToggle showLabel={true} />
-            </div>
           </nav>
 
           <div className={styles.sidebarFooter}>
@@ -501,8 +512,10 @@ function TrainingNavbarDropdownMobileView({
           onClick={closeMenu}
           className={styles.mobileDropdownLink}
         >
-          <Icon size={18} />
-          <span>Training</span>
+          <div className={styles.mobileNavLeft}>
+            <Icon size={18} className={styles.mobileNavIcon} />
+            <span>Training</span>
+          </div>
         </Link>
         <button
           type="button"
@@ -656,11 +669,13 @@ function NavbarDropdownMobileView({
         className={styles.mobileDropdownTrigger}
         onClick={onToggle}
       >
-        {Icon && <Icon size={18} />}
-        <span>{title}</span>
+        <div className={styles.mobileNavLeft}>
+          {Icon && <Icon size={18} className={styles.mobileNavIcon} />}
+          <span>{title}</span>
+        </div>
         <ChevronDown
           size={16}
-          className={isOpen ? styles.chevronOpen : ""}
+          className={`${styles.mobileChevron} ${isOpen ? styles.chevronOpen : ""}`}
         />
       </button>
 
@@ -675,6 +690,7 @@ function NavbarDropdownMobileView({
             to={`/#${title.toLowerCase().replace(/\s+/g, "-")}-${
               item.slug || item.id || item._id
             }`}
+            className={styles.mobileDropdownSubLink}
             onClick={(e) => {
               closeMenu();
               handleHashClick(
@@ -685,8 +701,8 @@ function NavbarDropdownMobileView({
               );
             }}
           >
-            {item.title}
-            <ArrowRight size={15} />
+            <span>{item.title}</span>
+            <ArrowRight size={14} className={styles.mobileSubItemArrow} />
           </Link>
         ))}
       </div>

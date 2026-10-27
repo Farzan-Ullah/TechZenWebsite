@@ -192,21 +192,58 @@
 ========================================================= */
 
 @media (max-width: 900px) {
+  .section {
+    padding: 70px 0 80px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
   .faqGrid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 40px;
   }
 
   .sectionHeading {
     position: static;
   }
 
+  .sectionHeading h2 {
+    font-size: clamp(28px, 6vw, 38px);
+  }
+
   .faqQuestion {
-    padding: 20px 22px;
+    padding: 18px 20px;
     font-size: 16px;
   }
 
   .faqAnswer p {
-    padding: 0 22px 20px;
+    padding: 0 20px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 56px 0 64px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .faqItem {
+    border-radius: 14px;
+  }
+
+  .faqQuestion {
+    padding: 15px 16px;
+    font-size: 15px;
+    gap: 12px;
+  }
+
+  .faqAnswer p {
+    padding: 0 16px 16px;
+    font-size: 14px;
   }
 }

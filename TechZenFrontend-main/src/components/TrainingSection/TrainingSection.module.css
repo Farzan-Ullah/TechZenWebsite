@@ -342,19 +342,87 @@
 @media (max-width: 1100px) {
   .trainingGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
   }
 }
 
 @media (max-width: 800px) {
+  .section {
+    padding: 70px 0 80px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
   .sectionHeader {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
+    margin-bottom: 40px;
+  }
+
+  .sectionHeader h2 {
+    font-size: clamp(28px, 6vw, 38px);
   }
 }
 
 @media (max-width: 650px) {
   .trainingGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 56px 0 64px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .trainingCard {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .imageWrapper {
+    height: 130px;
+    margin-bottom: 12px;
+  }
+
+  .trainingCard h3 {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .metaRow {
+    gap: 6px;
+  }
+
+  .techTags {
+    gap: 5px;
+    margin-bottom: 14px;
+  }
+
+  .contactLink {
+    padding: 10px 16px;
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .imageWrapper {
+    height: 115px;
+  }
+
+  .trainingCard {
+    padding: 14px 12px;
   }
 }
 

@@ -728,3 +728,99 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 480px) {
+  .careersSection {
+    padding: 3.5rem 0.85rem;
+  }
+
+  .standalonePadding {
+    padding-top: 6.2rem;
+  }
+
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 7vw, 2.3rem);
+    margin-bottom: 0.85rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .tracksGrid {
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .trackCard {
+    padding: 1.6rem 1.15rem;
+    border-radius: 1.1rem;
+  }
+
+  .trackTop {
+    margin-bottom: 1.2rem;
+  }
+
+  .trackIconWrap {
+    width: 46px;
+    height: 46px;
+  }
+
+  .trackTitle {
+    font-size: 1.25rem;
+  }
+
+  .trackTagline {
+    font-size: 0.86rem;
+  }
+
+  .trackDesc {
+    font-size: 0.86rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .specSection {
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+
+  .specItem {
+    font-size: 0.82rem;
+  }
+
+  .enquiryBanner {
+    padding: 1.8rem 1.25rem;
+    border-radius: 1.1rem;
+  }
+
+  .enquiryTitle {
+    font-size: 1.35rem;
+  }
+
+  .enquiryDesc {
+    font-size: 0.88rem;
+  }
+
+  .enquireBtn {
+    padding: 0.85rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .careersSection {
+    padding: 3rem 0.65rem;
+  }
+
+  .trackCard {
+    padding: 1.4rem 0.95rem;
+  }
+
+  .trackTitle {
+    font-size: 1.15rem;
+  }
+}

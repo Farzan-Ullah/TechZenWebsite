@@ -323,18 +323,72 @@
 ========================================================= */
 
 @media (max-width: 980px) {
+  .ctaSection {
+    padding: 70px 0 80px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
   .contactGrid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 40px;
+  }
+
+  .contactCopy h2 {
+    font-size: clamp(28px, 6vw, 38px);
   }
 
   .contactForm {
-    padding: 32px 24px;
+    padding: 30px 22px;
   }
 }
 
 @media (max-width: 580px) {
+  .ctaSection {
+    padding: 56px 0 64px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
   .formRow {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .contactForm {
+    padding: 22px 16px;
+    border-radius: 18px;
+    gap: 16px;
+  }
+
+  .formHeader h3 {
+    font-size: 20px;
+  }
+
+  .contactDetails a,
+  .contactDetails span {
+    padding: 13px 15px;
+    font-size: 13.5px;
+  }
+
+  .submitBtn {
+    min-height: 48px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contactForm {
+    padding: 18px 12px;
+  }
+
+  .contactDetails a,
+  .contactDetails span {
+    padding: 11px 12px;
+    font-size: 13px;
   }
 }

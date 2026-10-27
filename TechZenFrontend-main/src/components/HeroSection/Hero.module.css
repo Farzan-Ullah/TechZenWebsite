@@ -920,8 +920,8 @@
 @media (max-width: 820px) {
   .heroContent {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 40px 0 60px;
+    gap: 36px;
+    padding: 36px 0 50px;
     text-align: center;
   }
 
@@ -933,43 +933,52 @@
   }
 
   .badge {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .actions {
     justify-content: center;
+    width: 100%;
+    max-width: 420px;
   }
 
   .stats {
     justify-content: center;
     gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    padding-top: 24px;
   }
 
   .visual {
-    min-height: 480px;
+    min-height: 440px;
     width: 100%;
+    position: relative;
   }
 
   .aiOrb {
-    width: min(320px, 80%);
+    width: min(300px, 75vw);
   }
 
+  /* Reliable centering without transform conflict */
   .cardTop {
-    top: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(300px, 92%);
+    top: 6px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: min(310px, calc(100% - 32px));
   }
 
   .cardBottom {
-    bottom: 5px;
-    right: 50%;
-    transform: translateX(50%);
-    width: min(300px, 92%);
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: min(310px, calc(100% - 32px));
   }
 
   .techNode1 {
-    top: 26%;
+    top: 24%;
     right: 14px;
   }
   .techNode2 {
@@ -977,11 +986,11 @@
     right: 10px;
   }
   .techNode3 {
-    top: 70%;
+    top: 72%;
     right: 16px;
   }
   .techNode4 {
-    top: 26%;
+    top: 24%;
     left: 14px;
   }
   .techNode5 {
@@ -989,7 +998,7 @@
     left: 10px;
   }
   .techNode6 {
-    top: 70%;
+    top: 72%;
     left: 16px;
   }
 
@@ -1003,97 +1012,147 @@
   }
 }
 
+@media (max-width: 520px) {
+  /* Hide floating satellites on small mobile to keep AI core clear & touch-friendly */
+  .floatingTechCluster {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .hero {
     --header-height: 72px;
   }
 
+  .heroContent {
+    padding: 24px 0 40px;
+    gap: 28px;
+  }
+
   .heroText h1 {
-    font-size: 34px;
+    font-size: clamp(28px, 8vw, 38px);
     letter-spacing: -0.02em;
+    line-height: 1.16;
+    margin-bottom: 16px;
+  }
+
+  .heroText > p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
   }
 
   .actions {
     flex-direction: column;
     width: 100%;
+    max-width: 320px;
+    gap: 12px;
   }
 
   .button {
     width: 100%;
+    min-height: 48px;
+    font-size: 14px;
   }
 
   .stats {
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 360px;
+    margin-top: 28px;
+    padding-top: 20px;
   }
 
-  .statItem {
-    align-items: center;
+  .statItem strong {
+    font-size: 22px;
+  }
+
+  .statItem span {
+    font-size: 10px;
+    letter-spacing: 0.03em;
   }
 
   .visual {
-    min-height: 460px;
+    min-height: 380px;
   }
 
   .aiOrb {
-    width: 260px;
+    width: min(230px, 68vw);
+  }
+
+  .core {
+    width: 120px;
+    height: 120px;
+  }
+
+  .coreInner {
+    width: 80px;
+    height: 80px;
+  }
+
+  .aiText strong {
+    font-size: 11px;
   }
 
   .cardTop {
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(290px, 95%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: min(290px, calc(100% - 24px));
     padding: 10px 14px;
+    border-radius: 14px;
   }
 
   .cardBottom {
     bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
-    width: min(290px, 95%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: min(290px, calc(100% - 24px));
     padding: 10px 14px;
+    border-radius: 14px;
   }
 
-  .floatingTechNode {
-    width: 36px;
-    height: 36px;
+  .cardInfo strong {
+    font-size: 12.5px;
   }
 
-  .techNodeIcon {
-    font-size: 17px;
-  }
-
-  .techNode1 {
-    top: 28%;
-    right: 8px;
-  }
-  .techNode2 {
-    top: 50%;
-    right: 6px;
-  }
-  .techNode3 {
-    top: 70%;
-    right: 10px;
-  }
-  .techNode4 {
-    top: 28%;
-    left: 8px;
-  }
-  .techNode5 {
-    top: 50%;
-    left: 6px;
-  }
-  .techNode6 {
-    top: 70%;
-    left: 10px;
+  .cardSub {
+    font-size: 10px;
   }
 
   .heroWatermark {
-    width: min(320px, 90vw);
-    height: min(320px, 90vw);
-    opacity: 0.04;
+    width: min(300px, 88vw);
+    height: min(300px, 88vw);
+    opacity: 0.035;
+  }
+}
+
+@media (max-width: 360px) {
+  .heroText h1 {
+    font-size: 26px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .visual {
+    min-height: 340px;
+  }
+
+  .aiOrb {
+    width: 200px;
+  }
+
+  .cardTop,
+  .cardBottom {
+    width: calc(100% - 16px);
+    padding: 8px 12px;
   }
 }
 

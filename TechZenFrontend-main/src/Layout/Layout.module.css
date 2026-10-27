@@ -2,7 +2,12 @@
   box-sizing: border-box;
 }
 
-:global(html),
+:global(html) {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
 :global(body),
 :global(#root) {
   width: 100%;
@@ -24,4 +29,6 @@
 .main {
   flex: 1;
   width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
 }

@@ -62,20 +62,17 @@ export default function About() {
         />
       )}
       <div className={styles.container}>
+        {/* Mobile Eyebrow Tag: shown on top of the cards on small screens */}
+        <div className={styles.mobileEyebrowWrap}>
+          <p className={styles.eyebrow}>ABOUT TECHZEN</p>
+        </div>
+
         <div className={styles.splitGrid}>
           {/* =========================================================
               LEFT CARD: ENGINEERING SHOWCASE
               ========================================================= */}
           <div className={styles.aboutVisual}>
             <div className={styles.aboutPanel}>
-              {/* Header inside Left Card */}
-              <div className={styles.panelHeader}>
-                <span className={styles.statusLive}>
-                  <span className={styles.liveDot} />
-                  <span>EST. 2016 • GLOBAL DELIVERY</span>
-                </span>
-              </div>
-
               {/* Main Headline & Intro */}
               <h3 className={styles.panelTitle}>
                 Engineering Scalable Digital Futures with Precision.
@@ -89,19 +86,28 @@ export default function About() {
               {/* 4-Stat Metric Grid */}
               <div className={styles.metricsGrid}>
                 <div className={styles.metricItem}>
-                  <strong>10+</strong>
+                  <div className={styles.metricTop}>
+                    <strong>10+</strong>
+                    <Award size={15} className={styles.metricAwardIcon} aria-hidden="true" />
+                  </div>
                   <span>Years Experience</span>
                 </div>
                 <div className={styles.metricItem}>
-                  <strong>250+</strong>
+                  <div className={styles.metricTop}>
+                    <strong>250+</strong>
+                  </div>
                   <span>Projects Delivered</span>
                 </div>
                 <div className={styles.metricItem}>
-                  <strong>99.8%</strong>
+                  <div className={styles.metricTop}>
+                    <strong>99.8%</strong>
+                  </div>
                   <span>Delivery Precision</span>
                 </div>
                 <div className={styles.metricItem}>
-                  <strong>50+</strong>
+                  <div className={styles.metricTop}>
+                    <strong>50+</strong>
+                  </div>
                   <span>Tech Specialists</span>
                 </div>
               </div>
@@ -121,16 +127,16 @@ export default function About() {
                 <ShieldCheck size={16} className={styles.trustIcon} />
                 <span>Enterprise SLA • ISO Quality Standards • Global Delivery</span>
               </div>
-            </div>
 
-            {/* Experience Floating Badge */}
-            <div className={styles.experienceBadge}>
-              <div className={styles.expIconWrapper}>
-                <Award size={22} />
-              </div>
-              <div>
-                <strong>10+</strong>
-                <span>Years of<br />Excellence</span>
+              {/* Experience Floating Badge (Desktop & Tablet seal) */}
+              <div className={styles.experienceBadge}>
+                <div className={styles.expIconWrapper}>
+                  <Award size={22} />
+                </div>
+                <div>
+                  <strong>10+</strong>
+                  <span>Years of<br />Excellence</span>
+                </div>
               </div>
             </div>
           </div>
@@ -139,7 +145,7 @@ export default function About() {
               RIGHT SIDE: CONTENT & CARDS WITH ICONS & NAMES
               ========================================================= */}
           <div className={styles.aboutCopy}>
-            <p className={styles.eyebrow}>ABOUT TECHZEN</p>
+            <p className={`${styles.eyebrow} ${styles.desktopEyebrow}`}>ABOUT TECHZEN</p>
             <h2 className={styles.copyTitle}>
               Architecting Digital Innovation. <em>Accelerating Business Value.</em>
             </h2>

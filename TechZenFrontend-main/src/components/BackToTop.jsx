@@ -9,5 +9,21 @@ export default function BackToTop() {
     fn();
     return () => window.removeEventListener("scroll", fn);
   }, []);
-  return <button className={`back-top ${visible ? "visible":""}`} onClick={()=>window.scrollTo({top:0,behavior:"smooth"})} aria-label="Back to top"><ArrowUp size={18}/></button>;
+  const scrollToTop = () => {
+    if (window.__lenis) {
+      window.__lenis.scrollTo(0, { duration: 1.3 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <button
+      className={`back-top ${visible ? "visible" : ""}`}
+      onClick={scrollToTop}
+      aria-label="Back to top"
+    >
+      <ArrowUp size={18} />
+    </button>
+  );
 }

@@ -213,8 +213,24 @@
 ========================================================= */
 
 @media (max-width: 850px) {
+  .section {
+    padding: 70px 0 80px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .sectionHeading {
+    margin-bottom: 50px;
+  }
+
+  .sectionHeading h2 {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+
   .roadLine {
-    left: 20px;
+    left: 18px;
     transform: none;
   }
 
@@ -224,21 +240,72 @@
   }
 
   .roadContent {
-    width: calc(100% - 56px);
+    width: calc(100% - 48px);
+    padding: 26px 20px;
   }
 
   .roadDot {
-    left: 20px;
+    left: 18px;
     transform: translate(-50%, -50%);
   }
 }
 
 @media (max-width: 500px) {
+  .section {
+    padding: 56px 0 64px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .roadLine {
+    left: 14px;
+  }
+
+  .roadDot {
+    left: 14px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .roadDot span {
+    width: 6px;
+    height: 6px;
+  }
+
   .roadContent {
-    padding: 26px 20px;
+    width: calc(100% - 38px);
+    padding: 18px 16px;
+    border-radius: 16px;
   }
 
   .roadContent h3 {
-    font-size: 19px;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .roadContent p {
+    font-size: 13.5px;
+  }
+
+  .stepNumber {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .roadLine {
+    left: 10px;
+  }
+
+  .roadDot {
+    left: 10px;
+  }
+
+  .roadContent {
+    width: calc(100% - 30px);
+    padding: 16px 12px;
   }
 }
