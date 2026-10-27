@@ -140,18 +140,18 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 32px;
+  padding: 24px;
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 22px;
+  border-radius: 20px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-md);
 }
 
 .trainingCard:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--border-glow);
   box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
 }
@@ -160,7 +160,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .cardTopLeft {
@@ -190,8 +190,8 @@
 }
 
 .iconBox {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(99, 102, 241, 0.2));
   border: 1px solid rgba(56, 189, 248, 0.3);
@@ -204,10 +204,10 @@
 
 .imageWrapper {
   width: 100%;
-  height: 160px;
-  border-radius: 14px;
+  height: 140px;
+  border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -224,10 +224,10 @@
 
 .trainingCard h3 {
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   line-height: 1.3;
 }
 
@@ -236,10 +236,16 @@
 }
 
 .description {
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 13.5px;
+  line-height: 1.6;
   color: var(--text-secondary);
-  margin: 0 0 20px;
+  margin: 0 0 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 43px;
 }
 
 /* Meta Row */
@@ -247,18 +253,18 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .metaPill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px;
+  padding: 4px 9px;
   border-radius: 8px;
   background: var(--border-subtle);
   border: 1px solid var(--border-subtle);
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--text-secondary);
 }
 
@@ -269,49 +275,13 @@
 .feePill {
   display: inline-flex;
   align-items: center;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 8px;
   background: rgba(16, 185, 129, 0.12);
   border: 1px solid rgba(16, 185, 129, 0.3);
   color: #10b981;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
-}
-
-.eligibility {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  margin: 0 0 16px;
-}
-
-.eligibility strong {
-  color: var(--text-primary);
-}
-
-/* Feature bullets */
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
-
-.features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--text-secondary);
-}
-
-.features li svg {
-  color: #10b981;
-  flex-shrink: 0;
-  margin-top: 2px;
 }
 
 /* Tech Tags */
@@ -319,11 +289,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .techTag {
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 6px;
   background: rgba(14, 165, 233, 0.08);
   border: 1px solid var(--border-glow);
@@ -338,12 +308,12 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 12px 20px;
+  padding: 11px 18px;
   border-radius: 12px;
   background: var(--bg-card);
   border: 1px solid var(--border-medium);
   color: var(--text-primary);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.25s ease;

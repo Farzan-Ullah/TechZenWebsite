@@ -2,7 +2,6 @@ import {
   ArrowRight,
   Award,
   Calendar,
-  Check,
   Clock,
   Code2,
   GraduationCap,
@@ -42,14 +41,6 @@ export default function TrainingSection() {
         <div className={styles.trainingGrid}>
           {trainings.map((training, index) => {
             const Icon = training.icon === "code" ? Code2 : GraduationCap;
-            const bullets =
-              Array.isArray(training.features) && training.features.length > 0
-                ? training.features
-                : Array.isArray(training.whatStudentsWillLearn) &&
-                  training.whatStudentsWillLearn.length > 0
-                ? training.whatStudentsWillLearn
-                : [];
-
             const categoryName =
               (typeof training.category === "object"
                 ? training.category?.name
@@ -145,23 +136,6 @@ export default function TrainingSection() {
                       <span className={styles.feePill}>{training.fee}</span>
                     )}
                   </div>
-                )}
-
-                {training.eligibility && (
-                  <p className={styles.eligibility}>
-                    <strong>Eligibility:</strong> {training.eligibility}
-                  </p>
-                )}
-
-                {bullets.length > 0 && (
-                  <ul className={styles.features}>
-                    {bullets.map((feature) => (
-                      <li key={feature}>
-                        <Check size={15} aria-hidden="true" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                 )}
 
                 {Array.isArray(training.technologies) &&
