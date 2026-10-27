@@ -129,8 +129,9 @@ export default function Contact() {
     <section className={styles.ctaSection} id="contact">
       {isContactPage && (
         <SEO
-          title="Contact Us & Request a Quote | TechZen IT Consulting"
+          title="Contact Us & Request a Quote | TechZen"
           description="Get in touch with TechZen for bespoke software engineering, IT consulting, or training inquiries. Reach our team in Chhatarpur, MP, India."
+          ogDescription="Get in touch with TechZen for software engineering, cloud consulting, or academy inquiries. Reach our team today."
           keywords="contact TechZen, hire software developers, IT consulting quote, TechZen phone, TechZen email"
           canonicalPath="/contact"
         />

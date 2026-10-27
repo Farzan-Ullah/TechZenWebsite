@@ -340,14 +340,19 @@ export default function TrainingDetail() {
     }
   };
 
+  const rawDesc = training.shortDescription || training.description || "";
+  const metaDesc = rawDesc.length > 150 ? `${rawDesc.slice(0, 147).trim()}...` : rawDesc;
+  const ogDesc = rawDesc.length > 115 ? `${rawDesc.slice(0, 112).trim()}...` : rawDesc;
+
   return (
     <div className={styles.pageWrapper}>
       <SEO
-        title={`${training.title} | TechZen Professional Training`}
-        description={training.shortDescription || training.description}
+        title={`${training.title} | TechZen Training`}
+        description={metaDesc}
+        ogDescription={ogDesc}
         keywords={`${training.title}, TechZen training, IT certification, software course, ${technologies.slice(0, 5).join(", ")}`}
         canonicalPath={`/trainings/${training.slug || slug}`}
-        ogImage={bannerImg}
+        ogImage={bannerImg || "/og-image.png"}
         schemaJson={courseSchema}
       />
       <div className={styles.container}>

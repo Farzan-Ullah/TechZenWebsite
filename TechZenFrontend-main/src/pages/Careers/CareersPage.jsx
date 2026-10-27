@@ -14,7 +14,8 @@ export default function CareersPage() {
     <>
       <SEO
         title="Careers & Engineering Opportunities | Join TechZen"
-        description="Discover career opportunities at TechZen. Join our high-performance engineering team building modern web apps, cloud systems, and innovative digital solutions."
+        description="Explore career opportunities at TechZen. Join our engineering team building scalable web apps, cloud systems, and AI solutions."
+        ogDescription="Join TechZen's engineering team! Explore open developer roles and build modern cloud & web solutions."
         keywords="TechZen careers, tech jobs, software developer openings, frontend jobs, backend developer hiring"
         canonicalPath="/careers"
       />

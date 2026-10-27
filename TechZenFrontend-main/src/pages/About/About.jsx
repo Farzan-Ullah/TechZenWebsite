@@ -54,8 +54,9 @@ export default function About() {
     <section className={styles.section} id="about">
       {isAboutPage && (
         <SEO
-          title="About TechZen | IT Consulting & Digital Innovation Leaders"
-          description="Learn about TechZen's mission, engineering leadership, and vision to deliver scalable software solutions, cloud architecture, and corporate training."
+          title="About TechZen | Innovation & Leadership"
+          description="Discover TechZen's mission, engineering leadership, and vision to deliver enterprise software solutions, cloud systems, and corporate training."
+          ogDescription="Discover TechZen's mission, leadership, and enterprise engineering capabilities. Learn more about our team."
           keywords="about TechZen, tech consulting firm, IT software team, Chhatarpur tech company, software engineering leaders"
           canonicalPath="/about"
         />

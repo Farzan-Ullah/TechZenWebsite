@@ -56,10 +56,12 @@ const Home =()=>{
     return (
         <>
                <SEO
-                 title="TechZen IT Consulting | Custom Software, Cloud Architecture & AI Solutions"
-                 description="TechZen is an IT consulting and software engineering firm delivering scalable web applications, cloud infrastructure, AI solutions, and hands-on IT training & internships."
+                 title="TechZen | IT Consulting & Software Solutions"
+                 description="TechZen delivers custom software engineering, cloud architecture, AI solutions, and professional IT training to scale modern businesses."
+                 ogDescription="Enterprise software engineering, cloud architecture, and hands-on IT training. Explore solutions & courses."
                  keywords="TechZen, techzen-it.com, IT consulting, custom software development, cloud architecture, web applications, MERN stack, IT training, software internship"
                  canonicalPath="/"
+                 ogImage="/og-image.png"
                />
                <Hero />
                <About />

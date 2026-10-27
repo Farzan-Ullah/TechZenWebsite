@@ -15,6 +15,7 @@ export default function Project() {
         <SEO
           title="Enterprise Projects & Case Studies | TechZen"
           description="Explore real-world software projects delivered by TechZen, including enterprise e-commerce systems, assessment platforms, and custom digital workflows."
+          ogDescription="Explore real-world software projects delivered by TechZen, from enterprise e-commerce to cloud workflows."
           keywords="TechZen projects, software case studies, web application portfolio, React projects, enterprise platforms"
           canonicalPath="/projects"
         />

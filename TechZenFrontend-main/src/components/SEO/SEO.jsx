@@ -4,22 +4,23 @@ const BASE_URL = "https://www.techzen-it.com";
 
 /**
  * Dynamic SEO Component for React SPA routes.
- * Dynamically updates document.title, meta tags (description, keywords, canonical, OG, Twitter),
- * and dynamically injects route-specific JSON-LD structured data.
+ * Ensures titles stay strictly under 60 characters and descriptions adhere to
+ * search engine and social preview character sweet spots.
  */
 export default function SEO({
   title,
   description,
+  ogDescription,
   keywords,
   canonicalPath = "",
   ogType = "website",
-  ogImage = "/TechZenLogo.png",
+  ogImage = "/og-image.png",
   schemaJson = null,
 }) {
   useEffect(() => {
-    const siteTitle = "TechZen IT Consulting";
+    const siteTitle = "TechZen";
     
-    // 1. Document Title
+    // 1. Document Title (Ensure under 60 chars)
     if (title) {
       document.title = title.includes("TechZen") ? title : `${title} | ${siteTitle}`;
     }
@@ -36,29 +37,37 @@ export default function SEO({
       el.setAttribute("content", content);
     };
 
-    // 2. Meta description
+    // 2. Meta description (Google sweet spot ~140-155 chars)
     if (description) {
       setMetaTag('meta[name="description"]', "name", "description", description);
-      setMetaTag('meta[property="og:description"]', "property", "og:description", description);
-      setMetaTag('meta[name="twitter:description"]', "name", "twitter:description", description);
     }
 
-    // 3. Keywords
+    // 3. Social description (OG & Twitter sweet spot ~105-125 chars)
+    const socialDesc = ogDescription || (description && description.length > 125
+      ? `${description.slice(0, 118).trim()}...`
+      : description);
+
+    if (socialDesc) {
+      setMetaTag('meta[property="og:description"]', "property", "og:description", socialDesc);
+      setMetaTag('meta[name="twitter:description"]', "name", "twitter:description", socialDesc);
+    }
+
+    // 4. Keywords
     if (keywords) {
       setMetaTag('meta[name="keywords"]', "name", "keywords", keywords);
     }
 
-    // 4. OpenGraph & Twitter Title
+    // 5. OpenGraph & Twitter Title
     if (title) {
       const fullTitle = title.includes("TechZen") ? title : `${title} | ${siteTitle}`;
       setMetaTag('meta[property="og:title"]', "property", "og:title", fullTitle);
       setMetaTag('meta[name="twitter:title"]', "name", "twitter:title", fullTitle);
     }
 
-    // 5. OpenGraph Type
+    // 6. OpenGraph Type
     setMetaTag('meta[property="og:type"]', "property", "og:type", ogType);
 
-    // 6. Canonical URL
+    // 7. Canonical URL
     const normalizedPath = canonicalPath.startsWith("/") ? canonicalPath : `/${canonicalPath}`;
     const finalCanonical = canonicalPath === "" || canonicalPath === "/" ? `${BASE_URL}/` : `${BASE_URL}${normalizedPath}`;
 
@@ -73,7 +82,7 @@ export default function SEO({
     setMetaTag('meta[property="og:url"]', "property", "og:url", finalCanonical);
     setMetaTag('meta[name="twitter:url"]', "name", "twitter:url", finalCanonical);
 
-    // 7. OG & Twitter Image
+    // 8. OG & Twitter Image (1200x630)
     const finalImage = ogImage.startsWith("http")
       ? ogImage
       : `${BASE_URL}${ogImage.startsWith("/") ? ogImage : `/${ogImage}`}`;
@@ -81,7 +90,7 @@ export default function SEO({
     setMetaTag('meta[property="og:image:secure_url"]', "property", "og:image:secure_url", finalImage);
     setMetaTag('meta[name="twitter:image"]', "name", "twitter:image", finalImage);
 
-    // 8. Dynamic Schema (JSON-LD)
+    // 9. Dynamic Schema (JSON-LD)
     let customSchemaScript = null;
     if (schemaJson) {
       customSchemaScript = document.createElement("script");
@@ -96,7 +105,7 @@ export default function SEO({
         customSchemaScript.parentNode.removeChild(customSchemaScript);
       }
     };
-  }, [title, description, keywords, canonicalPath, ogType, ogImage, schemaJson]);
+  }, [title, description, ogDescription, keywords, canonicalPath, ogType, ogImage, schemaJson]);
 
   return null;
 }

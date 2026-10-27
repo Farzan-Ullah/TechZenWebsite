@@ -138,8 +138,9 @@ export default function TrainingsPage() {
   return (
     <div className={styles.trainingsPage}>
       <SEO
-        title="Professional IT Trainings & Internships | TechZen Academy"
-        description="Advance your tech career with TechZen's industry-aligned trainings in MERN Stack, Data Analytics, Python, Cloud, and intensive hands-on internships."
+        title="IT Trainings & Internships | TechZen Academy"
+        description="Advance your tech career with industry-aligned training in MERN Stack, Data Analytics, Python, Cloud, and hands-on corporate internships."
+        ogDescription="Advance your tech career with hands-on MERN Stack, Data Analytics, and Internship programs at TechZen Academy."
         keywords="IT training, MERN stack course, data analytics training, software internship, industrial training Chhatarpur, coding academy"
         canonicalPath="/trainings"
       />
