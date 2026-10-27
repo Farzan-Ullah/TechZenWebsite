@@ -231,6 +231,29 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* Inline Social Bar for Tablet / Mobile when floating dock is hidden */}
+            {socialLinks.length > 0 && (
+              <div className={styles.heroInlineSocial}>
+                <span className={styles.inlineSocialLabel}>Connect with us</span>
+                <div className={styles.inlineSocialIcons}>
+                  {socialLinks.map(({ name, href, icon: Icon, hoverColor, brandGlow, label }) => (
+                    <a
+                      key={name}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.inlineSocialItem}
+                      aria-label={label}
+                      style={{ "--hover-accent": hoverColor, "--brand-glow": brandGlow }}
+                    >
+                      <Icon className={styles.inlineSocialIcon} />
+                      <span className={styles.inlineSocialName}>{name}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
           </div>
 
           {/* RIGHT SIDE */}
