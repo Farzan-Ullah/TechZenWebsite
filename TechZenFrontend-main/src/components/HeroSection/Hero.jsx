@@ -112,33 +112,52 @@ export default function Hero() {
   const { company: companyInfo } = useCompanyContent();
 
   const resolveSocialUrl = (field, fallbackUrl) => {
-    if (companyInfo && companyInfo[field] && companyInfo[field].trim()) {
-      return companyInfo[field].trim();
+    const val = companyInfo && companyInfo[field] && companyInfo[field].trim();
+    if (val && !val.endsWith("/techzen") && !val.endsWith("/techzen/")) {
+      return val;
     }
     return (fallbackUrl || "").trim();
   };
 
   const resolveWhatsAppUrl = (fallbackUrl) => {
-    if (companyInfo) {
-      if (companyInfo.whatsapp && companyInfo.whatsapp.trim()) {
-        const raw = companyInfo.whatsapp.trim();
-        return raw.startsWith("http")
-          ? raw
-          : `https://wa.me/${raw.replace(/[^0-9]/g, "")}`;
-      }
-      if (companyInfo.phone && companyInfo.phone.trim()) {
-        const digits = companyInfo.phone.replace(/[^0-9]/g, "");
-        return `https://wa.me/${digits.length === 10 ? "91" + digits : digits}`;
-      }
-      return "";
+    if (companyInfo && companyInfo.whatsapp && companyInfo.whatsapp.trim()) {
+      const raw = companyInfo.whatsapp.trim();
+      return raw.startsWith("http")
+        ? raw
+        : `https://wa.me/${raw.replace(/[^0-9]/g, "")}`;
     }
-    return (fallbackUrl || "").trim();
+    return fallbackUrl || "https://wa.me/919303878713";
   };
 
   const socialLinks = [
     {
+      name: "Facebook",
+      href: resolveSocialUrl(
+        "facebook",
+        "https://www.facebook.com/profile.php?id=61595264584692"
+      ),
+      icon: FaFacebookF,
+      hoverColor: "#1877f2",
+      brandGlow: "rgba(24, 119, 242, 0.5)",
+      label: "Follow TechZen on Facebook",
+    },
+    {
+      name: "Instagram",
+      href: resolveSocialUrl(
+        "instagram",
+        "https://www.instagram.com/techzenitservices/"
+      ),
+      icon: FaInstagram,
+      hoverColor: "#e4405f",
+      brandGlow: "rgba(228, 64, 95, 0.5)",
+      label: "Follow TechZen on Instagram",
+    },
+    {
       name: "LinkedIn",
-      href: resolveSocialUrl("linkedin", fallbackCompany.linkedin),
+      href: resolveSocialUrl(
+        "linkedin",
+        "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/"
+      ),
       icon: FaLinkedinIn,
       hoverColor: "#0a66c2",
       brandGlow: "rgba(10, 102, 194, 0.5)",
@@ -146,27 +165,11 @@ export default function Hero() {
     },
     {
       name: "WhatsApp",
-      href: resolveWhatsAppUrl(fallbackCompany.whatsapp),
+      href: resolveWhatsAppUrl("https://wa.me/919303878713"),
       icon: FaWhatsapp,
       hoverColor: "#25d366",
       brandGlow: "rgba(37, 211, 102, 0.5)",
       label: "Chat with TechZen on WhatsApp",
-    },
-    {
-      name: "Instagram",
-      href: resolveSocialUrl("instagram", fallbackCompany.instagram),
-      icon: FaInstagram,
-      hoverColor: "#e4405f",
-      brandGlow: "rgba(228, 64, 95, 0.5)",
-      label: "Follow TechZen on Instagram",
-    },
-    {
-      name: "Facebook",
-      href: resolveSocialUrl("facebook", fallbackCompany.facebook),
-      icon: FaFacebookF,
-      hoverColor: "#1877f2",
-      brandGlow: "rgba(24, 119, 242, 0.5)",
-      label: "Follow TechZen on Facebook",
     },
     {
       name: "Twitter",

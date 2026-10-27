@@ -39,7 +39,9 @@ export default function Footer() {
   const resolveSocialUrl = (key, fallbackUrl) => {
     if (!isFallback) {
       const val = companyInfo[key];
-      return typeof val === "string" ? val.trim() : "";
+      if (typeof val === "string" && val.trim() && !val.endsWith("/techzen") && !val.endsWith("/techzen/")) {
+        return val.trim();
+      }
     }
     return (fallbackUrl || "").trim();
   };
@@ -52,13 +54,8 @@ export default function Footer() {
           ? raw
           : `https://wa.me/${raw.replace(/[^0-9]/g, "")}`;
       }
-      if (companyInfo.phone && companyInfo.phone.trim()) {
-        const digits = companyInfo.phone.replace(/[^0-9]/g, "");
-        return `https://wa.me/${digits.length === 10 ? "91" + digits : digits}`;
-      }
-      return "";
     }
-    return (fallbackUrl || "").trim();
+    return fallbackUrl || "https://wa.me/919303878713";
   };
 
   const rawSocialLinks = [
