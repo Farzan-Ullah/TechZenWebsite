@@ -24,6 +24,7 @@ import {
 import { trainingApi } from "../../Api/CmsApi";
 import api from "../../Api/ApiIntersceptor";
 import { Tranings as fallbackTrainings, company } from "../../data/siteData";
+import SEO from "../../components/SEO/SEO";
 import styles from "./TrainingDetail.module.css";
 
 const slugAliases = {
@@ -320,8 +321,35 @@ export default function TrainingDetail() {
     `Hello TechZen, I am interested in enrolling in the ${training.title} program. Could you share batch details?`
   )}`;
 
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": training.title,
+    "description": training.shortDescription || training.description,
+    "provider": {
+      "@type": "Organization",
+      "name": "TechZen IT Consulting",
+      "sameAs": "https://www.techzen-it.com/"
+    },
+    "courseCode": training.slug || slug,
+    "educationalCredentialAwarded": "Certificate of Completion",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": training.mode || "Hybrid",
+      "courseSchedule": training.schedule || "Flexible Batches"
+    }
+  };
+
   return (
     <div className={styles.pageWrapper}>
+      <SEO
+        title={`${training.title} | TechZen Professional Training`}
+        description={training.shortDescription || training.description}
+        keywords={`${training.title}, TechZen training, IT certification, software course, ${technologies.slice(0, 5).join(", ")}`}
+        canonicalPath={`/trainings/${training.slug || slug}`}
+        ogImage={bannerImg}
+        schemaJson={courseSchema}
+      />
       <div className={styles.container}>
         {/* Breadcrumb Navigation */}
         <nav className={styles.breadcrumbs} aria-label="Breadcrumb">

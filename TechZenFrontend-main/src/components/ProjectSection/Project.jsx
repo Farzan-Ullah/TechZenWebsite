@@ -1,14 +1,24 @@
+import { useLocation } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import usePublicContent from "../../hooks/usePublicContent";
+import SEO from "../SEO/SEO";
 import styles from "./Project.module.css";
-
-
 
 export default function Project() {
   const { items: projects, loading, error } = usePublicContent("projects");
+  const location = useLocation();
+  const isProjectsPage = location.pathname === "/projects";
 
   return (
     <section className={styles.section} id="projects">
+      {isProjectsPage && (
+        <SEO
+          title="Enterprise Projects & Case Studies | TechZen"
+          description="Explore real-world software projects delivered by TechZen, including enterprise e-commerce systems, assessment platforms, and custom digital workflows."
+          keywords="TechZen projects, software case studies, web application portfolio, React projects, enterprise platforms"
+          canonicalPath="/projects"
+        />
+      )}
       <div className={styles.container}>
 
         {/* Section Header */}

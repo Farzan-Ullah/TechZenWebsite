@@ -15,6 +15,7 @@ import About from '../../pages/About/About'
 import Contact from '../../pages/Contact/Contact'
 import OurTeam from "../../components/OurTeamSection/OurTeamSection";
 import Careers from "../../components/CareersSection/Careers";
+import SEO from "../../components/SEO/SEO";
 
 const Home =()=>{
 
@@ -54,6 +55,12 @@ const Home =()=>{
 
     return (
         <>
+               <SEO
+                 title="TechZen IT Consulting | Custom Software, Cloud Architecture & AI Solutions"
+                 description="TechZen is an IT consulting and software engineering firm delivering scalable web applications, cloud infrastructure, AI solutions, and hands-on IT training & internships."
+                 keywords="TechZen, techzen-it.com, IT consulting, custom software development, cloud architecture, web applications, MERN stack, IT training, software internship"
+                 canonicalPath="/"
+               />
                <Hero />
                <About />
                <Services />

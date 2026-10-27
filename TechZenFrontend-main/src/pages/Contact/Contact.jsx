@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Mail, MapPin, Phone } from "lucide-react";
 import usePublicContent from "../../hooks/usePublicContent";
 import useCompanyContent from "../../hooks/useCompanyContent";
+import SEO from "../../components/SEO/SEO";
 import styles from "./Contact.module.css";
 import api from "../../Api/ApiIntersceptor";
 
@@ -22,6 +23,7 @@ export default function Contact() {
   const serviceOptions = managedServices.map((service) => service.title);
   const { company: companyInfo } = useCompanyContent();
   const location = useLocation();
+  const isContactPage = location.pathname === "/contact";
 
   const [form, setForm] = useState(initial);
   const [errors, setErrors] = useState({});
@@ -125,6 +127,14 @@ export default function Contact() {
 
   return (
     <section className={styles.ctaSection} id="contact">
+      {isContactPage && (
+        <SEO
+          title="Contact Us & Request a Quote | TechZen IT Consulting"
+          description="Get in touch with TechZen for bespoke software engineering, IT consulting, or training inquiries. Reach our team in Chhatarpur, MP, India."
+          keywords="contact TechZen, hire software developers, IT consulting quote, TechZen phone, TechZen email"
+          canonicalPath="/contact"
+        />
+      )}
       <div className={styles.container}>
         <div className={styles.contactGrid}>
           {/* CONTACT INFORMATION */}

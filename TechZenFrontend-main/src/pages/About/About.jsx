@@ -7,8 +7,10 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import useCompanyContent from "../../hooks/useCompanyContent";
 import { company as fallbackCompany } from "../../data/siteData";
+import SEO from "../../components/SEO/SEO";
 import styles from "./About.module.css";
 
 const defaultPillars = [
@@ -45,9 +47,19 @@ const defaultPillars = [
 export default function About() {
   const { company: content } = useCompanyContent();
   const companyData = content || fallbackCompany;
+  const location = useLocation();
+  const isAboutPage = location.pathname === "/about";
 
   return (
     <section className={styles.section} id="about">
+      {isAboutPage && (
+        <SEO
+          title="About TechZen | IT Consulting & Digital Innovation Leaders"
+          description="Learn about TechZen's mission, engineering leadership, and vision to deliver scalable software solutions, cloud architecture, and corporate training."
+          keywords="about TechZen, tech consulting firm, IT software team, Chhatarpur tech company, software engineering leaders"
+          canonicalPath="/about"
+        />
+      )}
       <div className={styles.container}>
         <div className={styles.splitGrid}>
           {/* =========================================================

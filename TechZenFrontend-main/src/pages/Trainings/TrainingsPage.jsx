@@ -23,6 +23,7 @@ import {
 import usePublicContent from "../../hooks/usePublicContent";
 import useGroupedTrainings from "../../hooks/useGroupedTrainings";
 import { Tranings as fallbackTrainings, company } from "../../data/siteData";
+import SEO from "../../components/SEO/SEO";
 import styles from "./TrainingsPage.module.css";
 
 const academyPerks = [
@@ -136,6 +137,12 @@ export default function TrainingsPage() {
 
   return (
     <div className={styles.trainingsPage}>
+      <SEO
+        title="Professional IT Trainings & Internships | TechZen Academy"
+        description="Advance your tech career with TechZen's industry-aligned trainings in MERN Stack, Data Analytics, Python, Cloud, and intensive hands-on internships."
+        keywords="IT training, MERN stack course, data analytics training, software internship, industrial training Chhatarpur, coding academy"
+        canonicalPath="/trainings"
+      />
       <div className={styles.ambientGlow} />
 
       <div className={styles.container}>

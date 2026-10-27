@@ -1,0 +1,16 @@
+# robots.txt for TechZen IT Consulting
+# Canonical domain: https://www.techzen-it.com
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /api/
+
+# Crawler delay to preserve bandwidth
+Crawl-delay: 1
+
+# XML Sitemap
+Sitemap: https://www.techzen-it.com/sitemap.xml
