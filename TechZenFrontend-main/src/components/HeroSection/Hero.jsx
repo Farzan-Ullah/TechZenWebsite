@@ -111,31 +111,10 @@ const floatingTechNodes = [
 export default function Hero() {
   const { company: companyInfo } = useCompanyContent();
 
-  const resolveSocialUrl = (field, fallbackUrl) => {
-    const val = companyInfo && companyInfo[field] && companyInfo[field].trim();
-    if (val && !val.endsWith("/techzen") && !val.endsWith("/techzen/")) {
-      return val;
-    }
-    return (fallbackUrl || "").trim();
-  };
-
-  const resolveWhatsAppUrl = (fallbackUrl) => {
-    if (companyInfo && companyInfo.whatsapp && companyInfo.whatsapp.trim()) {
-      const raw = companyInfo.whatsapp.trim();
-      return raw.startsWith("http")
-        ? raw
-        : `https://wa.me/${raw.replace(/[^0-9]/g, "")}`;
-    }
-    return fallbackUrl || "https://wa.me/919303878713";
-  };
-
   const socialLinks = [
     {
       name: "Facebook",
-      href: resolveSocialUrl(
-        "facebook",
-        "https://www.facebook.com/profile.php?id=61595264584692"
-      ),
+      href: "https://www.facebook.com/profile.php?id=61595264584692",
       icon: FaFacebookF,
       hoverColor: "#1877f2",
       brandGlow: "rgba(24, 119, 242, 0.5)",
@@ -143,10 +122,7 @@ export default function Hero() {
     },
     {
       name: "Instagram",
-      href: resolveSocialUrl(
-        "instagram",
-        "https://www.instagram.com/techzenitservices/"
-      ),
+      href: "https://www.instagram.com/techzenitservices/",
       icon: FaInstagram,
       hoverColor: "#e4405f",
       brandGlow: "rgba(228, 64, 95, 0.5)",
@@ -154,10 +130,7 @@ export default function Hero() {
     },
     {
       name: "LinkedIn",
-      href: resolveSocialUrl(
-        "linkedin",
-        "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/"
-      ),
+      href: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
       icon: FaLinkedinIn,
       hoverColor: "#0a66c2",
       brandGlow: "rgba(10, 102, 194, 0.5)",
@@ -165,21 +138,13 @@ export default function Hero() {
     },
     {
       name: "WhatsApp",
-      href: resolveWhatsAppUrl("https://wa.me/919303878713"),
+      href: "https://wa.me/919303878713",
       icon: FaWhatsapp,
       hoverColor: "#25d366",
       brandGlow: "rgba(37, 211, 102, 0.5)",
       label: "Chat with TechZen on WhatsApp",
     },
-    {
-      name: "Twitter",
-      href: resolveSocialUrl("twitter", fallbackCompany.twitter),
-      icon: FaXTwitter,
-      hoverColor: "#0284c7",
-      brandGlow: "rgba(2, 132, 199, 0.5)",
-      label: "Follow TechZen on X (Twitter)",
-    },
-  ].filter((item) => Boolean(item.href));
+  ];
 
   return (
     <>

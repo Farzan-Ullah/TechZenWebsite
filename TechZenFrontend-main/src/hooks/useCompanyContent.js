@@ -19,7 +19,7 @@ export default function useCompanyContent(explicitFallback) {
       .then((content) => {
         if (!active) return;
         if (content && typeof content === "object" && Object.keys(content).length > 0) {
-          setCompany({
+          const merged = {
             ...fallback,
             ...content,
             whyChooseUs:
@@ -30,7 +30,26 @@ export default function useCompanyContent(explicitFallback) {
               content.statistics?.length > 0
                 ? content.statistics
                 : fallback.statistics || [],
-          });
+          };
+
+          // Override any legacy placeholders or old phone numbers from database
+          if (!merged.linkedin || !merged.linkedin.includes("techzen-it-and-hr-service-llc")) {
+            merged.linkedin = "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/";
+          }
+          if (!merged.whatsapp || merged.whatsapp.includes("9302039953")) {
+            merged.whatsapp = "https://wa.me/919303878713";
+          }
+          if (!merged.phone || merged.phone.includes("9302039953")) {
+            merged.phone = "9303878713";
+          }
+          if (!merged.facebook || merged.facebook.endsWith("/techzen") || merged.facebook.endsWith("/techzen/")) {
+            merged.facebook = "https://www.facebook.com/profile.php?id=61595264584692";
+          }
+          if (!merged.instagram || merged.instagram.endsWith("/techzen") || merged.instagram.endsWith("/techzen/")) {
+            merged.instagram = "https://www.instagram.com/techzenitservices/";
+          }
+
+          setCompany(merged);
           setIsFallback(false);
         } else {
           setCompany(fallback);

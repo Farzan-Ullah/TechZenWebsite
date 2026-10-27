@@ -131,7 +131,7 @@ export default function TrainingsPage() {
     }, 80);
   };
 
-  const whatsappCounselingUrl = `https://wa.me/919302039953?text=${encodeURIComponent(
+  const whatsappCounselingUrl = `https://wa.me/919303878713?text=${encodeURIComponent(
     "Hi TechZen, I would like to schedule a free training & career counseling session."
   )}`;
 
