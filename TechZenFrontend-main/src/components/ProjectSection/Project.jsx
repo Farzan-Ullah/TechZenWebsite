@@ -13,10 +13,10 @@ export default function Project() {
     <section className={styles.section} id="projects">
       {isProjectsPage && (
         <SEO
-          title="Enterprise Projects & Case Studies | TechZen"
-          description="Explore real-world software projects delivered by TechZen, including enterprise e-commerce systems, assessment platforms, and custom digital workflows."
-          ogDescription="Explore real-world software projects delivered by TechZen, from enterprise e-commerce to cloud workflows."
-          keywords="TechZen projects, software case studies, web application portfolio, React projects, enterprise platforms"
+          title="Software Projects & Solutions in Chhatarpur | TechZen"
+          description="Explore real-world software applications and enterprise digital solutions engineered by TechZen, the leading software and IT company in Chhatarpur, MP."
+          ogDescription="Explore real-world software projects delivered by TechZen, the premier IT company in Chhatarpur, Madhya Pradesh."
+          keywords="software company in chhatarpur, IT company in chhatarpur, software development chhatarpur, techzen projects, web applications chhatarpur"
           canonicalPath="/projects"
         />
       )}

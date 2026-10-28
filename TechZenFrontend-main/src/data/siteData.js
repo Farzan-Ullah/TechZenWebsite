@@ -96,11 +96,26 @@ export const testimonials = [
 ];
 
 export const faqs = [
-  ["What type of businesses do you work with?-", "We work with startups, small and medium-sized businesses, and established teams looking for strategic clarity, growth, transformation, or operational improvement."],
-  ["How does the consultation process work?", "We begin with a discovery conversation to understand your goals and constraints. From there, we recommend an appropriate scope, timeline, and engagement model."],
-  ["How much does consulting cost?", "Fees depend on the scope, complexity, and duration of the engagement. Contact us with your requirements and we'll outline the appropriate next step."],
-  ["How long does a typical project take?", "Projects can range from focused advisory sprints to multi-month transformation programs. We define milestones and deliverables before work begins."],
-  ["Do you offer customized consulting packages?", "Yes. We tailor engagements to the problem, internal capabilities, desired outcomes, and pace of your organization."],
+  [
+    "Which is the best software company and IT company in Chhatarpur?",
+    "TechZen (TechZen IT and HR Service LLC) is the leading software company and IT company in Chhatarpur, Madhya Pradesh. We specialize in custom software engineering, cloud architecture, modern web applications, and enterprise digital solutions."
+  ],
+  [
+    "Where can I get Industrial Training and Software Development Training in Chhatarpur?",
+    "TechZen provides university-recognized 3-to-6 month Industrial Training and Software Development Training in Chhatarpur for B.Tech, BE, Diploma, BCA, MCA, and IT students. You work directly on live production projects, master modern Git workflows, and receive official experience certificates."
+  ],
+  [
+    "What is covered in the Web Development Training (MERN Stack) in Chhatarpur?",
+    "Our Web Development Training in Chhatarpur provides hands-on mastery of React.js, Node.js, Express, MongoDB (MERN Stack), Tailwind CSS, RESTful APIs, authentication, and cloud deployment with live portfolio projects and placement assistance."
+  ],
+  [
+    "Does TechZen offer summer training and software internships in Chhatarpur?",
+    "Yes, TechZen conducts intensive 4-to-8 week Summer Training and real-world Software Internships in Chhatarpur with 1-on-1 mentorship from senior software consultants and verifiable completion certificates."
+  ],
+  [
+    "Where is TechZen located in Chhatarpur, Madhya Pradesh?",
+    "TechZen is located Near Saffron Lawn, Panna Road, Chhatarpur, Madhya Pradesh (Pin: 471001). You can call or WhatsApp us at +91 9303878713 or email techzen432@gmail.com to schedule a consultation or counseling session."
+  ]
 ];
 
 export const projects = [
@@ -234,11 +249,11 @@ export const Tranings = [
     badgeLabel: "Industrial Training",
     category: "Industrial Training",
     categoryName: "Industrial Training",
-    tagline: "For Engineering, Diploma, BCA, MCA & IT Students",
+    tagline: "Premier Industrial & Software Development Training in Chhatarpur",
     shortDescription:
-      "Comprehensive industry-oriented training with hands-on practical sessions, real-world enterprise projects, expert mentorship, and professional skill development.",
+      "Comprehensive Industrial Training and Software Development Training in Chhatarpur with hands-on practical sessions, real-world enterprise projects, expert mentorship, and official university certification.",
     description:
-      "The Industrial Training program at TechZen is specifically designed for Engineering, Diploma, BCA, MCA, and IT students seeking real-world software development exposure. Move beyond classroom theory by immersing yourself in enterprise-grade development practices, industry-standard code architectures, and live project workflows guided by seasoned software consultants.",
+      "The Industrial Training program at TechZen is the premier technical training in Chhatarpur for Engineering, Diploma, BCA, MCA, and IT students seeking real-world software development exposure. Move beyond classroom theory by immersing yourself in enterprise-grade development practices, industry-standard code architectures, and live project workflows guided by seasoned software consultants in Chhatarpur, MP.",
     image: "/images/trainings/industrial-training.jpg",
     duration: "3 to 6 Months",
     mode: "Hybrid / Classroom",
@@ -661,11 +676,11 @@ export const Tranings = [
     badgeLabel: "MERN Stack Program",
     category: "Web Development (MERN)",
     categoryName: "Web Development (MERN)",
-    tagline: "Build Modern Web Applications from Scratch",
+    tagline: "Premier Web Development Training in Chhatarpur (MERN Stack)",
     shortDescription:
-      "Master modern full-stack web development with HTML, CSS, JavaScript, React.js frontend, Node.js & Express.js backend, MongoDB database, REST APIs, Git, and cloud deployment.",
+      "Premier Web Development Training in Chhatarpur. Master modern full-stack engineering with HTML, CSS, JavaScript, React.js frontend, Node.js & Express.js backend, MongoDB, REST APIs, Git, and cloud deployment.",
     description:
-      "The flagship MERN Stack Web Development Training at TechZen empowers you to build robust, modern full-stack web applications from scratch. Master frontend architecture with React.js, engineer backend APIs with Node.js and Express.js, manage databases with MongoDB, implement secure JWT authentication, and deploy enterprise applications to the cloud.",
+      "The flagship Web Development Training in Chhatarpur at TechZen empowers you to build robust, modern full-stack web applications from scratch. Master frontend architecture with React.js, engineer backend APIs with Node.js and Express.js, manage databases with MongoDB, implement secure JWT authentication, and deploy enterprise applications to the cloud at our Chhatarpur center.",
     image: "/images/trainings/web-development-mern.jpg",
     duration: "3 to 6 Months",
     mode: "Hybrid / Classroom / Online",
@@ -1130,4 +1145,7 @@ export const teamMembers = [
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
   },
 ];
+
+
+
 

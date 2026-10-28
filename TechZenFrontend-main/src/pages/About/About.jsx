@@ -54,10 +54,10 @@ export default function About() {
     <section className={styles.section} id="about">
       {isAboutPage && (
         <SEO
-          title="About TechZen | Innovation & Leadership"
-          description="Discover TechZen's mission, engineering leadership, and vision to deliver enterprise software solutions, cloud systems, and corporate training."
-          ogDescription="Discover TechZen's mission, leadership, and enterprise engineering capabilities. Learn more about our team."
-          keywords="about TechZen, tech consulting firm, IT software team, Chhatarpur tech company, software engineering leaders"
+          title="About TechZen | Leading Software & IT Company in Chhatarpur"
+          description="Learn about TechZen, the leading software development company and IT company in Chhatarpur, MP. Enterprise software engineering, cloud systems, and industrial training."
+          ogDescription="Discover TechZen's engineering leadership as the premier software and IT company in Chhatarpur, Madhya Pradesh."
+          keywords="software company in chhatarpur, IT company in chhatarpur, software development company chhatarpur, industrial training chhatarpur, about TechZen, tech company chhatarpur mp"
           canonicalPath="/about"
         />
       )}
@@ -151,7 +151,7 @@ export default function About() {
             </h2>
 
             <p className={styles.copyLead}>
-              TechZen is a full-cycle technology consulting and digital engineering firm.
+              TechZen is a full-cycle software company and digital engineering firm headquartered in Chhatarpur, Madhya Pradesh.
               We empower ambitious enterprises and forward-thinking businesses to build, scale,
               and modernize their digital ecosystems with confidence.
             </p>

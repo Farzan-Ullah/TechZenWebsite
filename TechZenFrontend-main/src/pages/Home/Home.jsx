@@ -56,10 +56,10 @@ const Home =()=>{
     return (
         <>
                <SEO
-                 title="TechZen | IT Consulting & Software Solutions"
-                 description="TechZen delivers custom software engineering, cloud architecture, AI solutions, and professional IT training to scale modern businesses."
-                 ogDescription="Enterprise software engineering, cloud architecture, and hands-on IT training. Explore solutions & courses."
-                 keywords="TechZen, techzen-it.com, IT consulting, custom software development, cloud architecture, web applications, MERN stack, IT training, software internship"
+                 title="TechZen | Best Software Company & IT Company in Chhatarpur"
+                 description="TechZen is the premier software company and IT company in Chhatarpur, MP. We deliver custom software development, web development training, and certified industrial training."
+                 ogDescription="Leading software company, IT consulting, and industrial training center in Chhatarpur, Madhya Pradesh. Live enterprise projects & certified training."
+                 keywords="software company in chhatarpur, IT company in chhatarpur, industrial training in chhatarpur, software development training in chhatarpur, web development training in chhatarpur, techzen chhatarpur, best IT company in chhatarpur, software development company in chhatarpur, MERN stack training in chhatarpur, summer training in chhatarpur, software internship in chhatarpur"
                  canonicalPath="/"
                  ogImage="/og-image.png"
                />

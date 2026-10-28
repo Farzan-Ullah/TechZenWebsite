@@ -138,10 +138,10 @@ export default function TrainingsPage() {
   return (
     <div className={styles.trainingsPage}>
       <SEO
-        title="IT Trainings & Internships | TechZen Academy"
-        description="Advance your tech career with industry-aligned training in MERN Stack, Data Analytics, Python, Cloud, and hands-on corporate internships."
-        ogDescription="Advance your tech career with hands-on MERN Stack, Data Analytics, and Internship programs at TechZen Academy."
-        keywords="IT training, MERN stack course, data analytics training, software internship, industrial training Chhatarpur, coding academy"
+        title="Industrial & Web Development Training in Chhatarpur | TechZen"
+        description="Join top-rated Industrial Training, Software Development Training, and Web Development (MERN Stack) in Chhatarpur at TechZen Academy. Live projects & certification."
+        ogDescription="Top-rated Industrial Training and Web Development Training in Chhatarpur at TechZen Academy with live projects and 1-on-1 mentorship."
+        keywords="industrial training in chhatarpur, software development training in chhatarpur, web development training in chhatarpur, IT company in chhatarpur, software company in chhatarpur, mern stack training chhatarpur, summer training in chhatarpur, coding academy chhatarpur"
         canonicalPath="/trainings"
       />
       <div className={styles.ambientGlow} />
@@ -153,16 +153,16 @@ export default function TrainingsPage() {
         <header className={styles.heroSection}>
           <div className={styles.badge}>
             <GraduationCap size={15} className={styles.badgeIcon} />
-            <span>TECHZEN ACADEMY &amp; PROFESSIONAL CERTIFICATION</span>
+            <span>TECHZEN ACADEMY • CHHATARPUR, MP</span>
           </div>
 
           <h1 className={styles.title}>
-            Industry-Grade <span className={styles.gradientText}>Professional Training</span> &amp; Real-World Engineering
+            Industry-Grade <span className={styles.gradientText}>Software &amp; Industrial Training</span> in Chhatarpur
           </h1>
 
           <p className={styles.subtitle}>
             Bridge the gap between theoretical textbooks and production software engineering. 
-            Immerse yourself in authentic live codebases, industry tooling, and 1-on-1 mentorship from senior software consultants.
+            Hands-on Industrial Training, Web Development (MERN Stack), and Software Development Training with 1-on-1 mentorship from senior software consultants at TechZen Chhatarpur.
           </p>
 
           <div className={styles.statsStrip}>

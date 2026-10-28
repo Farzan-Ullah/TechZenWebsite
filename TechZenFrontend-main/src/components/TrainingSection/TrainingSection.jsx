@@ -20,16 +20,15 @@ export default function TrainingSection() {
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
           <div>
-            <p className={styles.eyebrow}>LEARN WITH TECHZEN</p>
+            <p className={styles.eyebrow}>TECHZEN ACADEMY • CHHATARPUR</p>
             <h2>
-              Training built around
-              <em> practical skills.</em>
+              Industrial &amp; Software Training in
+              <em> Chhatarpur.</em>
             </h2>
           </div>
           <div className={styles.headerRight}>
             <p className={styles.intro}>
-              Explore our seasonal training programs and the skills each one
-              covers.
+              Premier Industrial Training, Software Development Training, and Web Development (MERN Stack) programs with live enterprise projects and verified certification in Chhatarpur.
             </p>
             <Link to="/trainings" className={styles.exploreAllBtn}>
               <span>View All Training Programs</span>

@@ -186,14 +186,21 @@ export default function Hero() {
 
           {/* LEFT SIDE */}
           <div className={styles.heroText}>
+            <div className={styles.badge}>
+              <span className={styles.beacon}>
+                <span className={styles.beaconPing} />
+                <span className={styles.beaconDot} />
+              </span>
+              <span>Premier Software &amp; IT Company in Chhatarpur</span>
+            </div>
+
             <h1>
               Architecting the future of{" "}
               <span className={styles.gradientText}>Intelligent Technology.</span>
             </h1>
 
             <p>
-              We combine enterprise engineering, cloud innovation, and strategic talent solutions
-              to help ambitious organizations scale faster and lead their industries.
+              TechZen delivers enterprise software development, cloud architecture, and hands-on industrial training in Chhatarpur to help ambitious businesses and engineering students scale faster.
             </p>
 
             <div className={styles.actions}>

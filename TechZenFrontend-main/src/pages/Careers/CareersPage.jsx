@@ -13,10 +13,10 @@ export default function CareersPage() {
   return (
     <>
       <SEO
-        title="Careers & Engineering Opportunities | Join TechZen"
-        description="Explore career opportunities at TechZen. Join our engineering team building scalable web apps, cloud systems, and AI solutions."
-        ogDescription="Join TechZen's engineering team! Explore open developer roles and build modern cloud & web solutions."
-        keywords="TechZen careers, tech jobs, software developer openings, frontend jobs, backend developer hiring"
+        title="Careers & Software Jobs in Chhatarpur | TechZen"
+        description="Explore software engineering jobs and internships at TechZen, the leading IT company in Chhatarpur, MP. Work on live enterprise web and cloud systems."
+        ogDescription="Explore developer jobs and software internships at TechZen in Chhatarpur, Madhya Pradesh."
+        keywords="software jobs in chhatarpur, IT company in chhatarpur, software internship chhatarpur, developer hiring chhatarpur, techzen careers"
         canonicalPath="/careers"
       />
       <Careers isStandalonePage={true} />

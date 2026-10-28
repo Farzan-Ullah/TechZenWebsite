@@ -324,33 +324,61 @@ export default function TrainingDetail() {
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": training.title,
+    "name": `${training.title} in Chhatarpur`,
     "description": training.shortDescription || training.description,
     "provider": {
-      "@type": "Organization",
-      "name": "TechZen IT Consulting",
-      "sameAs": "https://www.techzen-it.com/"
+      "@type": "EducationalOrganization",
+      "name": "TechZen Academy",
+      "sameAs": "https://www.techzen-it.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Near Saffron Lawn, Panna Road",
+        "addressLocality": "Chhatarpur",
+        "addressRegion": "Madhya Pradesh",
+        "postalCode": "471001",
+        "addressCountry": "IN"
+      }
     },
     "courseCode": training.slug || slug,
-    "educationalCredentialAwarded": "Certificate of Completion",
+    "educationalCredentialAwarded": "Official Industrial Training Certificate & Experience Letter",
     "hasCourseInstance": {
       "@type": "CourseInstance",
-      "courseMode": training.mode || "Hybrid",
-      "courseSchedule": training.schedule || "Flexible Batches"
+      "courseMode": training.mode || "Classroom / Hybrid",
+      "courseSchedule": training.schedule || "Flexible Batches",
+      "location": {
+        "@type": "Place",
+        "name": "TechZen Learning Center",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Near Saffron Lawn, Panna Road",
+          "addressLocality": "Chhatarpur",
+          "addressRegion": "Madhya Pradesh",
+          "postalCode": "471001",
+          "addressCountry": "IN"
+        }
+      }
     }
   };
 
+  const titleWithCity = training.title.toLowerCase().includes("chhatarpur")
+    ? training.title
+    : `${training.title} in Chhatarpur`;
+
   const rawDesc = training.shortDescription || training.description || "";
-  const metaDesc = rawDesc.length > 150 ? `${rawDesc.slice(0, 147).trim()}...` : rawDesc;
-  const ogDesc = rawDesc.length > 115 ? `${rawDesc.slice(0, 112).trim()}...` : rawDesc;
+  const enrichedDesc = rawDesc.toLowerCase().includes("chhatarpur")
+    ? rawDesc
+    : `${rawDesc} Join TechZen's premier training program in Chhatarpur with hands-on enterprise projects and certification.`;
+
+  const metaDesc = enrichedDesc.length > 155 ? `${enrichedDesc.slice(0, 152).trim()}...` : enrichedDesc;
+  const ogDesc = enrichedDesc.length > 120 ? `${enrichedDesc.slice(0, 117).trim()}...` : enrichedDesc;
 
   return (
     <div className={styles.pageWrapper}>
       <SEO
-        title={`${training.title} | TechZen Training`}
+        title={`${titleWithCity} | TechZen`}
         description={metaDesc}
         ogDescription={ogDesc}
-        keywords={`${training.title}, TechZen training, IT certification, software course, ${technologies.slice(0, 5).join(", ")}`}
+        keywords={`${training.title.toLowerCase()} in chhatarpur, industrial training in chhatarpur, software development training in chhatarpur, web development training in chhatarpur, IT company in chhatarpur, software company in chhatarpur, ${technologies.slice(0, 5).join(", ")}`}
         canonicalPath={`/trainings/${training.slug || slug}`}
         ogImage={bannerImg || "/og-image.png"}
         schemaJson={courseSchema}

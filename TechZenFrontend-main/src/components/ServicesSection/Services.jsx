@@ -199,16 +199,15 @@ export default function Services() {
         ================================= */}
         <div className={styles.sectionHeader}>
           <div className={styles.headingBlock}>
-            <span className={styles.eyebrow}>WHAT WE DO</span>
+            <span className={styles.eyebrow}>SOFTWARE &amp; IT SERVICES • CHHATARPUR</span>
             <h2>
-              Solutions built for
+              Software &amp; IT Solutions built for
               <span> meaningful growth.</span>
             </h2>
           </div>
 
           <p className={styles.sectionIntro}>
-            From strategy to execution, we help ambitious organizations solve
-            complex problems and turn opportunities into measurable results.
+            As the leading software company and IT company in Chhatarpur, MP, we engineer custom software, modern full-stack web applications, and enterprise cloud systems.
           </p>
         </div>
 

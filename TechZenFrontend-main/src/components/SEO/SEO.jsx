@@ -57,6 +57,12 @@ export default function SEO({
       setMetaTag('meta[name="keywords"]', "name", "keywords", keywords);
     }
 
+    // Local Geo Tags for Search Engines
+    setMetaTag('meta[name="geo.region"]', "name", "geo.region", "IN-MP");
+    setMetaTag('meta[name="geo.placename"]', "name", "geo.placename", "Chhatarpur");
+    setMetaTag('meta[name="geo.position"]', "name", "geo.position", "24.9164;79.5816");
+    setMetaTag('meta[name="ICBM"]', "name", "ICBM", "24.9164, 79.5816");
+
     // 5. OpenGraph & Twitter Title
     if (title) {
       const fullTitle = title.includes("TechZen") ? title : `${title} | ${siteTitle}`;
