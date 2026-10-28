@@ -284,8 +284,12 @@
 ========================================================= */
 
 .trainingMegaMenu {
-  width: 660px !important;
-  max-width: calc(100vw - 32px) !important;
+  position: absolute;
+  top: calc(100% + 14px);
+  left: auto !important;
+  right: -90px !important;
+  width: 620px !important;
+  max-width: min(620px, calc(100vw - 32px)) !important;
   padding: 0 !important;
   overflow: hidden;
   border-radius: 18px !important;
@@ -295,13 +299,19 @@
   border: 1px solid var(--border-subtle) !important;
   box-shadow: var(--shadow-lg), 0 20px 45px rgba(0, 0, 0, 0.25) !important;
   text-align: left;
+  transform: translateY(8px) !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dropdownMenuVisible {
+.dropdown:hover .trainingMegaMenu,
+.trainingMegaMenu.dropdownMenuVisible {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
-  transform: translateX(-50%) translateY(0) !important;
+  transform: translateY(0) !important;
 }
 
 .trainingMegaHeader {
@@ -508,6 +518,28 @@
 
 .trainingFooterPhone:hover {
   color: var(--accent-cyan);
+}
+
+@media (max-width: 1250px) {
+  .trainingMegaMenu {
+    width: 580px !important;
+    right: -60px !important;
+  }
+}
+
+@media (max-width: 1120px) {
+  .trainingMegaMenu {
+    width: 540px !important;
+    right: -40px !important;
+  }
+  .trainingGridMega {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .trainingCardItem {
+    padding: 10px 11px;
+    gap: 10px;
+  }
 }
 
 /* =========================================================

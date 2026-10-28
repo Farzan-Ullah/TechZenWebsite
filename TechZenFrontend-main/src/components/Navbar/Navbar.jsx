@@ -334,6 +334,20 @@ function getProgramIcon(iconType) {
   }
 }
 
+const normalizeProgramSlug = (slug) => {
+  if (!slug) return "";
+  const s = String(slug).toLowerCase().trim();
+  if (
+    s === "software-devlopment" ||
+    s === "software-dev" ||
+    s === "software-development-training" ||
+    s === "software-engineering"
+  ) {
+    return "software-development";
+  }
+  return s;
+};
+
 // =========================================================================
 // DESKTOP BANNER-ALIGNED TRAINING MEGA DROPDOWN
 // =========================================================================
@@ -356,11 +370,20 @@ function TrainingNavbarDropdown({ trainings = Tranings, handleHashClick }) {
   const items = useMemo(() => {
     const source = Array.isArray(trainings) && trainings.length > 0 ? trainings : Tranings;
     const map = new Map();
-    // Guarantee the 5 core company banner training modules are always present
-    (Tranings || []).forEach((t) => map.set(t.slug, t));
+    // Guarantee core company banner training modules are present with canonical slugs
+    (Tranings || []).forEach((t) => {
+      const canonical = normalizeProgramSlug(t.slug);
+      map.set(canonical, { ...t, slug: canonical });
+    });
     source.forEach((t) => {
       if (t.slug) {
-        map.set(t.slug, { ...map.get(t.slug), ...t });
+        const canonical = normalizeProgramSlug(t.slug);
+        const existing = map.get(canonical);
+        if (existing) {
+          map.set(canonical, { ...existing, ...t, slug: canonical });
+        } else {
+          map.set(canonical, { ...t, slug: canonical });
+        }
       }
     });
     return Array.from(map.values());
@@ -495,10 +518,19 @@ function TrainingNavbarDropdownMobileView({
   const items = useMemo(() => {
     const source = Array.isArray(trainings) && trainings.length > 0 ? trainings : Tranings;
     const map = new Map();
-    (Tranings || []).forEach((t) => map.set(t.slug, t));
+    (Tranings || []).forEach((t) => {
+      const canonical = normalizeProgramSlug(t.slug);
+      map.set(canonical, { ...t, slug: canonical });
+    });
     source.forEach((t) => {
       if (t.slug) {
-        map.set(t.slug, { ...map.get(t.slug), ...t });
+        const canonical = normalizeProgramSlug(t.slug);
+        const existing = map.get(canonical);
+        if (existing) {
+          map.set(canonical, { ...existing, ...t, slug: canonical });
+        } else {
+          map.set(canonical, { ...t, slug: canonical });
+        }
       }
     });
     return Array.from(map.values());
