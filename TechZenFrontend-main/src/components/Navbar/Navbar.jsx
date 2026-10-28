@@ -69,11 +69,17 @@ export default function Navbar() {
     if (href.startsWith("/#")) {
       const targetId = href.replace("/#", "");
       if (location.pathname === "/" || location.pathname === "") {
-        const el = document.getElementById(targetId);
+        let el = document.getElementById(targetId);
+        if (!el && targetId.startsWith("products-")) {
+          el = document.getElementById(targetId.replace("products-", "projects-"));
+        } else if (!el && targetId.startsWith("projects-")) {
+          el = document.getElementById(targetId.replace("projects-", "products-"));
+        }
         if (el) {
           e?.preventDefault();
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
           window.history.pushState(null, "", href);
+          window.dispatchEvent(new Event("hashchange"));
         }
       }
     }
@@ -667,30 +673,32 @@ function NavbarDropdown({ title, items, viewAllLink, handleHashClick }) {
           open ? styles.dropdownMenuVisible : ""
         }`}
       >
-        {items.map((item, index) => (
-          <Link
-            key={item._id || item.slug || item.id}
-            to={`/#${title.toLowerCase().replace(/\s+/g, "-")}-${
-              item.slug || item.id || item._id
-            }`}
-            onClick={(e) => {
-              setOpen(false);
-              handleHashClick(
-                `/#${title.toLowerCase().replace(/\s+/g, "-")}-${
-                  item.slug || item.id || item._id
-                }`,
-                e
-              );
-            }}
-            className={styles.dropdownItem}
-          >
-            <span className={styles.dropdownNumber}>
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <span>{item.title}</span>
-            <ArrowRight size={15} className={styles.dropdownArrow} />
-          </Link>
-        ))}
+        {items.map((item, index) => {
+          const prefix =
+            title.toLowerCase() === "products"
+              ? "projects"
+              : title.toLowerCase().replace(/\s+/g, "-");
+          const targetSlug = item.slug || item.id || item._id;
+          const hashHref = `/#${prefix}-${targetSlug}`;
+
+          return (
+            <Link
+              key={item._id || item.slug || item.id}
+              to={hashHref}
+              onClick={(e) => {
+                setOpen(false);
+                handleHashClick(hashHref, e);
+              }}
+              className={styles.dropdownItem}
+            >
+              <span className={styles.dropdownNumber}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span>{item.title}</span>
+              <ArrowRight size={15} className={styles.dropdownArrow} />
+            </Link>
+          );
+        })}
 
         <Link
           to={viewAllLink}
@@ -739,27 +747,29 @@ function NavbarDropdownMobileView({
           isOpen ? styles.mobileDropdownOpen : ""
         }`}
       >
-        {items.map((item) => (
-          <Link
-            key={item._id || item.slug || item.id}
-            to={`/#${title.toLowerCase().replace(/\s+/g, "-")}-${
-              item.slug || item.id || item._id
-            }`}
-            className={styles.mobileDropdownSubLink}
-            onClick={(e) => {
-              closeMenu();
-              handleHashClick(
-                `/#${title.toLowerCase().replace(/\s+/g, "-")}-${
-                  item.slug || item.id || item._id
-                }`,
-                e
-              );
-            }}
-          >
-            <span>{item.title}</span>
-            <ArrowRight size={14} className={styles.mobileSubItemArrow} />
-          </Link>
-        ))}
+        {items.map((item) => {
+          const prefix =
+            title.toLowerCase() === "products"
+              ? "projects"
+              : title.toLowerCase().replace(/\s+/g, "-");
+          const targetSlug = item.slug || item.id || item._id;
+          const hashHref = `/#${prefix}-${targetSlug}`;
+
+          return (
+            <Link
+              key={item._id || item.slug || item.id}
+              to={hashHref}
+              className={styles.mobileDropdownSubLink}
+              onClick={(e) => {
+                closeMenu();
+                handleHashClick(hashHref, e);
+              }}
+            >
+              <span>{item.title}</span>
+              <ArrowRight size={14} className={styles.mobileSubItemArrow} />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

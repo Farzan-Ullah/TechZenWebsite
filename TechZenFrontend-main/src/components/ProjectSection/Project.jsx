@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import usePublicContent from "../../hooks/usePublicContent";
@@ -6,8 +7,56 @@ import styles from "./Project.module.css";
 
 export default function Project() {
   const { items: projects, loading, error } = usePublicContent("projects");
+  const [highlightedId, setHighlightedId] = useState(null);
   const location = useLocation();
   const isProjectsPage = location.pathname === "/projects";
+
+  // Listen to hash changes (e.g. #projects-slug or #products-slug) to scroll & highlight
+  useEffect(() => {
+    if (!location.hash) return;
+
+    let projectKey = "";
+    if (location.hash.startsWith("#projects-")) {
+      projectKey = location.hash.replace("#projects-", "");
+    } else if (location.hash.startsWith("#products-")) {
+      projectKey = location.hash.replace("#products-", "");
+    } else if (location.hash !== "#projects" && location.hash !== "#products") {
+      projectKey = location.hash.replace("#", "");
+    }
+
+    if (!projectKey) return;
+
+    const matchingProject = (projects || []).find(
+      (p) =>
+        (p.slug || p.id || p._id) === projectKey ||
+        p.slug?.toLowerCase() === projectKey.toLowerCase()
+    );
+
+    if (matchingProject) {
+      const key = matchingProject.slug || matchingProject.id || matchingProject._id;
+      setHighlightedId(key);
+
+      const scrollTimer = setTimeout(() => {
+        const el =
+          document.getElementById(`projects-${key}`) ||
+          document.getElementById(`products-${key}`) ||
+          document.querySelector(`[data-project-id="${key}"]`);
+
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 150);
+
+      const unhighlightTimer = setTimeout(() => {
+        setHighlightedId(null);
+      }, 3500);
+
+      return () => {
+        clearTimeout(scrollTimer);
+        clearTimeout(unhighlightTimer);
+      };
+    }
+  }, [location.hash, projects]);
 
   return (
     <section className={styles.section} id="projects">
@@ -48,16 +97,28 @@ export default function Project() {
           <p>No projects to display right now.</p>
         )}
         <div className={styles.projectsList}>
-          {projects.map((project, index) => (
-            <article
-              id={`projects-${project.slug || project.id || project._id}`}
-              className={`${styles.project} ${
-                index % 2 !== 0 ? styles.reverse : ""
-              }`}
-              key={project._id || project.slug}
-            >
-              {/* Project Visual */}
-              <div className={styles.projectVisual}>
+          {projects.map((project, index) => {
+            const projectKey = project.slug || project.id || project._id;
+            const isHighlighted = highlightedId === projectKey;
+
+            return (
+              <article
+                id={`projects-${projectKey}`}
+                data-project-id={projectKey}
+                className={`${styles.project} ${
+                  isHighlighted ? styles.highlightedProject : ""
+                } ${index % 2 !== 0 ? styles.reverse : ""}`}
+                key={project._id || project.slug}
+              >
+                {/* Scroll anchor for products- hash alias */}
+                <span
+                  id={`products-${projectKey}`}
+                  className={styles.scrollAnchor}
+                  aria-hidden="true"
+                />
+
+                {/* Project Visual */}
+                <div className={styles.projectVisual}>
                 <div className={styles.visualTop}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
 
@@ -116,7 +177,8 @@ export default function Project() {
                 )}
               </div>
             </article>
-          ))}
+          );
+        })}
         </div>
 
       </div>
