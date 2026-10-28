@@ -204,6 +204,14 @@ export const trainingCategories = [
     isActive: true,
   },
   {
+    _id: "cat-software-dev",
+    name: "Software Development",
+    slug: "software-development",
+    description: "Master full-stack software engineering, clean code, enterprise APIs, and production deployment.",
+    displayOrder: 2,
+    isActive: true,
+  },
+  {
     _id: "cat-summer",
     name: "Summer Training",
     slug: "summer-training",
@@ -385,7 +393,164 @@ export const Tranings = [
   },
 
   // ==========================================
-  // 2. SUMMER TRAINING
+  // 2. SOFTWARE DEVELOPMENT TRAINING
+  // ==========================================
+  {
+    _id: "software-development",
+    id: "software-development",
+    slug: "software-development",
+    title: "Software Development Training",
+    badgeLabel: "Software Engineering",
+    category: "Software Development",
+    categoryName: "Software Development",
+    tagline: "Master Full-Stack Software Engineering, Clean Code & System Architecture",
+    shortDescription:
+      "Comprehensive Software Development Training in Chhatarpur covering full-stack software engineering, algorithms, clean architecture, REST APIs, database design, and real-world enterprise applications.",
+    description:
+      "The Software Development Training program at TechZen is an intensive engineering program designed to transform aspiring developers into industry-ready software engineers. Master modern programming paradigms, data structures, algorithms, modular microservices architecture, frontend & backend engineering, automated testing, and production deployment with direct mentorship from senior tech leads in Chhatarpur, MP.",
+    image: "/images/trainings/software-development.jpg",
+    duration: "3 to 6 Months",
+    mode: "Classroom / Hybrid / Online",
+    schedule: "Monday – Friday, 2 Hours/day (Morning & Evening Batches Available)",
+    seats: "20 Seats per cohort (Limited Intake)",
+    eligibility: "BCA, MCA, B.Tech, BE, Diploma, B.Sc CS/IT & Career Changers",
+    batchDetails: "New Software Engineering Cohorts Starting Every Month",
+    batchStartDate: "Upcoming Cohort Starting Soon",
+    technologies: [
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Python",
+      "MongoDB",
+      "PostgreSQL / SQL",
+      "REST & GraphQL APIs",
+      "Docker Basics",
+      "Git & GitHub Actions",
+      "Cloud Deployment",
+    ],
+    features: [
+      "Full-stack software engineering",
+      "Clean architecture & SOLID principles",
+      "Hands-on live production projects",
+      "1-on-1 code reviews & mentorship",
+      "System design & database tuning",
+      "Industry-recognized certification",
+    ],
+    syllabus: [
+      {
+        sectionTitle: "Module 1: Advanced Programming & Software Engineering Principles",
+        topics: [
+          "Core Object-Oriented & Functional Programming (JavaScript ES6+ / TypeScript / Python)",
+          "Data Structures & Algorithmic Problem Solving (Arrays, Stacks, Queues, Trees, Hashing)",
+          "Clean Code Practices, SOLID Principles & Design Patterns (Factory, Singleton, Observer)",
+          "Advanced Git Version Control: Trunk-Based Development, Rebase & PR Reviews",
+        ],
+      },
+      {
+        sectionTitle: "Module 2: Full-Stack Architecture, REST APIs & Database Engineering",
+        topics: [
+          "Architecting Resilient Microservices with Node.js & Express Framework",
+          "Relational (PostgreSQL) vs Document (MongoDB) Database Design & Indexing",
+          "Advanced Query Optimization, Transactions & Aggregation Pipelines",
+          "Secure Authentication: JWT Tokens, Refresh Tokens, OAuth 2.0 & Role-Based Access Control",
+        ],
+      },
+      {
+        sectionTitle: "Module 3: Modern Frontend Architecture & Scalable State Management",
+        topics: [
+          "Enterprise Component Architecture with React.js & TypeScript",
+          "Global State Management, Custom Hooks, Redux Toolkit & React Query",
+          "Asynchronous API Synchronization, Caching & Optimistic UI Updates",
+          "Web Performance Tuning: Lazy Loading, Code Splitting, Bundle Profiling & Accessibility",
+        ],
+      },
+      {
+        sectionTitle: "Module 4: Automated Testing, DevOps & Production Cloud Deployment",
+        topics: [
+          "Unit & Integration Testing with Jest, Supertest & React Testing Library",
+          "Containerizing Microservices with Docker & Docker Compose",
+          "Continuous Integration & Continuous Deployment (CI/CD) with GitHub Actions",
+          "Production Cloud Deployment (AWS / Render / Vercel), Logging & Monitoring",
+        ],
+      },
+      {
+        sectionTitle: "Module 5: Capstone Production Software & Technical Interview Prep",
+        topics: [
+          "End-to-End Development of a Full-Featured Production SaaS Application",
+          "System Architecture Documentation & Technical Design Document (TDD)",
+          "Live Architectural Defense, Code Walkthroughs & Peer Reviews",
+          "Technical Mock Interviews, LeetCode Problem Sprints & Resume Optimization",
+        ],
+      },
+    ],
+    projects: [
+      {
+        title: "Enterprise SaaS Project & Task Management Suite",
+        description: "Full-stack cloud-native collaboration engine featuring real-time collaborative boards, granular team permissions, WebSocket updates, and automated audit trails.",
+        technologies: ["React.js", "TypeScript", "Node.js", "PostgreSQL", "Socket.io", "Docker"],
+        highlights: "Microservices design, real-time bidirectional messaging, and role-based permissions.",
+      },
+      {
+        title: "High-Volume Digital Marketplace & Order Fulfillment Service",
+        description: "Scalable commercial platform with dynamic inventory reservation, payment gateway webhooks, automated invoice generation, and transactional email triggers.",
+        technologies: ["React.js", "Node.js", "MongoDB", "Redis", "Razorpay", "AWS S3"],
+        highlights: "Redis distributed caching, idempotency keys, and automated PDF receipt generation.",
+      },
+      {
+        title: "Cloud Infrastructure Health & Real-Time Performance Monitor",
+        description: "Distributed telemetry system monitoring server uptime, response latency, database queries, and automatic alerting via email/SMS webhooks.",
+        technologies: ["TypeScript", "Python", "Express", "Chart.js", "Docker", "Render"],
+        highlights: "Interactive metric dashboards, cron-based synthetic pings, and alert escalation rules.",
+      },
+    ],
+    learningOutcomes: [
+      "Master end-to-end software engineering from database schema design to cloud deployment",
+      "Write clean, maintainable, modular, and enterprise-standard production code",
+      "Gain hands-on proficiency with Git workflows, Docker containerization, and CI/CD pipelines",
+      "Receive an official Software Development Training Certificate and Project Experience Letter",
+    ],
+    benefits: [
+      "100% Practical Live Coding with Senior Software Architects and Tech Leads",
+      "Direct Experience on Production-Grade Codebases and Real-World SaaS Architectures",
+      "Official Software Development Training Certificate endorsed by TechZen LLC",
+      "Comprehensive Placement Support, Technical Mock Interviews, and Referral Network",
+    ],
+    certificate: {
+      offered: true,
+      details: "Official Software Development Training Certificate and Verified Project Experience Letter endorsed by TechZen IT and HR Services LLC",
+    },
+    faqs: [
+      {
+        question: "How is Software Development Training different from Industrial Training?",
+        answer: "Software Development Training focuses intensely on core software engineering principles, algorithm design, system architecture, clean coding practices, and full-stack development, whereas Industrial Training is structured around mandatory university curriculum requirements and semester internship credits.",
+      },
+      {
+        question: "Is this training suitable for beginners or students from non-CS backgrounds?",
+        answer: "Yes, our structured curriculum starts with foundational programming fundamentals before advancing to enterprise system design, supported by 1-on-1 mentor guidance.",
+      },
+      {
+        question: "Will I build live, deployable projects during the training?",
+        answer: "Absolutely. You will build and deploy 3 production-grade enterprise applications to live cloud environments that you can showcase in technical interviews.",
+      },
+    ],
+    contactDetails: {
+      phone: "+91 9303878713",
+      email: "techzen432@gmail.com",
+      whatsapp: "+91 9303878713",
+      address: "Near Saffron Lawn, Chhatarpur (M.P.)",
+    },
+    icon: "code",
+    color: "#3b82f6",
+    enquiryButtonText: "Enquire Now",
+    enquiryLink: "/#contact",
+    isActive: true,
+    displayOrder: 2,
+  },
+
+  // ==========================================
+  // 3. SUMMER TRAINING
   // ==========================================
   {
     _id: "summer-training",

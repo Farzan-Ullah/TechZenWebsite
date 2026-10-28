@@ -28,8 +28,12 @@ import SEO from "../../components/SEO/SEO";
 import styles from "./TrainingDetail.module.css";
 
 const slugAliases = {
-  "software-devlopment": "industrial-training",
-  "software-development": "industrial-training",
+  "software-development": "software-development",
+  "software-devlopment": "software-development",
+  "software-development-training": "software-development",
+  "software-dev": "software-development",
+  "software-engineering": "software-development",
+  "software-training": "software-development",
   "winter-internship-training": "internship-programs",
   "winter-internship-2026": "internship-programs",
   "industrial": "industrial-training",
