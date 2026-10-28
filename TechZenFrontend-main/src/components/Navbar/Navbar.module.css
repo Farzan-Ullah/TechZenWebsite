@@ -210,15 +210,18 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  z-index: 1080;
 
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dropdown:hover .dropdownMenu {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+.dropdown:hover .dropdownMenu,
+.dropdownMenuVisible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+  z-index: 1100 !important;
 }
 
 .dropdownItem {
@@ -288,7 +291,14 @@
   position: static !important;
 }
 
+.trainingDropdownContainer::after {
+  display: none !important;
+  content: none !important;
+  pointer-events: none !important;
+}
+
 .trainingMegaMenu {
+  display: none !important;
   position: absolute;
   top: calc(100% + 14px);
   left: 50% !important;
@@ -305,11 +315,19 @@
   border: 1px solid var(--border-subtle) !important;
   box-shadow: var(--shadow-lg), 0 20px 45px rgba(0, 0, 0, 0.25) !important;
   text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
   z-index: 1050;
+}
+
+.trainingMegaMenu.dropdownMenuVisible {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
 }
 
 .trainingMegaMenu::before {
@@ -319,15 +337,13 @@
   left: 0;
   right: 0;
   height: 18px;
-  pointer-events: auto;
+  pointer-events: none;
+  display: none;
 }
 
-.dropdown:hover .trainingMegaMenu,
-.trainingMegaMenu.dropdownMenuVisible {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transform: translateX(-50%) translateY(0) !important;
+.trainingMegaMenu.dropdownMenuVisible::before {
+  pointer-events: auto;
+  display: block;
 }
 
 .trainingMegaHeader {

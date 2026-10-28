@@ -355,6 +355,27 @@ const normalizeProgramSlug = (slug) => {
 function TrainingNavbarDropdown({ trainings = Tranings, handleHashClick }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const closeTimerRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    setOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimerRef.current = setTimeout(() => {
+      setOpen(false);
+    }, 120);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
 
   // Close on outside click
   useEffect(() => {
@@ -393,8 +414,8 @@ function TrainingNavbarDropdown({ trainings = Tranings, handleHashClick }) {
     <div
       ref={dropdownRef}
       className={`${styles.dropdown} ${styles.trainingDropdownContainer}`}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <Link
         to="/trainings"
@@ -410,6 +431,8 @@ function TrainingNavbarDropdown({ trainings = Tranings, handleHashClick }) {
         className={`${styles.dropdownMenu} ${styles.trainingMegaMenu} ${
           open ? styles.dropdownMenuVisible : ""
         }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {/* Header strip */}
         <div className={styles.trainingMegaHeader}>
