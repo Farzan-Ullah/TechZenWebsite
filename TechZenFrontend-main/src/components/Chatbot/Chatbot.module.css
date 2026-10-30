@@ -213,13 +213,23 @@
 /* Header */
 .chatHeader {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
+  flex-direction: column;
+  padding: 14px 18px;
   background: var(--bg-surface-elevated);
   border-bottom: 1px solid var(--border-subtle);
   position: relative;
   z-index: 2;
+}
+
+.mobileGrabBar {
+  display: none;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .headerLeft {
@@ -1029,32 +1039,108 @@
   }
 
   .floatingTriggerBtn {
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
   }
 
+  /* Compact Floating Assistant on Mobile — NOT Fullscreen!
+     Keeps top ~30% of website visible and accessible at all times */
   .chatWindow {
-    inset: 0 !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    height: 100% !important;
-    max-height: 100% !important;
-    border-radius: 0 !important;
-    border: none !important;
+    inset: auto !important;
+    bottom: 14px !important;
+    right: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    max-width: 400px !important;
+    margin: 0 0 0 auto !important;
+    height: 70vh !important;
+    max-height: 530px !important;
+    min-height: 380px !important;
+    border-radius: 22px !important;
+    border: 1px solid var(--border-glow) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), var(--shadow-glow-cyan) !important;
+  }
+
+  .mobileGrabBar {
+    display: block;
+    width: 40px;
+    height: 4.5px;
+    background: var(--border-medium);
+    border-radius: 999px;
+    margin: 0 auto 8px auto;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .mobileGrabBar:hover,
+  .mobileGrabBar:active {
+    background: var(--accent-cyan);
+    transform: scaleX(1.15);
   }
 
   .chatHeader {
-    padding-top: calc(env(safe-area-inset-top, 12px) + 12px);
+    padding: 10px 14px 12px 14px;
+  }
+
+  .headerAvatarContainer {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .headerTitle {
+    font-size: 14px;
+  }
+
+  .headerSubtitle {
+    font-size: 10.5px;
+  }
+
+  .chatBody {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .messageBubbleContainer {
+    max-width: 88%;
+  }
+
+  .messageBubble {
+    padding: 10px 14px;
+    font-size: 13px;
   }
 
   .chatFooter {
-    padding-bottom: calc(env(safe-area-inset-bottom, 12px) + 12px);
+    padding: 10px 12px calc(env(safe-area-inset-bottom, 8px) + 8px) 12px;
+    gap: 6px;
+  }
+
+  .inputContainer {
+    padding: 3px 4px 3px 12px;
+  }
+
+  .chatInput {
+    font-size: 13px !important;
+    padding: 6px 0;
+  }
+
+  .sendBtn {
+    width: 34px;
+    height: 34px;
   }
 
   .formRow {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .chatWindow {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 10px !important;
+    height: 68vh !important;
+    max-height: 490px !important;
   }
 }
 

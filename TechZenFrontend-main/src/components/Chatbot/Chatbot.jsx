@@ -85,6 +85,31 @@ export default function Chatbot() {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const chatBodyRef = useRef(null);
+  const chatWindowRef = useRef(null);
+  const triggerBtnRef = useRef(null);
+
+  // Close when user clicks or taps outside the chat window on mobile/desktop
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleOutsideClick = (e) => {
+      if (
+        chatWindowRef.current &&
+        !chatWindowRef.current.contains(e.target) &&
+        !triggerBtnRef.current?.contains(e.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick, { passive: true });
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [isOpen]);
 
   // Auto-scroll to bottom of messages inside the chat container
   const scrollToBottom = (behavior = "smooth") => {
@@ -277,6 +302,7 @@ Thank you **${name}**, our team has received your enquiry for **${service}**. We
           )}
 
           <button
+            ref={triggerBtnRef}
             type="button"
             className={styles.floatingTriggerBtn}
             onClick={() => {
@@ -299,6 +325,7 @@ Thank you **${name}**, our team has received your enquiry for **${service}**. We
       {/* 2. Glassmorphic Chat Window */}
       {isOpen && (
         <div
+          ref={chatWindowRef}
           className={`${styles.chatWindow} lenis-prevent`}
           data-lenis-prevent="true"
           data-lenis-prevent-wheel="true"
@@ -307,50 +334,60 @@ Thank you **${name}**, our team has received your enquiry for **${service}**. We
         >
           {/* Header */}
           <div className={styles.chatHeader}>
-            <div className={styles.headerLeft}>
-              <div className={styles.headerAvatarContainer}>
-                <Bot size={20} className={styles.headerBotIcon} />
-                <span className={styles.liveStatusDot} />
-              </div>
-              <div className={styles.headerTitleBlock}>
-                <div className={styles.headerTitleRow}>
-                  <h3 className={styles.headerTitle}>ZenAI Assistant</h3>
-                  <span className={styles.aiBadge}>AI</span>
+            <div
+              className={styles.mobileGrabBar}
+              onClick={() => setIsOpen(false)}
+              title="Minimize chat"
+              role="button"
+              tabIndex={0}
+              aria-label="Minimize chat"
+            />
+            <div className={styles.headerContent}>
+              <div className={styles.headerLeft}>
+                <div className={styles.headerAvatarContainer}>
+                  <Bot size={20} className={styles.headerBotIcon} />
+                  <span className={styles.liveStatusDot} />
                 </div>
-                <p className={styles.headerSubtitle}>TechZen IT & HR Services • Online</p>
+                <div className={styles.headerTitleBlock}>
+                  <div className={styles.headerTitleRow}>
+                    <h3 className={styles.headerTitle}>ZenAI Assistant</h3>
+                    <span className={styles.aiBadge}>AI</span>
+                  </div>
+                  <p className={styles.headerSubtitle}>TechZen IT & HR Services • Online</p>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.headerActions}>
-              <button
-                type="button"
-                className={styles.headerActionBtn}
-                onClick={() => handleOpenLeadModal()}
-                title="Enquire / Request Quote"
-                aria-label="Enquire / Request Quote"
-              >
-                <FileText size={16} />
-              </button>
+              <div className={styles.headerActions}>
+                <button
+                  type="button"
+                  className={styles.headerActionBtn}
+                  onClick={() => handleOpenLeadModal()}
+                  title="Enquire / Request Quote"
+                  aria-label="Enquire / Request Quote"
+                >
+                  <FileText size={16} />
+                </button>
 
-              <button
-                type="button"
-                className={styles.headerActionBtn}
-                onClick={handleClearChat}
-                title="Clear conversation"
-                aria-label="Clear conversation"
-              >
-                <Trash2 size={16} />
-              </button>
+                <button
+                  type="button"
+                  className={styles.headerActionBtn}
+                  onClick={handleClearChat}
+                  title="Clear conversation"
+                  aria-label="Clear conversation"
+                >
+                  <Trash2 size={16} />
+                </button>
 
-              <button
-                type="button"
-                className={styles.closeChatBtn}
-                onClick={() => setIsOpen(false)}
-                title="Close chat"
-                aria-label="Close chat"
-              >
-                <X size={18} />
-              </button>
+                <button
+                  type="button"
+                  className={styles.closeChatBtn}
+                  onClick={() => setIsOpen(false)}
+                  title="Close chat"
+                  aria-label="Close chat"
+                >
+                  <X size={18} />
+                </button>
+              </div>
             </div>
           </div>
 
