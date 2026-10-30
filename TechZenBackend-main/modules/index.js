@@ -16,6 +16,7 @@ import OverviewRoutes from './cms/overview/OverviewRoutes.js';
 import UploadRoutes from './cms/uploads/UploadRoutes.js';
 import TrainingRoutes from './cms/training/TrainingRoutes.js';
 import TrainingCategoryRoutes from './cms/training/TrainingCategoryRoutes.js';
+import ChatRoutes from './chat/ChatRoutes.js';
 
 
 
@@ -38,6 +39,7 @@ IndexRoutes.use('/api/v1/faqs', FaqRoutes)
 IndexRoutes.use('/api/v1/company', CompanyRoutes)
 IndexRoutes.use('/api/v1/admin/overview', OverviewRoutes)
 IndexRoutes.use('/api/v1/admin/uploads', UploadRoutes)
+IndexRoutes.use('/api/v1/chat', ChatRoutes)
 
 
 export default IndexRoutes;

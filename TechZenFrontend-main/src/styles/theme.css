@@ -244,11 +244,11 @@ button {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* Floating Back To Top */
+/* Floating Back To Top (positioned cleanly above AI Chatbot trigger) */
 .back-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 96px;
+  right: 28px;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -285,7 +285,7 @@ button {
 
 @media (max-width: 600px) {
   .back-top {
-    bottom: 20px;
+    bottom: 86px;
     right: 20px;
     width: 40px;
     height: 40px;

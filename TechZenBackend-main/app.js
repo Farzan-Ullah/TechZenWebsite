@@ -13,7 +13,9 @@ import ConnectDB from "./dbConfig.js";
 
 const app = express()
 
-dotenv.config()
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config(); // fallback for current working directory if different
 
 // const allowedOrigins = new Set([
 //     "http://localhost:5173",

@@ -4,6 +4,7 @@ import styles from './Layout.module.css'
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
 import BackToTop from "../components/BackToTop"
+import Chatbot from "../components/Chatbot/Chatbot"
 import SmoothScroll from "../components/SmoothScroll/SmoothScroll"
 
 const Layout = ()=>{
@@ -16,6 +17,7 @@ const Layout = ()=>{
                 </main>
                 <Footer></Footer>
                 <BackToTop />
+                <Chatbot />
             </div>
         </SmoothScroll>
     )
