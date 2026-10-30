@@ -84,10 +84,18 @@ export default function Chatbot() {
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const chatBodyRef = useRef(null);
 
-  // Auto-scroll to bottom of messages
+  // Auto-scroll to bottom of messages inside the chat container
   const scrollToBottom = (behavior = "smooth") => {
-    messagesEndRef.current?.scrollIntoView({ behavior, block: "nearest" });
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTo({
+        top: chatBodyRef.current.scrollHeight,
+        behavior
+      });
+    } else {
+      messagesEndRef.current?.scrollIntoView({ behavior, block: "nearest" });
+    }
   };
 
   useEffect(() => {
@@ -290,7 +298,13 @@ Thank you **${name}**, our team has received your enquiry for **${service}**. We
 
       {/* 2. Glassmorphic Chat Window */}
       {isOpen && (
-        <div className={styles.chatWindow}>
+        <div
+          className={`${styles.chatWindow} lenis-prevent`}
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
+          data-lenis-prevent-touch="true"
+          onWheel={(e) => e.stopPropagation()}
+        >
           {/* Header */}
           <div className={styles.chatHeader}>
             <div className={styles.headerLeft}>
@@ -341,7 +355,15 @@ Thank you **${name}**, our team has received your enquiry for **${service}**. We
           </div>
 
           {/* Messages Body */}
-          <div className={styles.chatBody}>
+          <div
+            ref={chatBodyRef}
+            className={`${styles.chatBody} lenis-prevent`}
+            data-lenis-prevent="true"
+            data-lenis-prevent-wheel="true"
+            data-lenis-prevent-touch="true"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+          >
             {messages.map((msg) => (
               <ChatMessage
                 key={msg.id}
@@ -373,7 +395,13 @@ Thank you **${name}**, our team has received your enquiry for **${service}**. We
           </div>
 
           {/* Quick Suggestions Strip */}
-          <div className={styles.quickSuggestionsContainer}>
+          <div
+            className={`${styles.quickSuggestionsContainer} lenis-prevent`}
+            data-lenis-prevent="true"
+            data-lenis-prevent-wheel="true"
+            data-lenis-prevent-touch="true"
+            onWheel={(e) => e.stopPropagation()}
+          >
             <div className={styles.quickSuggestionsTrack}>
               {QUICK_SUGGESTIONS.map((suggestion, idx) => (
                 <button
@@ -461,3 +489,4 @@ Thank you **${name}**, our team has received your enquiry for **${service}**. We
     </div>
   );
 }
+

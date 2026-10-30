@@ -205,3 +205,4 @@ export default function ChatMessage({ message, onActionClick }) {
     </div>
   );
 }
+

@@ -195,6 +195,8 @@
   z-index: 996;
   transform-origin: bottom right;
   animation: chatPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overscroll-behavior: contain;
+  pointer-events: auto;
 }
 
 @keyframes chatPop {
@@ -323,22 +325,36 @@
 
 /* Body / Messages List */
 .chatBody {
-  flex: 1;
-  overflow-y: auto;
+  flex: 1 1 0%;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   background: var(--bg-surface);
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium) transparent;
 }
 
 .chatBody::-webkit-scrollbar {
   width: 6px;
 }
+.chatBody::-webkit-scrollbar-track {
+  background: transparent;
+}
 .chatBody::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 4px;
+  background: var(--border-medium);
+  border-radius: 6px;
+}
+.chatBody::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
 }
 
 /* Message Rows */
@@ -806,6 +822,9 @@
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
   max-height: 92%;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -1038,3 +1057,4 @@
     grid-template-columns: 1fr;
   }
 }
+

@@ -102,8 +102,19 @@ export default function LeadFormModal({ onClose, onSuccess, initialService = "" 
   };
 
   return (
-    <div className={styles.leadModalOverlay}>
-      <div className={styles.leadModalContainer}>
+    <div
+      className={styles.leadModalOverlay}
+      onWheel={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+    >
+      <div
+        className={`${styles.leadModalContainer} lenis-prevent`}
+        data-lenis-prevent="true"
+        data-lenis-prevent-wheel="true"
+        data-lenis-prevent-touch="true"
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+      >
         <div className={styles.leadModalHeader}>
           <div>
             <h3 className={styles.leadModalTitle}>Enquire with TechZen</h3>
@@ -247,3 +258,4 @@ export default function LeadFormModal({ onClose, onSuccess, initialService = "" 
     </div>
   );
 }
+
