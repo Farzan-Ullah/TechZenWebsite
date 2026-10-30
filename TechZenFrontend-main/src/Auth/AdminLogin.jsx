@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link, Navigate } from "react-router-dom";
 import {
-  ShieldCheck,
   Lock,
   Mail,
   Eye,
@@ -9,7 +8,6 @@ import {
   ArrowRight,
   ArrowLeft,
   AlertCircle,
-  Sparkles,
   Info,
 } from "lucide-react";
 import { useAuth } from "./AuthProvider";
@@ -24,7 +22,6 @@ export default function AdminLogin() {
 
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -94,13 +91,6 @@ export default function AdminLogin() {
     }
   };
 
-  const handleAutofillAdmin = () => {
-    setIdentifier("admin@techzen.io");
-    setPassword("Admin@123456");
-    setFieldErrors({});
-    setError("");
-  };
-
   return (
     <div className={styles.loginPage}>
       {/* Dynamic Background Effects */}
@@ -135,11 +125,6 @@ export default function AdminLogin() {
                 className={styles.brandLogo}
               />
             </Link>
-
-            <div className={styles.portalBadge}>
-              <ShieldCheck size={13} className={styles.portalBadgeIcon} />
-              <span>Admin Management Console</span>
-            </div>
 
             <h1 className={styles.title}>Welcome Back</h1>
             <p className={styles.subtitle}>
@@ -256,31 +241,6 @@ export default function AdminLogin() {
                 </span>
               </div>
             )}
-
-            {/* Remember Me */}
-            <div className={styles.optionsRow}>
-              <label className={styles.checkboxLabel}>
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  disabled={submitting}
-                  className={styles.checkbox}
-                />
-                <span className={styles.checkboxText}>Keep me signed in</span>
-              </label>
-
-              {/* Demo autofill button for instant testing */}
-              <button
-                type="button"
-                onClick={handleAutofillAdmin}
-                className={styles.demoFillBtn}
-                title="Fill default admin credentials"
-              >
-                <Sparkles size={13} />
-                <span>Autofill Demo</span>
-              </button>
-            </div>
 
             {/* Submit Button */}
             <button
