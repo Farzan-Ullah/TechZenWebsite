@@ -8,6 +8,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Software Development Outsourcing Landing Page -->
+  <url>
+    <loc>https://www.techzen-it.com/software-development-outsourcing</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- About Page -->
   <url>
     <loc>https://www.techzen-it.com/about</loc>

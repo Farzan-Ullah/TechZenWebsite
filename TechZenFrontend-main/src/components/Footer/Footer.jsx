@@ -206,6 +206,13 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  to="/software-development-outsourcing"
+                >
+                  Software Outsourcing
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/#careers"
                   onClick={() => handleSmoothScroll("#careers")}
                 >

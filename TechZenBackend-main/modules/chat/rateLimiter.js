@@ -44,3 +44,4 @@ export function checkRateLimit(req) {
   record.count += 1;
   return { allowed: true, remaining: MAX_REQUESTS - record.count };
 }
+

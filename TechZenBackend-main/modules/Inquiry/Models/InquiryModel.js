@@ -20,8 +20,49 @@ const InquiryModelSchema = new mongoose.Schema(
         phone: {
             type: String,
             trim: true,
-            maxlength: 10,
-            minlength:10,
+            maxlength: 40,
+            default: "",
+        },
+
+        country: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+
+        website: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+
+        partnershipType: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+
+        requiredServices: [{
+            type: String,
+            trim: true,
+        }],
+
+        budget: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+
+        preferredEngagement: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+
+        source: {
+            type: String,
+            trim: true,
+            default: "website",
         },
 
         company: {
@@ -46,8 +87,8 @@ const InquiryModelSchema = new mongoose.Schema(
         message: {
             type: String,
             trim: true,
-            minlength: 20,
-            maxlength: 2000,
+            minlength: 10,
+            maxlength: 5000,
         },
         status:{
             type: String,

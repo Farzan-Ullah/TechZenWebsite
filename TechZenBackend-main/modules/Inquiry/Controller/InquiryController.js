@@ -1,4 +1,5 @@
 import InquiryModel from "../Models/InquiryModel.js";
+import { sendOutsourcingNotification } from "../Services/emailService.js";
 
 
 
@@ -241,10 +242,168 @@ const DeleteInquiry = async (req, res) => {
 };
 
 
+// ============================================
+// Register Software Development Outsourcing Inquiry
+// ============================================
+const RegisterOutsourcingInquiry = async (req, res) => {
+    try {
+        console.log("Hit RegisterOutsourcingInquiry Api....");
+        const body = req.body || {};
+
+        const {
+            name,
+            email,
+            company,
+            website,
+            country,
+            phone,
+            partnershipType,
+            requiredServices,
+            budget,
+            message,
+            preferredEngagement,
+            consent
+        } = body;
+
+        // 1. Validate required fields
+        if (!name || typeof name !== "string" || !name.trim()) {
+            return res.status(400).json({
+                success: false,
+                message: "Full Name is required.",
+                error: "MISSING_NAME"
+            });
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || typeof email !== "string" || !emailRegex.test(email.trim())) {
+            return res.status(400).json({
+                success: false,
+                message: "A valid business email address is required.",
+                error: "INVALID_EMAIL"
+            });
+        }
+
+        if (!company || typeof company !== "string" || !company.trim()) {
+            return res.status(400).json({
+                success: false,
+                message: "Company Name is required.",
+                error: "MISSING_COMPANY"
+            });
+        }
+
+        if (!country || typeof country !== "string" || !country.trim()) {
+            return res.status(400).json({
+                success: false,
+                message: "Country is required.",
+                error: "MISSING_COUNTRY"
+            });
+        }
+
+        if (!partnershipType || typeof partnershipType !== "string" || !partnershipType.trim()) {
+            return res.status(400).json({
+                success: false,
+                message: "Please select a Partnership Type.",
+                error: "MISSING_PARTNERSHIP_TYPE"
+            });
+        }
+
+        if (!message || typeof message !== "string" || !message.trim()) {
+            return res.status(400).json({
+                success: false,
+                message: "Project or requirement description is required.",
+                error: "MISSING_MESSAGE"
+            });
+        }
+
+        if (consent !== true && consent !== "true") {
+            return res.status(400).json({
+                success: false,
+                message: "Please accept the consent terms to proceed.",
+                error: "MISSING_CONSENT"
+            });
+        }
+
+        // Clean values
+        const cleanName = name.trim();
+        const cleanEmail = email.trim().toLowerCase();
+        const cleanCompany = company.trim();
+        const cleanCountry = country.trim();
+        const cleanWebsite = (website && typeof website === "string") ? website.trim() : "";
+        const cleanPhone = (phone && typeof phone === "string") ? phone.trim() : "";
+        const cleanPartnershipType = partnershipType.trim();
+        const cleanBudget = (budget && typeof budget === "string") ? budget.trim() : "Not Decided";
+        const cleanPreferredEngagement = (preferredEngagement && typeof preferredEngagement === "string") ? preferredEngagement.trim() : "Not Decided";
+        const cleanServices = Array.isArray(requiredServices) ? requiredServices.filter(Boolean) : [];
+        const rawMessage = message.trim();
+
+        // Formatted combined message for universal admin inspection
+        const formattedOverview = `[Outsourcing Partner: ${cleanCompany} (${cleanCountry})] [Type: ${cleanPartnershipType}] [Budget: ${cleanBudget}] [Engagement: ${cleanPreferredEngagement}] [Services: ${cleanServices.length > 0 ? cleanServices.join(", ") : "General Tech Outsourcing"}]${cleanWebsite ? ` [Website: ${cleanWebsite}]` : ""}\n\n${rawMessage}`;
+
+        // 2. Persist to MongoDB Inquiry collection
+        const newInquiry = await InquiryModel.create({
+            name: cleanName,
+            email: cleanEmail,
+            phone: cleanPhone,
+            company: cleanCompany,
+            country: cleanCountry,
+            website: cleanWebsite,
+            service: `Outsourcing - ${cleanPartnershipType}`,
+            partnershipType: cleanPartnershipType,
+            requiredServices: cleanServices,
+            budget: cleanBudget,
+            preferredEngagement: cleanPreferredEngagement,
+            message: formattedOverview,
+            contactMethod: cleanPhone ? "Phone" : "Email",
+            status: "pending",
+            source: "software-outsourcing-page"
+        });
+
+        // 3. Dispatch Email Notification asynchronously
+        sendOutsourcingNotification({
+            id: newInquiry._id,
+            name: cleanName,
+            email: cleanEmail,
+            phone: cleanPhone,
+            company: cleanCompany,
+            country: cleanCountry,
+            website: cleanWebsite,
+            partnershipType: cleanPartnershipType,
+            requiredServices: cleanServices,
+            budget: cleanBudget,
+            preferredEngagement: cleanPreferredEngagement,
+            message: rawMessage
+        }).catch((err) => {
+            console.error("Non-fatal error in sendOutsourcingNotification:", err.message);
+        });
+
+        return res.status(201).json({
+            success: true,
+            message: "Partnership enquiry submitted successfully! Our technology leadership team will review your requirements and connect with you within 24 hours.",
+            data: {
+                id: newInquiry._id,
+                name: newInquiry.name,
+                company: newInquiry.company,
+                partnershipType: newInquiry.partnershipType,
+                createdAt: newInquiry.createdAt
+            },
+            error: null
+        });
+    } catch (error) {
+        console.error("Failed to handle RegisterOutsourcingInquiry", error);
+        return res.status(500).json({
+            success: false,
+            message: "Could not submit your partnership enquiry. Please reach out directly to techzen432@gmail.com.",
+            data: null,
+            error: error.message
+        });
+    }
+};
+
 export {
     GetSingleInquiry,
     GetAllInquiry,
     RegisterInquiry,
+    RegisterOutsourcingInquiry,
     UpdateInquiry,
     DeleteInquiry,
 };

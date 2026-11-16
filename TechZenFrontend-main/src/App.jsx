@@ -23,6 +23,7 @@ import { setNavigate } from './Api/navigation';
 
 import CareersPage from "./pages/Careers/CareersPage";
 import TrainingsPage from "./pages/Trainings/TrainingsPage";
+import SoftwareOutsourcing from "./pages/SoftwareOutsourcing";
 
 export default function App() {
    const navigate = useNavigate();
@@ -68,6 +69,7 @@ export default function App() {
           <Route path="/careers" element={<CareersPage/>} ></Route>
           <Route path="/trainings" element={<TrainingsPage/>} ></Route>
           <Route path="/trainings/:slug" element={<TrainingDetail/>} ></Route>
+          <Route path="/software-development-outsourcing" element={<SoftwareOutsourcing/>} ></Route>
         </Route>
 
         <Route path="/admin/*" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>

@@ -13,3 +13,4 @@ ChatRoutes.post("/lead", handleLeadSubmission);
 ChatRoutes.get("/status", getChatStatus);
 
 export default ChatRoutes;
+

@@ -147,6 +147,12 @@ export default function Navbar() {
               />
 
               <Link
+                to="/software-development-outsourcing"
+              >
+                Outsourcing
+              </Link>
+
+              <Link
                 to="/#careers"
                 onClick={(e) => handleHashClick("/#careers", e)}
               >
@@ -260,6 +266,19 @@ export default function Navbar() {
               onToggle={() => setMobileTrainingsOpen(!mobileTrainingsOpen)}
               closeMenu={closeMenu}
             />
+
+            {/* SOFTWARE OUTSOURCING */}
+            <Link
+              to="/software-development-outsourcing"
+              className={styles.mobileNavLink}
+              onClick={closeMenu}
+            >
+              <div className={styles.mobileNavLeft}>
+                <Code2 size={18} className={styles.mobileNavIcon} />
+                <span>Outsourcing</span>
+              </div>
+              <ChevronRight size={16} className={styles.mobileNavArrow} />
+            </Link>
 
             {/* CAREERS */}
             <Link
