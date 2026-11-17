@@ -88,7 +88,7 @@ export default function Navbar() {
   const homeLinks = [
     ["Home", "/#home"],
     ["About", "/#about"],
-    ["Why Us", "/#why-us"],
+    ["Technologies", "/#technologies"],
     ["Process", "/#process"],
     ["FAQ", "/#faq"],
   ];

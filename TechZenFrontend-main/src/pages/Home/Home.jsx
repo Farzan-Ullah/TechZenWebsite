@@ -10,7 +10,7 @@ import Process from '../../components/ProcessSection/Process'
 import Project from '../../components/ProjectSection/Project'
 import Services from '../../components/ServicesSection/Services'
 import TrainingSection from '../../components/TrainingSection/TrainingSection'
-import WhyUs from '../../components/WhyUsSection/WhyUs'
+import Technologies from '../../components/TechnologiesSection/Technologies'
 import About from '../../pages/About/About'
 import Contact from '../../pages/Contact/Contact'
 import OurTeam from "../../components/OurTeamSection/OurTeamSection";
@@ -66,7 +66,7 @@ const Home =()=>{
                <Hero />
                <About />
                <Services />
-               <WhyUs />
+               <Technologies />
                <Process />
                <Project/>
                <OurTeam/>

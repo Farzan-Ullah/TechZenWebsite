@@ -183,10 +183,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to="/#why-us"
-                  onClick={() => handleSmoothScroll("#why-us")}
+                  to="/#technologies"
+                  onClick={() => handleSmoothScroll("#technologies")}
                 >
-                  Why Choose Us
+                  Technologies
                 </Link>
               </li>
               <li>
