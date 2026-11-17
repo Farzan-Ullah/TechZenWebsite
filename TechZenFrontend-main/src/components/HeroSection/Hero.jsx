@@ -186,14 +186,6 @@ export default function Hero() {
 
           {/* LEFT SIDE */}
           <div className={styles.heroText}>
-            <div className={styles.badge}>
-              <span className={styles.beacon}>
-                <span className={styles.beaconPing} />
-                <span className={styles.beaconDot} />
-              </span>
-              <span>Premier Software &amp; IT Company in Chhatarpur</span>
-            </div>
-
             <h1>
               Architecting the future of{" "}
               <span className={styles.gradientText}>Intelligent Technology.</span>
