@@ -1,5 +1,5 @@
 /* =========================================================
-   TECHZEN TECHNOLOGIES SECTION — MODERN RUNNING MARQUEE
+   TECHZEN TECHNOLOGIES SECTION — DUAL-THEME RUNNING MARQUEE
 ========================================================= */
 
 .section {
@@ -21,6 +21,22 @@
   overflow: hidden;
 }
 
+:global([data-theme="light"]) .section,
+:root[data-theme="light"] .section {
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(14, 165, 233, 0.08),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(99, 102, 241, 0.06),
+      transparent 40%
+    ),
+    var(--bg-canvas);
+}
+
 .section::before {
   content: "";
   position: absolute;
@@ -31,6 +47,11 @@
   background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
   filter: blur(90px);
   pointer-events: none;
+}
+
+:global([data-theme="light"]) .section::before,
+:root[data-theme="light"] .section::before {
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, transparent 70%);
 }
 
 /* Invisible anchor offset for smooth scrolling */
@@ -60,6 +81,13 @@
   z-index: 1;
   user-select: none;
   animation: watermarkBreathe 16s ease-in-out infinite;
+}
+
+:global([data-theme="light"]) .watermark,
+:root[data-theme="light"] .watermark {
+  background-image: url("/tz-emblem.png");
+  opacity: 0.035;
+  filter: drop-shadow(0 0 45px rgba(2, 132, 199, 0.12));
 }
 
 @keyframes watermarkBreathe {
@@ -143,7 +171,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 20px 0;
+  padding: 24px 0;
   z-index: 2;
   mask-image: linear-gradient(
     to right,
@@ -184,10 +212,14 @@
 }
 
 /* =========================================================
-   TECH PILL / CARD
+   TECH PILL / CARD WITH DUAL-THEME TOKENS
 ========================================================= */
 
 .techPill {
+  --pill-tech-color: var(--tech-color-dark);
+  --pill-tech-bg: var(--tech-bg-dark);
+  --pill-tech-border: var(--tech-border-dark);
+
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -197,7 +229,7 @@
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border-subtle);
   border-radius: 999px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -205,12 +237,30 @@
   cursor: default;
 }
 
+:global([data-theme="light"]) .techPill,
+:root[data-theme="light"] .techPill {
+  --pill-tech-color: var(--tech-color-light);
+  --pill-tech-bg: var(--tech-bg-light);
+  --pill-tech-border: var(--tech-border-light);
+
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
 .techPill:hover {
   transform: translateY(-4px) scale(1.04);
   border-color: var(--border-glow);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), var(--shadow-glow-cyan);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), var(--shadow-glow-cyan);
 }
 
+:global([data-theme="light"]) .techPill:hover,
+:root[data-theme="light"] .techPill:hover {
+  border-color: rgba(14, 165, 233, 0.55);
+  box-shadow: 0 10px 24px rgba(14, 165, 233, 0.18), 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+/* Icon Wrapper */
 .iconWrapper {
   width: 42px;
   height: 42px;
@@ -219,18 +269,28 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--pill-tech-bg);
+  border: 1.5px solid var(--pill-tech-border);
+  box-shadow: 0 0 16px var(--pill-tech-bg);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+:global([data-theme="light"]) .iconWrapper,
+:root[data-theme="light"] .iconWrapper {
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
 }
 
 .techPill:hover .iconWrapper {
   transform: scale(1.1) rotate(6deg);
 }
 
+/* Icon */
 .techIcon {
   width: 22px;
   height: 22px;
   display: block;
+  color: var(--pill-tech-color);
+  transition: color 0.25s ease;
 }
 
 .techMeta {
@@ -259,12 +319,18 @@
   gap: 5px;
 }
 
+:global([data-theme="light"]) .techCategory,
+:root[data-theme="light"] .techCategory {
+  color: #475569;
+}
+
 .categoryDot {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: var(--accent-cyan);
+  background-color: var(--pill-tech-color);
   display: inline-block;
+  transition: background-color 0.25s ease;
 }
 
 /* =========================================================
@@ -281,7 +347,7 @@
   }
 
   .marqueeContainer {
-    padding: 12px 0;
+    padding: 14px 0;
   }
 
   .marqueeTrack {
