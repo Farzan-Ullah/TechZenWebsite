@@ -193,6 +193,10 @@
   border: 1px solid rgba(6, 182, 212, 0.22);
   margin-bottom: 14px;
   text-transform: uppercase;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Bio Text (~100 chars with ellipsis) */
@@ -328,12 +332,29 @@
 }
 
 /* =========================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS — COMPACT CARDS
 ========================================================= */
+
+@media (max-width: 992px) {
+  .card {
+    width: 270px;
+    padding: 24px 18px 18px;
+  }
+
+  .avatarWrapper {
+    width: 108px;
+    height: 108px;
+    margin-bottom: 16px;
+  }
+
+  .avatarFallback {
+    font-size: 28px;
+  }
+}
 
 @media (max-width: 768px) {
   .teamSection {
-    padding: 70px 0 80px;
+    padding: 60px 0 70px;
   }
 
   .container {
@@ -341,62 +362,22 @@
   }
 
   .heading {
-    font-size: clamp(26px, 6vw, 36px);
-    margin-bottom: 40px;
+    font-size: clamp(26px, 5.5vw, 34px);
+    margin-bottom: 36px;
   }
 
   .card {
-    width: min(300px, 85vw);
-    padding: 24px 18px 20px;
-  }
-
-  .avatarWrapper {
-    width: 110px;
-    height: 110px;
-    margin-bottom: 16px;
-  }
-
-  .avatarFallback {
-    font-size: 28px;
-  }
-
-  .bioText {
-    min-height: auto;
-    font-size: 12.5px;
-    margin-bottom: 16px;
-    -webkit-line-clamp: 3;
-  }
-
-  .track {
-    gap: 18px;
-    padding: 14px 0;
-  }
-
-  .socialBtn {
-    padding: 7px 10px;
-    font-size: 11.5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .teamSection {
-    padding: 56px 0 64px;
-  }
-
-  .container {
-    width: calc(100% - 24px);
-  }
-
-  .card {
-    width: min(280px, calc(100vw - 40px));
+    width: 236px;
     padding: 20px 14px 16px;
     border-radius: 16px;
   }
 
   .avatarWrapper {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 14px;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+    padding: 2.5px;
+    box-shadow: 0 0 18px rgba(14, 165, 233, 0.22);
   }
 
   .avatarFallback {
@@ -404,17 +385,147 @@
   }
 
   .memberName {
-    font-size: 16.5px;
+    font-size: 16px;
+    margin: 0 0 6px;
   }
 
   .designationBadge {
-    font-size: 10.5px;
-    padding: 3px 10px;
+    font-size: 10px;
+    padding: 3px 9px;
+    margin-bottom: 10px;
+  }
+
+  .bioText {
+    min-height: 40px;
+    font-size: 11.5px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    -webkit-line-clamp: 3;
+  }
+
+  .track {
+    gap: 16px;
+    padding: 12px 0;
+  }
+
+  .footerRow {
+    padding-top: 10px;
+    gap: 6px;
   }
 
   .socialBtn {
     padding: 6px 8px;
     font-size: 11px;
     gap: 5px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamSection {
+    padding: 48px 0 56px;
+  }
+
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .heading {
+    font-size: clamp(22px, 5.5vw, 28px);
+    margin-bottom: 24px;
+  }
+
+  .card {
+    width: 205px;
+    padding: 16px 12px 12px;
+    border-radius: 14px;
+  }
+
+  .avatarWrapper {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 10px;
+    padding: 2px;
+    box-shadow: 0 0 14px rgba(14, 165, 233, 0.2);
+  }
+
+  .avatarFallback {
+    font-size: 20px;
+  }
+
+  .memberName {
+    font-size: 14.5px;
+    margin: 0 0 4px;
+  }
+
+  .designationBadge {
+    font-size: 9.5px;
+    padding: 2px 7px;
+    margin-bottom: 8px;
+  }
+
+  .bioText {
+    min-height: 36px;
+    font-size: 10.5px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    -webkit-line-clamp: 3;
+  }
+
+  .track {
+    gap: 12px;
+    padding: 8px 0;
+  }
+
+  .footerRow {
+    padding-top: 8px;
+    gap: 5px;
+  }
+
+  .socialBtn {
+    padding: 5px 6px;
+    font-size: 10px;
+    gap: 4px;
+    border-radius: 7px;
+  }
+
+  .socialIcon {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    width: 185px;
+    padding: 14px 10px 10px;
+  }
+
+  .avatarWrapper {
+    width: 66px;
+    height: 66px;
+    margin-bottom: 8px;
+  }
+
+  .avatarFallback {
+    font-size: 18px;
+  }
+
+  .memberName {
+    font-size: 13.5px;
+  }
+
+  .designationBadge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  .bioText {
+    font-size: 10px;
+    min-height: 32px;
+  }
+
+  .socialBtn {
+    padding: 4px 4px;
+    font-size: 9.5px;
   }
 }
