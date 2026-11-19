@@ -17,13 +17,10 @@ export function ThemeProvider({ children }) {
       if (savedTheme === "light" || savedTheme === "dark") {
         return savedTheme;
       }
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-        return "light";
-      }
     } catch {
       // fallback
     }
-    return "dark"; // Default to TechZen dark executive signature theme
+    return "light"; // Default to TechZen clean executive light theme
   });
 
   useEffect(() => {
