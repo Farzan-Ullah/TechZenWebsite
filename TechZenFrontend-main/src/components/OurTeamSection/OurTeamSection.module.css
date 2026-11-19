@@ -103,7 +103,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 32px 24px 24px;
+  padding: 30px 22px 22px;
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -120,50 +120,51 @@
   box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
 }
 
-/* Avatar / Image */
+/* Avatar / Image Circle — Enlarged & Perfectly Centered */
 .avatarWrapper {
   position: relative;
-  width: 92px;
-  height: 92px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  box-shadow: 0 0 24px rgba(14, 165, 233, 0.28), var(--shadow-sm);
   margin-bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .image {
-  width: 92px;
-  height: 92px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
-    linear-gradient(135deg, #0ea5e9, #6366f1) border-box;
-  box-shadow: 0 0 20px rgba(14, 165, 233, 0.25);
-  transition: transform 0.3s ease;
+  object-position: center center;
+  display: block;
+  background-color: var(--bg-surface);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover .image {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .avatarFallback {
-  width: 92px;
-  height: 92px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--accent-cyan);
-  background:
-    linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
-    linear-gradient(135deg, #0ea5e9, #6366f1) border-box;
-  border: 2px solid transparent;
-  box-shadow: 0 0 20px rgba(14, 165, 233, 0.25);
+  background-color: var(--bg-surface);
+  user-select: none;
 }
 
 /* Name */
@@ -194,134 +195,129 @@
   text-transform: uppercase;
 }
 
-/* Bio Text (~150 chars) */
+/* Bio Text (~100 chars with ellipsis) */
 .bioText {
   font-size: 13px;
   line-height: 1.55;
   color: var(--text-secondary);
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   text-align: center;
-  min-height: 72px;
+  min-height: 48px;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-word;
 }
 
-/* Footer Action Row (Phone + LinkedIn) */
+/* Footer Action Row (WhatsApp + LinkedIn side-by-side) */
 .footerRow {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
   margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid var(--border-subtle);
 }
 
-/* Phone link */
-.phoneLink {
+.socialBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
-  padding: 7px 11px;
+  flex: 1;
+  padding: 8px 12px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
   text-decoration: none;
   font-size: 12px;
-  font-weight: 500;
-  transition: all 0.25s ease;
-  flex: 1;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   min-width: 0;
 }
 
-.phoneLink:hover {
-  background: rgba(14, 165, 233, 0.1);
-  border-color: rgba(14, 165, 233, 0.35);
-  color: var(--text-primary);
-  transform: translateY(-1px);
-}
-
-.phoneIcon {
+.socialIcon {
   flex-shrink: 0;
-  color: var(--accent-cyan);
+  transition: transform 0.25s ease;
 }
 
-.phoneText {
+.socialLabel {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-variant-numeric: tabular-nums;
+}
+
+/* WhatsApp Button */
+.whatsappBtn {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.32);
+  color: #25d366;
+}
+
+.whatsappBtn:hover {
+  background: #25d366;
+  border-color: #25d366;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.38);
+}
+
+.whatsappBtn:hover .socialIcon {
+  transform: scale(1.12);
 }
 
 /* LinkedIn Button */
 .linkedinBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: rgba(10, 102, 194, 0.1);
-  border: 1px solid rgba(10, 102, 194, 0.28);
+  background: rgba(10, 102, 194, 0.12);
+  border: 1px solid rgba(10, 102, 194, 0.32);
   color: #0a66c2;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  flex-shrink: 0;
-  text-decoration: none;
 }
 
-.linkedinIcon {
-  width: 14px;
-  height: 14px;
-  color: #0a66c2;
-  fill: currentColor;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.linkedinBtn:hover {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.42);
 }
 
-/* Hover state across both Light and Dark Themes */
-.linkedinBtn:hover,
-:root[data-theme="light"] .linkedinBtn:hover,
-:root[data-theme="dark"] .linkedinBtn:hover,
-:global([data-theme="light"]) .linkedinBtn:hover,
-:global([data-theme="dark"]) .linkedinBtn:hover {
-  background: #0a66c2 !important;
-  border-color: #0a66c2 !important;
-  color: #ffffff !important;
-  transform: translateY(-2px) scale(1.06);
-  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.45) !important;
-}
-
-.linkedinBtn:hover .linkedinIcon,
-:root[data-theme="light"] .linkedinBtn:hover .linkedinIcon,
-:root[data-theme="dark"] .linkedinBtn:hover .linkedinIcon,
-:global([data-theme="light"]) .linkedinBtn:hover .linkedinIcon,
-:global([data-theme="dark"]) .linkedinBtn:hover .linkedinIcon {
-  color: #ffffff !important;
-  fill: #ffffff !important;
+.linkedinBtn:hover .socialIcon {
   transform: scale(1.12);
 }
 
-/* Light Theme Adjustments */
-:root[data-theme="light"] .phoneLink,
-:global([data-theme="light"]) .phoneLink {
-  background: rgba(0, 0, 0, 0.03);
+/* =========================================================
+   LIGHT THEME OVERRIDES
+========================================================= */
+
+:root[data-theme="light"] .whatsappBtn,
+:global([data-theme="light"]) .whatsappBtn {
+  background: rgba(22, 163, 74, 0.1);
+  border: 1px solid rgba(22, 163, 74, 0.32);
+  color: #15803d;
 }
 
-:root[data-theme="light"] .phoneLink:hover,
-:global([data-theme="light"]) .phoneLink:hover {
-  background: rgba(14, 165, 233, 0.08);
+:root[data-theme="light"] .whatsappBtn:hover,
+:global([data-theme="light"]) .whatsappBtn:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
 }
 
 :root[data-theme="light"] .linkedinBtn,
 :global([data-theme="light"]) .linkedinBtn {
   background: rgba(10, 102, 194, 0.08);
-  border: 1px solid rgba(10, 102, 194, 0.24);
+  border: 1px solid rgba(10, 102, 194, 0.28);
   color: #0a66c2;
+}
+
+:root[data-theme="light"] .linkedinBtn:hover,
+:global([data-theme="light"]) .linkedinBtn:hover {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #ffffff;
 }
 
 :root[data-theme="light"] .designationBadge,
@@ -350,19 +346,18 @@
   }
 
   .card {
-    width: min(290px, 85vw);
+    width: min(300px, 85vw);
     padding: 24px 18px 20px;
   }
 
-  .avatarWrapper,
-  .image,
-  .avatarFallback {
-    width: 80px;
-    height: 80px;
+  .avatarWrapper {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 16px;
   }
 
   .avatarFallback {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .bioText {
@@ -376,6 +371,11 @@
     gap: 18px;
     padding: 14px 0;
   }
+
+  .socialBtn {
+    padding: 7px 10px;
+    font-size: 11.5px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -388,9 +388,19 @@
   }
 
   .card {
-    width: min(265px, calc(100vw - 44px));
+    width: min(280px, calc(100vw - 40px));
     padding: 20px 14px 16px;
     border-radius: 16px;
+  }
+
+  .avatarWrapper {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 14px;
+  }
+
+  .avatarFallback {
+    font-size: 24px;
   }
 
   .memberName {
@@ -402,8 +412,9 @@
     padding: 3px 10px;
   }
 
-  .phoneLink {
-    padding: 6px 9px;
+  .socialBtn {
+    padding: 6px 8px;
     font-size: 11px;
+    gap: 5px;
   }
 }

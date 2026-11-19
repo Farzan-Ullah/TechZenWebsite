@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-import { Phone } from "lucide-react";
-import { FaLinkedinIn } from "react-icons/fa6";
+import { FaWhatsapp, FaLinkedinIn } from "react-icons/fa6";
 import styles from "./OurTeamSection.module.css";
 import usePublicContent from "../../hooks/usePublicContent";
 
 /**
- * Helper to display bio at approx 150 characters cleanly
+ * Helper to display bio up to 100 characters cleanly with ellipsis
  */
-const formatBio = (bio, maxLength = 150) => {
+const formatBio = (bio, maxLength = 100) => {
   if (!bio) return "";
   const trimmed = bio.trim();
   if (trimmed.length <= maxLength) return trimmed;
-  const slice = trimmed.slice(0, maxLength);
+  const slice = trimmed.slice(0, maxLength).trim();
   const lastSpace = slice.lastIndexOf(" ");
-  return (lastSpace > maxLength - 30 ? slice.slice(0, lastSpace) : slice) + "…";
+  const text = lastSpace > 75 ? slice.slice(0, lastSpace) : slice;
+  return text.trim() + "...";
 };
 
 const OurTeam = () => {
@@ -46,8 +46,11 @@ const OurTeam = () => {
         >
           <div className={styles.track}>
             {sliderData.map((member, index) => {
-              const memberPhone = member.phone || "+91 93020 39953";
-              const rawTel = memberPhone.replace(/[^0-9+]/g, "");
+              const rawPhone = (member.phone || "+919303878713").replace(/[^0-9]/g, "");
+              const whatsappUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(
+                `Hi ${member.name}, I would like to connect with you via TechZen.`
+              )}`;
+
               const memberLinkedin =
                 member.linkedin && member.linkedin.trim() !== ""
                   ? member.linkedin
@@ -97,28 +100,32 @@ const OurTeam = () => {
                   </div>
 
                   <p className={styles.bioText} title={member.bio}>
-                    {formatBio(bioText, 150)}
+                    {formatBio(bioText, 100)}
                   </p>
 
                   <div className={styles.footerRow}>
                     <a
-                      href={`tel:${rawTel}`}
-                      className={styles.phoneLink}
-                      title={`Call ${member.name} (${memberPhone})`}
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.socialBtn} ${styles.whatsappBtn}`}
+                      aria-label={`Chat with ${member.name} on WhatsApp`}
+                      title={`Chat with ${member.name} on WhatsApp`}
                     >
-                      <Phone size={13} className={styles.phoneIcon} />
-                      <span className={styles.phoneText}>{memberPhone}</span>
+                      <FaWhatsapp size={16} className={styles.socialIcon} />
+                      <span className={styles.socialLabel}>WhatsApp</span>
                     </a>
 
                     <a
                       href={memberLinkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.linkedinBtn}
+                      className={`${styles.socialBtn} ${styles.linkedinBtn}`}
                       aria-label={`${member.name}'s LinkedIn Profile`}
-                      title="View LinkedIn Profile"
+                      title={`View ${member.name}'s LinkedIn Profile`}
                     >
-                      <FaLinkedinIn size={14} className={styles.linkedinIcon} />
+                      <FaLinkedinIn size={14} className={styles.socialIcon} />
+                      <span className={styles.socialLabel}>LinkedIn</span>
                     </a>
                   </div>
                 </div>
