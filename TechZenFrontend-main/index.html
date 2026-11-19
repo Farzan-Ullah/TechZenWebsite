@@ -12,10 +12,13 @@
     <meta name="theme-color" content="#f8fafc" />
     <script>
       (function() {
-        // 1. Immediately apply saved theme before any CSS or body renders (default: light)
+        // 1. Immediately apply theme before any CSS or body renders (Default: Light theme)
         try {
-          var saved = localStorage.getItem("techzen-theme");
-          var theme = (saved === "light" || saved === "dark") ? saved : "light";
+          // Remove legacy storage key to prevent any old dark mode persistence
+          try { localStorage.removeItem("techzen-theme"); } catch (e) {}
+
+          var saved = localStorage.getItem("techzen-theme-v2");
+          var theme = saved === "dark" ? "dark" : "light";
           
           document.documentElement.setAttribute("data-theme", theme);
           if (theme === "dark") {

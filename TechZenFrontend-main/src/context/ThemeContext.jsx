@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
+const THEME_STORAGE_KEY = "techzen-theme-v2";
+
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
@@ -11,11 +13,14 @@ export function ThemeProvider({ children }) {
         return domTheme;
       }
     }
-    // 2. Check localStorage
+    // 2. Check localStorage for explicit user choice (v2)
     try {
-      const savedTheme = localStorage.getItem("techzen-theme");
-      if (savedTheme === "light" || savedTheme === "dark") {
-        return savedTheme;
+      const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+      if (savedTheme === "dark") {
+        return "dark";
+      }
+      if (savedTheme === "light") {
+        return "light";
       }
     } catch {
       // fallback
@@ -34,7 +39,7 @@ export function ThemeProvider({ children }) {
       root.classList.remove("dark");
     }
     try {
-      localStorage.setItem("techzen-theme", theme);
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
     } catch {
       // fallback
     }

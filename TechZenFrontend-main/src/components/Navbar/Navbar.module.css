@@ -1042,9 +1042,26 @@
    LIGHT THEME ADJUSTMENTS FOR MOBILE NAVIGATION
 ========================================================= */
 
+:root[data-theme="light"] .mobileSidebar,
+:global([data-theme="light"]) .mobileSidebar {
+  background: #ffffff !important;
+  border-left-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+:root[data-theme="light"] .menuButton,
+:global([data-theme="light"]) .menuButton {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
 :root[data-theme="light"] .mobileNav a,
 :root[data-theme="light"] .mobileDropdownTrigger,
-:root[data-theme="light"] .mobileDropdownTriggerRow {
+:root[data-theme="light"] .mobileDropdownTriggerRow,
+:global([data-theme="light"]) .mobileNav a,
+:global([data-theme="light"]) .mobileDropdownTrigger,
+:global([data-theme="light"]) .mobileDropdownTriggerRow {
   background: #ffffff;
   border-color: rgba(15, 23, 42, 0.1);
   color: #0f172a;
@@ -1052,34 +1069,48 @@
 
 :root[data-theme="light"] .mobileNav a:hover,
 :root[data-theme="light"] .mobileDropdownTrigger:hover,
-:root[data-theme="light"] .mobileDropdownTriggerRow:hover {
+:root[data-theme="light"] .mobileDropdownTriggerRow:hover,
+:global([data-theme="light"]) .mobileNav a:hover,
+:global([data-theme="light"]) .mobileDropdownTrigger:hover,
+:global([data-theme="light"]) .mobileDropdownTriggerRow:hover {
   background: #f1f5f9;
   border-color: rgba(2, 132, 199, 0.4);
   color: #0284c7;
 }
 
-:root[data-theme="light"] .mobileDropdownSubLink {
+:root[data-theme="light"] .mobileDropdownSubLink,
+:global([data-theme="light"]) .mobileDropdownSubLink {
   background: #f8fafc !important;
   border-color: #e2e8f0 !important;
   color: #334155 !important;
 }
 
-:root[data-theme="light"] .mobileDropdownSubLink:hover {
+:root[data-theme="light"] .mobileDropdownSubLink:hover,
+:global([data-theme="light"]) .mobileDropdownSubLink:hover {
   background: #ffffff !important;
   border-color: #0284c7 !important;
   color: #0284c7 !important;
 }
 
-:root[data-theme="light"] .mobileTrainingItem {
+:root[data-theme="light"] .mobileTrainingItem,
+:global([data-theme="light"]) .mobileTrainingItem {
   background: #ffffff;
   border-color: rgba(15, 23, 42, 0.08);
 }
 
-:root[data-theme="light"] .mobileTrainingItem:hover {
+:root[data-theme="light"] .mobileTrainingItem:hover,
+:global([data-theme="light"]) .mobileTrainingItem:hover {
   background: #f8fafc;
 }
 
-:root[data-theme="light"] .mobileThemeBox {
+:root[data-theme="light"] .mobileThemeBox,
+:global([data-theme="light"]) .mobileThemeBox {
   background: #ffffff;
   border-color: rgba(15, 23, 42, 0.1);
+}
+
+:root[data-theme="light"] .sidebarFooter,
+:global([data-theme="light"]) .sidebarFooter {
+  border-top-color: rgba(15, 23, 42, 0.1) !important;
+  color: #64748b !important;
 }
