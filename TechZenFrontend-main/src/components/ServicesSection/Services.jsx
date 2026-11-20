@@ -45,10 +45,6 @@ function ServiceCard({ service, index, isHighlighted }) {
             </div>
           </div>
         )}
-
-        <span className={styles.orderBadge}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
       </div>
 
       {/* Card Content */}
