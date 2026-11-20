@@ -1244,7 +1244,7 @@ export const teamMembers = [
     name: "Rihan Khan",
     designation: "Director",
     image:
-      "https://res.cloudinary.com/djvhmzqwj/image/upload/v1792580776/techZen/nm4cyzyqtjjvay8xe1ik.jpg",
+      "https://res.cloudinary.com/djvhmzqwj/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/v1792580776/techZen/nm4cyzyqtjjvay8xe1ik.jpg",
     bio: "Executive Director championing strategic growth, client partnerships, and innovative technology consulting solutions across enterprise markets.",
     phone: "+91 93020 39953",
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
@@ -1254,7 +1254,7 @@ export const teamMembers = [
     name: "Atthasan Hussain",
     designation: "Founder & CEO",
     image:
-      "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680344/techZen/bvhn2bsbhs0hde0htegz.jpg",
+      "https://res.cloudinary.com/djvhmzqwj/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/v1790680344/techZen/bvhn2bsbhs0hde0htegz.jpg",
     bio: "Visionary technology leader with 10+ years driving global enterprise digital transformation, cloud architecture, and high-impact client success.",
     phone: "+91 93020 39953",
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
@@ -1264,7 +1264,7 @@ export const teamMembers = [
     name: "Arshlan Sheikh",
     designation: "Full Stack Developer",
     image:
-      "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680422/techZen/avczwuqvz7lpigl33tkx.jpg",
+      "https://res.cloudinary.com/djvhmzqwj/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/v1790680422/techZen/avczwuqvz7lpigl33tkx.jpg",
     bio: "A seasoned full-stack engineer passionate about architecting scalable cloud applications, robust APIs, and interactive modern web ecosystems.",
     phone: "+91 93020 39953",
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
@@ -1274,7 +1274,7 @@ export const teamMembers = [
     name: "Rahul",
     designation: "HR & Operations Manager",
     image:
-      "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790678669/techZen/rrhlqd4zsb50ttujm8el.jpg",
+      "https://res.cloudinary.com/djvhmzqwj/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/v1790678669/techZen/rrhlqd4zsb50ttujm8el.jpg",
     bio: "Dynamic human resources leader dedicated to talent acquisition, people operations, and fostering an inspiring, high-performance team culture.",
     phone: "+91 93020 39953",
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
@@ -1284,7 +1284,7 @@ export const teamMembers = [
     name: "Aksha",
     designation: "Frontend Developer",
     image:
-      "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680354/techZen/ob8qtu3tl2xmodi7a0us.jpg",
+      "https://res.cloudinary.com/djvhmzqwj/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/v1790680354/techZen/ob8qtu3tl2xmodi7a0us.jpg",
     bio: "Creative frontend specialist delivering high-performance, pixel-perfect user interfaces, fluid animations, and intuitive responsive web apps.",
     phone: "+91 93020 39953",
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
@@ -1294,7 +1294,7 @@ export const teamMembers = [
     name: "Mahai",
     designation: "Backend Developer",
     image:
-      "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680364/techZen/for0deuijsfrbjxfjrk0.jpg",
+      "https://res.cloudinary.com/djvhmzqwj/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/v1790680364/techZen/for0deuijsfrbjxfjrk0.jpg",
     bio: "Dedicated backend architect focused on high-throughput microservices, secure database modeling, and resilient distributed server systems.",
     phone: "+91 93020 39953",
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",
@@ -1304,7 +1304,7 @@ export const teamMembers = [
     name: "Farzan",
     designation: "Software Developer",
     image:
-      "https://res.cloudinary.com/djvhmzqwj/image/upload/v1790680422/techZen/avczwuqvz7lpigl33tkx.jpg",
+      "https://res.cloudinary.com/djvhmzqwj/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/v1790680422/techZen/avczwuqvz7lpigl33tkx.jpg",
     bio: "Software engineer specialized in building scalable full-stack applications, modern UI components, and high-performance cloud infrastructure.",
     phone: "+91 93020 39953",
     linkedin: "https://www.linkedin.com/company/techzen-it-and-hr-service-llc/",

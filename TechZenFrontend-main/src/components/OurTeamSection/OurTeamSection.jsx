@@ -16,6 +16,26 @@ const formatBio = (bio, maxLength = 100) => {
   return text.trim() + "...";
 };
 
+/**
+ * Automatically applies smart face and subject centering for avatar photos.
+ * Detects Cloudinary URLs and injects face-detection parameters so profile photos
+ * are always centered inside the circular avatar container.
+ */
+const getCenteredAvatarUrl = (url) => {
+  if (!url || typeof url !== "string") return "";
+  const trimmed = url.trim();
+  if (trimmed.includes("res.cloudinary.com") && trimmed.includes("/image/upload/")) {
+    if (trimmed.includes("/image/upload/c_") || trimmed.includes("/image/upload/g_")) {
+      return trimmed;
+    }
+    return trimmed.replace(
+      "/image/upload/",
+      "/image/upload/c_fill,g_face,w_500,h_500,q_auto,f_auto/"
+    );
+  }
+  return trimmed;
+};
+
 const OurTeam = () => {
   const { items: teamMembers, loading } = usePublicContent("team");
   const sliderData = [...teamMembers, ...teamMembers];
@@ -60,6 +80,8 @@ const OurTeam = () => {
                 member.bio ||
                 "Dedicated technology specialist contributing to TechZen's innovative engineering, product delivery, and client growth solutions.";
 
+              const avatarUrl = getCenteredAvatarUrl(member.image);
+
               return (
                 <div
                   key={`${member._id || member.id || member.name}-${index}`}
@@ -68,11 +90,15 @@ const OurTeam = () => {
                   <div className={styles.avatarWrapper}>
                     {member.image ? (
                       <img
-                        src={member.image}
+                        src={avatarUrl}
                         alt={member.name}
                         className={styles.image}
                         loading="lazy"
                         onError={(e) => {
+                          if (member.image && e.currentTarget.src !== member.image) {
+                            e.currentTarget.src = member.image;
+                            return;
+                          }
                           e.currentTarget.style.display = "none";
                           const fallback = e.currentTarget.nextElementSibling;
                           if (fallback) fallback.style.display = "flex";
