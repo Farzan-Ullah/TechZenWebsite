@@ -40,12 +40,6 @@ export default function TrainingSection() {
         <div className={styles.trainingGrid}>
           {trainings.map((training, index) => {
             const Icon = training.icon === "code" ? Code2 : GraduationCap;
-            const categoryName =
-              (typeof training.category === "object"
-                ? training.category?.name
-                : training.category) ||
-              training.categoryName ||
-              "";
 
             return (
               <article
@@ -55,16 +49,9 @@ export default function TrainingSection() {
                 style={{ "--training-accent": training.color || "#2563eb" }}
               >
                 <div className={styles.cardTop}>
-                  <div className={styles.cardTopLeft}>
-                    <span className={styles.programNumber}>
-                      PROGRAM {String(index + 1).padStart(2, "0")}
-                    </span>
-                    {categoryName && (
-                      <span className={styles.categoryBadge}>
-                        {categoryName}
-                      </span>
-                    )}
-                  </div>
+                  <span className={styles.programNumber}>
+                    PROGRAM {String(index + 1).padStart(2, "0")}
+                  </span>
                   <span className={styles.iconBox}>
                     <Icon size={22} strokeWidth={1.8} />
                   </span>
@@ -136,22 +123,6 @@ export default function TrainingSection() {
                     )}
                   </div>
                 )}
-
-                {Array.isArray(training.technologies) &&
-                  training.technologies.length > 0 && (
-                    <div className={styles.techTags}>
-                      {training.technologies.slice(0, 6).map((tech) => (
-                        <span key={tech} className={styles.techTag}>
-                          {tech}
-                        </span>
-                      ))}
-                      {training.technologies.length > 6 && (
-                        <span className={styles.techTag}>
-                          +{training.technologies.length - 6} more
-                        </span>
-                      )}
-                    </div>
-                  )}
 
                 <Link
                   className={styles.contactLink}
