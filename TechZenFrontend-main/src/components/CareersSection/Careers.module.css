@@ -103,12 +103,12 @@
 }
 
 /* =========================================================
-   3 EXPANDED TRACKS GRID (IT, NON-IT, INTERNSHIPS)
+   3 EXPANDED HORIZONTAL TRACK CARDS (IT, NON-IT, INTERNSHIPS)
    ========================================================= */
 .tracksGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
   margin-bottom: 5.5rem;
 }
 
@@ -116,10 +116,12 @@
   position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 1.35rem;
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
+  border-radius: 1.6rem;
+  padding: 2.75rem 3rem;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 3rem;
+  align-items: stretch;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow-sm);
@@ -131,20 +133,21 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 4px;
+  bottom: 0;
+  width: 5px;
   background: var(--gradient-brand);
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  opacity: 0.9;
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .trackCard:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--border-glow);
-  box-shadow: var(--shadow-md), 0 0 30px rgba(14, 165, 233, 0.12);
+  box-shadow: var(--shadow-md), 0 0 35px rgba(14, 165, 233, 0.12);
 }
 
 .trackCard:hover::before {
+  width: 7px;
   opacity: 1;
 }
 
@@ -156,13 +159,17 @@
 }
 
 :root[data-theme="light"] .trackCard:hover {
-  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.09);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.1);
   border-color: rgba(14, 165, 233, 0.35);
 }
 
 /* Pillar Card Color Accents */
 .trackCardIT::before {
-  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  background: linear-gradient(180deg, #06b6d4, #3b82f6);
+}
+
+.trackCardIT:hover {
+  box-shadow: var(--shadow-md), 0 0 35px rgba(6, 182, 212, 0.18);
 }
 
 .trackCardIT .trackIconWrap {
@@ -177,13 +184,20 @@
   border: 1px solid rgba(6, 182, 212, 0.25);
 }
 
+.trackCardIT .specCountBadge {
+  background: rgba(6, 182, 212, 0.1);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+
 :root[data-theme="light"] .trackCardIT .trackIconWrap {
   background: rgba(2, 132, 199, 0.1);
   color: #0284c7;
   border-color: rgba(2, 132, 199, 0.3);
 }
 
-:root[data-theme="light"] .trackCardIT .trackBadge {
+:root[data-theme="light"] .trackCardIT .trackBadge,
+:root[data-theme="light"] .trackCardIT .specCountBadge {
   background: rgba(2, 132, 199, 0.08);
   color: #0284c7;
   border-color: rgba(2, 132, 199, 0.2);
@@ -191,7 +205,11 @@
 
 /* Non-IT Accent */
 .trackCardNonIT::before {
-  background: linear-gradient(90deg, #6366f1, #a855f7);
+  background: linear-gradient(180deg, #6366f1, #a855f7);
+}
+
+.trackCardNonIT:hover {
+  box-shadow: var(--shadow-md), 0 0 35px rgba(99, 102, 241, 0.18);
 }
 
 .trackCardNonIT .trackIconWrap {
@@ -200,7 +218,8 @@
   border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
-.trackCardNonIT .trackBadge {
+.trackCardNonIT .trackBadge,
+.trackCardNonIT .specCountBadge {
   background: rgba(99, 102, 241, 0.1);
   color: #818cf8;
   border: 1px solid rgba(99, 102, 241, 0.25);
@@ -212,7 +231,8 @@
   border-color: rgba(79, 70, 229, 0.3);
 }
 
-:root[data-theme="light"] .trackCardNonIT .trackBadge {
+:root[data-theme="light"] .trackCardNonIT .trackBadge,
+:root[data-theme="light"] .trackCardNonIT .specCountBadge {
   background: rgba(79, 70, 229, 0.08);
   color: #4f46e5;
   border-color: rgba(79, 70, 229, 0.2);
@@ -220,7 +240,11 @@
 
 /* Internships Accent */
 .trackCardIntern::before {
-  background: linear-gradient(90deg, #10b981, #06b6d4);
+  background: linear-gradient(180deg, #10b981, #06b6d4);
+}
+
+.trackCardIntern:hover {
+  box-shadow: var(--shadow-md), 0 0 35px rgba(16, 185, 129, 0.18);
 }
 
 .trackCardIntern .trackIconWrap {
@@ -229,7 +253,8 @@
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-.trackCardIntern .trackBadge {
+.trackCardIntern .trackBadge,
+.trackCardIntern .specCountBadge {
   background: rgba(16, 185, 129, 0.1);
   color: #10b981;
   border: 1px solid rgba(16, 185, 129, 0.25);
@@ -241,23 +266,29 @@
   border-color: rgba(5, 150, 105, 0.3);
 }
 
-:root[data-theme="light"] .trackCardIntern .trackBadge {
+:root[data-theme="light"] .trackCardIntern .trackBadge,
+:root[data-theme="light"] .trackCardIntern .specCountBadge {
   background: rgba(5, 150, 105, 0.08);
   color: #059669;
   border-color: rgba(5, 150, 105, 0.2);
 }
 
-/* Top Section in Card */
+/* Left Column / Header Info */
+.cardHeaderCol {
+  display: flex;
+  flex-direction: column;
+}
+
 .trackTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .trackIconWrap {
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -280,11 +311,11 @@
 
 .trackTitle {
   font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 700;
+  font-size: 1.55rem;
+  font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.3;
-  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  margin-bottom: 0.45rem;
 }
 
 .trackTagline {
@@ -292,7 +323,7 @@
   font-weight: 600;
   color: var(--accent-cyan);
   line-height: 1.45;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 :root[data-theme="light"] .trackTagline {
@@ -300,49 +331,139 @@
 }
 
 .trackDesc {
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: var(--text-secondary);
+  margin-bottom: 1.35rem;
+}
+
+/* Candidate Profile Box */
+.whoBox {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.85rem;
+  padding: 1rem 1.15rem;
   margin-bottom: 1.5rem;
 }
 
-/* Specializations */
+:root[data-theme="light"] .whoBox {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.whoLabel {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan);
+  margin-bottom: 0.3rem;
+}
+
+:root[data-theme="light"] .whoLabel {
+  color: var(--accent-blue);
+}
+
+.whoText {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Right Column / Details */
+.cardDetailsCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 2.75rem;
+  border-left: 1px solid var(--border-subtle);
+}
+
+/* Specializations Section */
 .specSection {
   margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-subtle);
+}
+
+.specHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
 }
 
 .specHeading {
   font-size: 0.86rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: 0.85rem;
-}
-
-.specList {
-  list-style: none;
-  padding: 0;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
 }
 
-.specItem {
+.specCountBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.specGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.specCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.85rem;
+  padding: 0.95rem 1rem;
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: var(--text-secondary);
+  gap: 0.7rem;
+  transition: all 0.25s ease;
 }
 
-.specItem strong {
+.specCard:hover {
+  border-color: var(--border-glow);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-2px);
+}
+
+:root[data-theme="light"] .specCard {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .specCard:hover {
+  background: #ffffff;
+  border-color: rgba(14, 165, 233, 0.35);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.specTextWrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.specTitle {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: var(--text-primary);
-  font-weight: 600;
+  margin-bottom: 0.25rem;
+  line-height: 1.35;
+}
+
+.specDesc {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .specIcon {
@@ -367,50 +488,16 @@
   color: #059669;
 }
 
-/* Candidate Profile Box */
-.whoBox {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.85rem;
-  padding: 1rem 1.15rem;
-  margin-bottom: 1.5rem;
-}
-
-:root[data-theme="light"] .whoBox {
-  background: #f8fafc;
-  border-color: #e2e8f0;
-}
-
-.whoLabel {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent-cyan);
-  margin-bottom: 0.35rem;
-}
-
-:root[data-theme="light"] .whoLabel {
-  color: var(--accent-blue);
-}
-
-.whoText {
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
 /* Tech / Domain Skills */
 .skillsSection {
-  margin-bottom: 2rem;
-  flex-grow: 1;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .skillsLabel {
   display: block;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -425,20 +512,30 @@
 }
 
 .skillTag {
-  padding: 0.25rem 0.6rem;
+  padding: 0.28rem 0.65rem;
   border-radius: 0.45rem;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 500;
   color: var(--text-secondary);
   transition: all 0.2s ease;
+}
+
+.skillTag:hover {
+  color: var(--text-primary);
+  border-color: var(--border-glow);
 }
 
 :root[data-theme="light"] .skillTag {
   background: #f1f5f9;
   border-color: #e2e8f0;
   color: #334155;
+}
+
+:root[data-theme="light"] .skillTag:hover {
+  background: #e2e8f0;
+  color: #0f172a;
 }
 
 /* Enquiry CTA Button on Card */
@@ -689,10 +786,30 @@
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-@media (max-width: 1080px) {
-  .tracksGrid {
+@media (max-width: 1200px) {
+  .trackCard {
+    grid-template-columns: 340px 1fr;
+    gap: 2.25rem;
+    padding: 2.25rem 2rem;
+  }
+
+  .cardDetailsCol {
+    padding-left: 2.25rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .trackCard {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 2.25rem 2rem;
+  }
+
+  .cardDetailsCol {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 2rem;
   }
 
   .perksGrid {
@@ -715,8 +832,18 @@
     padding-top: 7rem;
   }
 
+  .tracksGrid {
+    gap: 1.75rem;
+  }
+
   .trackCard {
-    padding: 2rem 1.4rem;
+    padding: 2rem 1.5rem;
+    border-radius: 1.35rem;
+  }
+
+  .specGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .perksGrid {
@@ -758,20 +885,21 @@
 
   .trackCard {
     padding: 1.6rem 1.15rem;
-    border-radius: 1.1rem;
+    border-radius: 1.15rem;
   }
 
   .trackTop {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
   }
 
   .trackIconWrap {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
   }
 
   .trackTitle {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
 
   .trackTagline {
@@ -780,16 +908,23 @@
 
   .trackDesc {
     font-size: 0.86rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.15rem;
   }
 
-  .specSection {
-    margin-bottom: 1.2rem;
-    padding-bottom: 1.2rem;
+  .cardDetailsCol {
+    padding-top: 1.5rem;
   }
 
-  .specItem {
-    font-size: 0.82rem;
+  .specCard {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .specTitle {
+    font-size: 0.83rem;
+  }
+
+  .specDesc {
+    font-size: 0.78rem;
   }
 
   .enquiryBanner {
@@ -817,10 +952,10 @@
   }
 
   .trackCard {
-    padding: 1.4rem 0.95rem;
+    padding: 1.35rem 0.95rem;
   }
 
   .trackTitle {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
 }

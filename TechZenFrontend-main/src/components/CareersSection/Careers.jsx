@@ -76,7 +76,7 @@ export default function Careers({ isStandalonePage = false }) {
           </p>
         </div>
 
-        {/* 3 EXPANDED PILLARS: IT, NON-IT, INTERNSHIPS */}
+        {/* 3 EXPANDED HORIZONTAL CARDS: IT, NON-IT, INTERNSHIPS */}
         <div className={styles.tracksGrid}>
           {careerTracks.map((track) => {
             const IconComp = trackIcons[track.icon] || Code2;
@@ -89,63 +89,69 @@ export default function Careers({ isStandalonePage = false }) {
 
             return (
               <div key={track.id} className={`${styles.trackCard} ${cardVariantClass}`}>
-                {/* Top Badge & Icon */}
-                <div className={styles.trackTop}>
-                  <div className={styles.trackIconWrap}>
-                    <IconComp size={26} />
+                {/* Left Column / Header Info, Profile & CTA */}
+                <div className={styles.cardHeaderCol}>
+                  <div className={styles.trackTop}>
+                    <div className={styles.trackIconWrap}>
+                      <IconComp size={24} />
+                    </div>
+                    <span className={styles.trackBadge}>{track.badge}</span>
                   </div>
-                  <span className={styles.trackBadge}>{track.badge}</span>
+
+                  <h3 className={styles.trackTitle}>{track.title}</h3>
+                  <p className={styles.trackTagline}>{track.tagline}</p>
+                  <p className={styles.trackDesc}>{track.description}</p>
+
+                  <div className={styles.whoBox}>
+                    <span className={styles.whoLabel}>Candidate Profile:</span>
+                    <p className={styles.whoText}>{track.whoShouldApply}</p>
+                  </div>
+
+                  <div className={styles.trackAction}>
+                    <button
+                      type="button"
+                      className={styles.enquireBtn}
+                      onClick={() => handleEnquiry(track.enquiryTopic)}
+                    >
+                      <span>{track.ctaLabel}</span>
+                      <ArrowRight size={17} />
+                    </button>
+                  </div>
                 </div>
 
-                {/* Title & Tagline */}
-                <h3 className={styles.trackTitle}>{track.title}</h3>
-                <p className={styles.trackTagline}>{track.tagline}</p>
-                <p className={styles.trackDesc}>{track.description}</p>
-
-                {/* Specializations & Focus Areas */}
-                <div className={styles.specSection}>
-                  <h4 className={styles.specHeading}>Key Focus Areas &amp; Programs:</h4>
-                  <ul className={styles.specList}>
-                    {track.specializations.map((item, idx) => (
-                      <li key={idx} className={styles.specItem}>
-                        <CheckCircle2 size={16} className={styles.specIcon} />
-                        <div>
-                          <strong>{item.title}:</strong>
-                          <span> {item.desc}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Candidate Profile / Who should apply */}
-                <div className={styles.whoBox}>
-                  <span className={styles.whoLabel}>Candidate Profile:</span>
-                  <p className={styles.whoText}>{track.whoShouldApply}</p>
-                </div>
-
-                {/* Tech Stack / Skill Pills */}
-                <div className={styles.skillsSection}>
-                  <span className={styles.skillsLabel}>Key Technologies &amp; Domains:</span>
-                  <div className={styles.skillsTags}>
-                    {track.techStack.map((tech, idx) => (
-                      <span key={idx} className={styles.skillTag}>
-                        {tech}
+                {/* Right Column / Specializations Grid & Tech Stack */}
+                <div className={styles.cardDetailsCol}>
+                  <div className={styles.specSection}>
+                    <div className={styles.specHeaderRow}>
+                      <h4 className={styles.specHeading}>Key Focus Areas &amp; Programs</h4>
+                      <span className={styles.specCountBadge}>
+                        {track.specializations.length} Focus Areas
                       </span>
-                    ))}
-                  </div>
-                </div>
+                    </div>
 
-                {/* Dedicated Enquiry Button */}
-                <div className={styles.trackAction}>
-                  <button
-                    type="button"
-                    className={styles.enquireBtn}
-                    onClick={() => handleEnquiry(track.enquiryTopic)}
-                  >
-                    <span>{track.ctaLabel}</span>
-                    <ArrowRight size={17} />
-                  </button>
+                    <div className={styles.specGrid}>
+                      {track.specializations.map((item, idx) => (
+                        <div key={idx} className={styles.specCard}>
+                          <CheckCircle2 size={16} className={styles.specIcon} />
+                          <div className={styles.specTextWrap}>
+                            <strong className={styles.specTitle}>{item.title}</strong>
+                            <p className={styles.specDesc}>{item.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className={styles.skillsSection}>
+                    <span className={styles.skillsLabel}>Key Technologies &amp; Domains</span>
+                    <div className={styles.skillsTags}>
+                      {track.techStack.map((tech, idx) => (
+                        <span key={idx} className={styles.skillTag}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             );
