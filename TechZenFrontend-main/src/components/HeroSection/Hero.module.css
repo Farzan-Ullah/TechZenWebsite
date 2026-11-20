@@ -884,6 +884,24 @@
   }
 }
 
+@keyframes orbitRingSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes counterOrbitIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
 @keyframes watermarkBreathe {
   0%, 100% {
     transform: translate(-50%, -50%) scale(1);
@@ -981,55 +999,116 @@
   }
 
   .visual {
-    min-height: 440px;
+    min-height: 380px;
     width: 100%;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --orbit-r: 136px;
   }
 
   .aiOrb {
-    width: min(300px, 75vw);
-  }
-
-  /* Reliable centering without transform conflict */
-  .cardTop {
-    top: 6px;
-    left: 0;
-    right: 0;
+    width: min(230px, 66vw);
+    aspect-ratio: 1;
     margin: 0 auto;
-    width: min(310px, calc(100% - 32px));
   }
 
+  /* Hide company cards on responsive / mobile to keep focus on satellite & orbiting tech logos */
+  .floatingCard,
+  .cardTop,
   .cardBottom {
-    bottom: 6px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: min(310px, calc(100% - 32px));
+    display: none !important;
   }
 
+  /* Orbiting circular ring of tech logos centered around the satellite */
+  .floatingTechCluster {
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    z-index: 10;
+    animation: orbitRingSpin 26s linear infinite;
+  }
+
+  .floatingTechCluster::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--orbit-r) * 2);
+    height: calc(var(--orbit-r) * 2);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px dashed rgba(56, 189, 248, 0.22);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.08);
+    pointer-events: none;
+  }
+
+  .floatingTechNode {
+    position: absolute;
+    top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 38px;
+    height: 38px;
+    margin-top: -19px;
+    margin-left: -19px;
+    border-radius: 50%;
+    pointer-events: auto;
+  }
+
+  .floatingTechNode:hover {
+    transform: none;
+  }
+
+  .techNodeIcon {
+    font-size: 17px;
+    animation: counterOrbitIcon 26s linear infinite;
+  }
+
+  .techNode1,
+  .techNode2,
+  .techNode3,
+  .techNode4,
+  .techNode5,
+  .techNode6 {
+    animation: none !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  /* Hexagonal distribution around circle (0, 60, 120, 180, 240, 300 deg) */
   .techNode1 {
-    top: 24%;
-    right: 14px;
+    transform: translate(var(--orbit-r), 0) !important;
   }
   .techNode2 {
-    top: 48%;
-    right: 10px;
+    transform: translate(calc(var(--orbit-r) * 0.5), calc(var(--orbit-r) * 0.866)) !important;
   }
   .techNode3 {
-    top: 72%;
-    right: 16px;
+    transform: translate(calc(var(--orbit-r) * -0.5), calc(var(--orbit-r) * 0.866)) !important;
   }
   .techNode4 {
-    top: 24%;
-    left: 14px;
+    transform: translate(calc(var(--orbit-r) * -1), 0) !important;
   }
   .techNode5 {
-    top: 48%;
-    left: 10px;
+    transform: translate(calc(var(--orbit-r) * -0.5), calc(var(--orbit-r) * -0.866)) !important;
   }
   .techNode6 {
-    top: 72%;
-    left: 16px;
+    transform: translate(calc(var(--orbit-r) * 0.5), calc(var(--orbit-r) * -0.866)) !important;
+  }
+
+  .techNodeTooltip {
+    display: none !important;
   }
 
   .scrollIndicator {
@@ -1039,13 +1118,6 @@
   .heroWatermark {
     width: min(440px, 85vw);
     height: min(440px, 85vw);
-  }
-}
-
-@media (max-width: 520px) {
-  /* Hide floating satellites on small mobile to keep AI core clear & touch-friendly */
-  .floatingTechCluster {
-    display: none;
   }
 }
 
@@ -1130,11 +1202,12 @@
   }
 
   .visual {
-    min-height: 380px;
+    min-height: 340px;
+    --orbit-r: 118px;
   }
 
   .aiOrb {
-    width: min(230px, 68vw);
+    width: min(200px, 58vw);
   }
 
   .core {
@@ -1151,32 +1224,15 @@
     font-size: 11px;
   }
 
-  .cardTop {
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: min(290px, calc(100% - 24px));
-    padding: 10px 14px;
-    border-radius: 14px;
+  .floatingTechNode {
+    width: 34px;
+    height: 34px;
+    margin-top: -17px;
+    margin-left: -17px;
   }
 
-  .cardBottom {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: min(290px, calc(100% - 24px));
-    padding: 10px 14px;
-    border-radius: 14px;
-  }
-
-  .cardInfo strong {
-    font-size: 12.5px;
-  }
-
-  .cardSub {
-    font-size: 10px;
+  .techNodeIcon {
+    font-size: 15px;
   }
 
   .heroWatermark {
@@ -1213,17 +1269,23 @@
   }
 
   .visual {
-    min-height: 340px;
+    min-height: 300px;
+    --orbit-r: 102px;
   }
 
   .aiOrb {
-    width: 200px;
+    width: 175px;
   }
 
-  .cardTop,
-  .cardBottom {
-    width: calc(100% - 16px);
-    padding: 8px 12px;
+  .floatingTechNode {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+  }
+
+  .techNodeIcon {
+    font-size: 13.5px;
   }
 }
 
