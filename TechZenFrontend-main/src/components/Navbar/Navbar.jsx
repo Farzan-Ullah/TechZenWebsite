@@ -72,8 +72,11 @@ export default function Navbar() {
         let el = document.getElementById(targetId);
         if (!el && targetId.startsWith("products-")) {
           el = document.getElementById(targetId.replace("products-", "projects-"));
+        } else if (!el && targetId.startsWith("portfolio-")) {
+          el = document.getElementById(targetId.replace("portfolio-", "projects-"));
         } else if (!el && targetId.startsWith("projects-")) {
-          el = document.getElementById(targetId.replace("projects-", "products-"));
+          el = document.getElementById(targetId.replace("projects-", "products-")) ||
+               document.getElementById(targetId.replace("projects-", "portfolio-"));
         }
         if (el) {
           e?.preventDefault();
@@ -135,7 +138,7 @@ export default function Navbar() {
               />
 
               <NavbarDropdown
-                title="Products"
+                title="Portfolio"
                 items={projects}
                 viewAllLink="/#projects"
                 handleHashClick={handleHashClick}
@@ -248,9 +251,9 @@ export default function Navbar() {
               handleHashClick={handleHashClick}
             />
 
-            {/* PRODUCTS DROPDOWN */}
+            {/* PORTFOLIO DROPDOWN */}
             <NavbarDropdownMobileView
-              title="Products"
+              title="Portfolio"
               items={projects}
               isOpen={mobileProjectsOpen}
               onToggle={() => setMobileProjectsOpen(!mobileProjectsOpen)}
@@ -694,7 +697,7 @@ function NavbarDropdown({ title, items, viewAllLink, handleHashClick }) {
       >
         {items.map((item, index) => {
           const prefix =
-            title.toLowerCase() === "products"
+            title.toLowerCase() === "portfolio" || title.toLowerCase() === "products"
               ? "projects"
               : title.toLowerCase().replace(/\s+/g, "-");
           const targetSlug = item.slug || item.id || item._id;
@@ -768,7 +771,7 @@ function NavbarDropdownMobileView({
       >
         {items.map((item) => {
           const prefix =
-            title.toLowerCase() === "products"
+            title.toLowerCase() === "portfolio" || title.toLowerCase() === "products"
               ? "projects"
               : title.toLowerCase().replace(/\s+/g, "-");
           const targetSlug = item.slug || item.id || item._id;
