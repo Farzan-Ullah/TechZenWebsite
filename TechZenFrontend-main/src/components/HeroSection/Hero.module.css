@@ -976,6 +976,12 @@
     align-items: center;
   }
 
+  .heroText > p {
+    text-align: left;
+    width: 100%;
+    max-width: 580px;
+  }
+
   .badge {
     margin-bottom: 18px;
   }
@@ -1147,6 +1153,7 @@
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 24px;
+    text-align: left;
   }
 
   .actions {
