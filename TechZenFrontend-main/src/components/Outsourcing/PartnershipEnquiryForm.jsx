@@ -190,7 +190,6 @@ export default function PartnershipEnquiryForm() {
     <section id="partnership-enquiry" className={styles.enquirySection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrowBadge}>INITIATE PARTNERSHIP</div>
           <h2 className={styles.sectionTitle}>
             Discuss Your Software Development Outsourcing Requirement
           </h2>

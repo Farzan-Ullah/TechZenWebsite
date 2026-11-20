@@ -33,7 +33,6 @@ export default function DevelopmentProcess() {
     <section className={styles.processSection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrowBadge}>ENGINEERING METHODOLOGY</div>
           <h2 className={styles.sectionTitle}>
             Our Structured Development & Delivery Process
           </h2>

@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, Shield, Clock } from "lucide-react";
+import { ArrowRight, Shield, Clock } from "lucide-react";
 import styles from "./Outsourcing.module.css";
 
 export default function OutsourcingCTA() {
@@ -22,11 +22,6 @@ export default function OutsourcingCTA() {
     <section className={styles.globalCtaSection}>
       <div className={styles.container}>
         <div className={styles.globalCtaCard}>
-          <div className={styles.eyebrowBadge}>
-            <Sparkles size={14} className={styles.eyebrowBadgeIcon} />
-            <span>TRANSFORM YOUR TECHNOLOGY ROADMAP</span>
-          </div>
-
           <h2 className={styles.ctaMainHeading}>
             Ready to Scale Your Software Development Capabilities?
           </h2>

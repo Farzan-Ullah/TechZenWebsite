@@ -65,7 +65,6 @@ export default function WhiteLabelPartnership() {
     <section className={styles.whiteLabelSection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrowBadge}>WHITE-LABEL COLLABORATION</div>
           <h2 className={styles.sectionTitle}>
             White-Label Development Partnerships for Digital Agencies & Consultancies
           </h2>

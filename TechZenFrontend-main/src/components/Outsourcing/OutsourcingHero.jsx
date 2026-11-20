@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Code2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Code2 } from "lucide-react";
 import styles from "./Outsourcing.module.css";
 
 export default function OutsourcingHero({ onScrollToForm, onScrollToCapabilities }) {
@@ -8,11 +8,6 @@ export default function OutsourcingHero({ onScrollToForm, onScrollToCapabilities
         <div className={styles.heroGrid}>
           {/* Left Column Content */}
           <div className={styles.heroContent}>
-            <div className={styles.eyebrowBadge}>
-              <Sparkles size={14} className={styles.eyebrowBadgeIcon} />
-              <span>SOFTWARE DEVELOPMENT OUTSOURCING</span>
-            </div>
-
             <h1 className={styles.heroHeading}>
               Your Trusted Technology Partner for{" "}
               <span className={styles.heroHighlight}>Software Development Outsourcing</span>

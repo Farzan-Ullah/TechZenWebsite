@@ -123,7 +123,6 @@ export default function DevelopmentCapabilities() {
     <section id="capabilities" className={styles.capabilitiesSection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrowBadge}>ENGINEERING CAPABILITIES</div>
           <h2 className={styles.sectionTitle}>
             Comprehensive Software Development Outsourcing Services
           </h2>

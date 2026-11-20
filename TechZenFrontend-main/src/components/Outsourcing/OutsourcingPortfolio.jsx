@@ -50,7 +50,6 @@ export default function OutsourcingPortfolio() {
     <section className={styles.portfolioSection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrowBadge}>PROVEN TRACK RECORD</div>
           <h2 className={styles.sectionTitle}>
             Proven Technical Solutions & Delivery Showcase
           </h2>

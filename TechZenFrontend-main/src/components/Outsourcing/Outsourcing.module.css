@@ -1521,6 +1521,10 @@
     gap: 40px;
   }
 
+  .heroVisualWrapper {
+    display: none !important;
+  }
+
   .heroContent {
     align-items: center;
     text-align: center;
@@ -1586,6 +1590,35 @@
     padding: 110px 0 60px;
   }
 
+  .heroVisualWrapper {
+    display: none !important;
+  }
+
+  .heroCtaGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 30px;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 11px;
+    gap: 6px;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
   .heroValueProps {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -1627,5 +1660,36 @@
   .floatingBadgeOne,
   .floatingBadgeTwo {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroCtaGroup {
+    gap: 8px;
+    max-width: 370px;
+    margin: 0 auto 24px;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    padding: 9px 8px;
+    font-size: 11px;
+    border-radius: 9px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .heroCtaGroup {
+    gap: 6px;
+    max-width: 320px;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    padding: 8px 5px;
+    font-size: 10px;
+    border-radius: 8px;
+    gap: 3px;
   }
 }

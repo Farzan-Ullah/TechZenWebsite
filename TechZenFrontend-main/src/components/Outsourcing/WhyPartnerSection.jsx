@@ -52,7 +52,6 @@ export default function WhyPartnerSection() {
     <section className={styles.whySection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrowBadge}>PARTNERSHIP ADVANTAGES</div>
           <h2 className={styles.sectionTitle}>
             A Reliable Development Partner for Your Growing Business
           </h2>

@@ -112,7 +112,6 @@ export default function DedicatedTeamSection() {
     <section className={styles.teamsSection}>
       <div className={styles.container}>
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrowBadge}>ENGINEERING TALENT</div>
           <h2 className={styles.sectionTitle}>
             Dedicated Development Teams & Technical Talent
           </h2>
